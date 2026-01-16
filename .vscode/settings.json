@@ -1,0 +1,6 @@
+{
+    "clangd.fallbackFlags": [
+        "-I/usr/include/SDL2"
+    ],
+    "editor.formatOnSave": false
+}
