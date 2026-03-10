@@ -2,8 +2,7 @@ build*
 *.swp
 *tags
 *~
-.cache/
-
+/.vscode/
 /baseq3
 
 # OS X
