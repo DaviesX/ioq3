@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // tr_surf.c
 #include "renderergl2/tr_local.h"
+#include <math.h>
+#include <stdint.h>
 
 /*
 
@@ -901,15 +903,15 @@ static float LodErrorForVolume(vec3_t local, float radius) {
     return 0;
   }
 
-  world[0] = local[0] * backEnd.or.axis[0][0] + local[1] * backEnd.or
-                                      .axis[1][0] + local[2] * backEnd.or
-                                      .axis[2][0] + backEnd.or.origin[0];
-  world[1] = local[0] * backEnd.or.axis[0][1] + local[1] * backEnd.or
-                                      .axis[1][1] + local[2] * backEnd.or
-                                      .axis[2][1] + backEnd.or.origin[1];
-  world[2] = local[0] * backEnd.or.axis[0][2] + local[1] * backEnd.or
-                                      .axis[1][2] + local[2] * backEnd.or
-                                      .axis[2][2] + backEnd.or.origin[2];
+  world[0] = local[0] * backEnd.or.axis[0][0] +
+             local[1] * backEnd.or.axis[1][0] +
+             local[2] * backEnd.or.axis[2][0] + backEnd.or.origin[0];
+  world[1] = local[0] * backEnd.or.axis[0][1] +
+             local[1] * backEnd.or.axis[1][1] +
+             local[2] * backEnd.or.axis[2][1] + backEnd.or.origin[1];
+  world[2] = local[0] * backEnd.or.axis[0][2] +
+             local[1] * backEnd.or.axis[1][2] +
+             local[2] * backEnd.or.axis[2][2] + backEnd.or.origin[2];
 
   VectorSubtract(world, backEnd.viewParms.or.origin, world);
   d = DotProduct(world, backEnd.viewParms.or.axis[0]);

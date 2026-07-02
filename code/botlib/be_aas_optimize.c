@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_script.h"
 #include "botlib/l_struct.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
 
 typedef struct optimized_s {
   // vertexes
@@ -113,7 +114,7 @@ int AAS_OptimizeEdge(optimized_t *optimized, int edgenum) {
       optimized->vertexoptimizeindex[edge->v[i]] = optimized->numvertexes;
       optimized->numvertexes++;
     } // end else
-  }   // end for
+  } // end for
   optimized->edgeoptimizeindex[abs(edgenum)] = optimized->numedges;
   optedgenum = optimized->numedges;
   optimized->numedges++;
@@ -171,7 +172,7 @@ int AAS_OptimizeFace(optimized_t *optimized, int facenum) {
       optface->numedges++;
       optimized->edgeindexsize++;
     } // end if
-  }   // end for
+  } // end for
   optimized->faceoptimizeindex[abs(facenum)] = optimized->numfaces;
   optfacenum = optimized->numfaces;
   optimized->numfaces++;
@@ -205,7 +206,7 @@ void AAS_OptimizeArea(optimized_t *optimized, int areanum) {
       optarea->numfaces++;
       optimized->faceindexsize++;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function AAS_OptimizeArea
 //===========================================================================
 //

@@ -71,6 +71,7 @@
 
 #include "renderercommon/puff.h" /* prototype for puff() */
 #include <setjmp.h>              /* for setjmp(), longjmp(), and jmp_buf */
+#include <stddef.h>
 
 #define local static /* for local function definitions */
 
@@ -314,7 +315,7 @@ local int32_t construct(struct huffman *h, int16_t *length, int32_t n) {
     left -= h->count[len]; /* deduct count from possible codes */
     if (left < 0)
       return left; /* over-subscribed--return negative */
-  }                /* left > 0 means incomplete */
+  } /* left > 0 means incomplete */
 
   /* generate offsets into symbol table for each length for sorting */
   offs[1] = 0;

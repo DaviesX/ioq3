@@ -51,6 +51,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/be_ai_weap.h"
 #include "botlib/be_ai_weight.h"
 #include "botlib/be_ea.h"
+#include <assert.h>
+#include <string.h>
+#include <time.h>
 
 // library globals in a structure
 botlib_globals_t botlibglobals;
@@ -178,7 +181,7 @@ int Export_BotLibShutdown(void) {
   if (!BotLibSetup("BotLibShutdown"))
     return BLERR_LIBRARYNOTSETUP;
 #ifndef DEMO
-    // DumpFileCRCs();
+  // DumpFileCRCs();
 #endif                     // DEMO
                            //
   BotShutdownChatAI();     // be_ai_chat.c

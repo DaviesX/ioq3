@@ -50,6 +50,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <assert.h>
+#include <stdint.h>
 
 static char binaryPath[MAX_OSPATH] = {0};
 static char installPath[MAX_OSPATH] = {0};

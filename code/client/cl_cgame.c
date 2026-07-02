@@ -27,6 +27,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifdef USE_MUMBLE
 #include "client/libmumblelink.h"
+#include <assert.h>
+#include <limits.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 #endif
 
 extern botlib_export_t *botlib_export;

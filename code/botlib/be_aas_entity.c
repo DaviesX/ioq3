@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
+#include <stddef.h>
 
 #define MASK_SOLID CONTENTS_PLAYERCLIP
 
@@ -148,7 +150,7 @@ int AAS_UpdateEntity(int entnum, bot_entitystate_t *state) {
       // link the entity to the world BSP tree
       ent->leaves = AAS_BSPLinkEntity(absmins, absmaxs, entnum, 0);
     } // end if
-  }   // end if
+  } // end if
   return BLERR_NOERROR;
 } // end of the function AAS_UpdateEntity
 //===========================================================================
@@ -254,8 +256,8 @@ int AAS_OriginOfMoverWithModelNum(int modelnum, vec3_t origin) {
         VectorCopy(ent->i.origin, origin);
         return qtrue;
       } // end if
-    }   // end if
-  }     // end for
+    } // end if
+  } // end for
   return qfalse;
 } // end of the function AAS_OriginOfMoverWithModelNum
 //===========================================================================
@@ -341,7 +343,7 @@ void AAS_UnlinkInvalidEntities(void) {
       AAS_UnlinkFromBSPLeaves(ent->leaves);
       ent->leaves = NULL;
     } // end for
-  }   // end for
+  } // end for
 } // end of the function AAS_UnlinkInvalidEntities
 //===========================================================================
 //
@@ -369,9 +371,9 @@ int AAS_NearestEntity(vec3_t origin, int modelindex) {
           bestdist = dist;
           bestentnum = i;
         } // end if
-      }   // end if
-    }     // end if
-  }       // end for
+      } // end if
+    } // end if
+  } // end for
   return bestentnum;
 } // end of the function AAS_NearestEntity
 //===========================================================================

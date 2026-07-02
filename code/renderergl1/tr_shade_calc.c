@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // tr_shade_calc.c
 
 #include "renderergl1/tr_local.h"
+#include <math.h>
+#include <stdint.h>
+#include <string.h>
 
 #define WAVEVALUE(table, base, amplitude, phase, freq)                         \
   ((base) +                                                                    \
@@ -804,18 +807,15 @@ void RB_CalcFogTexCoords(float *st) {
 
   // rotate the gradient vector for this orientation
   if (fog->hasSurface) {
-    fogDepthVector[0] =
-        fog->surface[0] * backEnd.or
-            .axis[0][0] + fog->surface[1] * backEnd.or
-            .axis[0][1] + fog->surface[2] * backEnd.or.axis[0][2];
-    fogDepthVector[1] =
-        fog->surface[0] * backEnd.or
-            .axis[1][0] + fog->surface[1] * backEnd.or
-            .axis[1][1] + fog->surface[2] * backEnd.or.axis[1][2];
-    fogDepthVector[2] =
-        fog->surface[0] * backEnd.or
-            .axis[2][0] + fog->surface[1] * backEnd.or
-            .axis[2][1] + fog->surface[2] * backEnd.or.axis[2][2];
+    fogDepthVector[0] = fog->surface[0] * backEnd.or.axis[0][0] +
+                        fog->surface[1] * backEnd.or.axis[0][1] +
+                        fog->surface[2] * backEnd.or.axis[0][2];
+    fogDepthVector[1] = fog->surface[0] * backEnd.or.axis[1][0] +
+                        fog->surface[1] * backEnd.or.axis[1][1] +
+                        fog->surface[2] * backEnd.or.axis[1][2];
+    fogDepthVector[2] = fog->surface[0] * backEnd.or.axis[2][0] +
+                        fog->surface[1] * backEnd.or.axis[2][1] +
+                        fog->surface[2] * backEnd.or.axis[2][2];
     fogDepthVector[3] =
         -fog->surface[3] + DotProduct(backEnd.or.origin, fog->surface);
 

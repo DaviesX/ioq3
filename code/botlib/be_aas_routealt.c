@@ -42,6 +42,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
+#include <stddef.h>
 
 #define ENABLE_ALTROUTING
 // #define ALTROUTE_DEBUG
@@ -135,8 +137,8 @@ int AAS_AlternativeRouteGoals(vec3_t start, int startareanum, vec3_t goal,
               (aasworld.areasettings[i].contents & AREACONTENTS_VIEWPORTAL))) {
           continue;
         } // end if
-      }   // end if
-    }     // end if
+      } // end if
+    } // end if
     // if the area has no reachabilities
     if (!AAS_AreaReachability(i))
       continue;
@@ -188,7 +190,7 @@ int AAS_AlternativeRouteGoals(vec3_t start, int startareanum, vec3_t goal,
         bestdist = dist;
         bestareanum = clusterareas[j];
       } // end if
-    }   // end for
+    } // end for
     // now we've got an area for an alternative route
     // FIXME: add alternative goal origin
     VectorCopy(aasworld.areas[bestareanum].center,

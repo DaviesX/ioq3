@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // tr_extramath.c - extra math needed by the renderer not in qmath.c
 
 #include "renderergl2/tr_local.h"
+#include <stdint.h>
 
 // Some matrix helper functions
 // FIXME: do these already exist in ioq3 and I don't know about them?

@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <string.h>
 
 // #define DEBUG_AI_GOAL
 #ifdef RANDOMIZE
@@ -130,7 +131,7 @@ typedef struct iteminfo_s {
   int number;                  // number of the item info
 } iteminfo_t;
 
-#define ITEMINFO_OFS(x) (size_t) & (((iteminfo_t *)0)->x)
+#define ITEMINFO_OFS(x) (size_t)&(((iteminfo_t *)0)->x)
 
 fielddef_t iteminfo_fields[] = {
     {"name", ITEMINFO_OFS(name), FT_STRING},
@@ -310,7 +311,7 @@ itemconfig_t *LoadItemConfig(char *filename) {
       FreeSource(source);
       return NULL;
     } // end else
-  }   // end while
+  } // end while
   FreeSource(source);
   //
   if (!ic->numiteminfo)
@@ -337,7 +338,7 @@ int *ItemWeightIndex(weightconfig_t *iwc, itemconfig_t *ic) {
       Log_Write("item info %d \"%s\" has no fuzzy weight\r\n", i,
                 ic->iteminfo[i].classname);
     } // end if
-  }   // end for
+  } // end for
   return index;
 } // end of the function ItemWeightIndex
 //===========================================================================
@@ -493,7 +494,7 @@ void BotInitInfoEntities(void) {
       // AAS_DrawPermanentCross(cs->origin, 4, LINECOLOR_YELLOW);
       numcampspots++;
     } // end else if
-  }   // end for
+  } // end for
   if (botDeveloper) {
     botimport.Print(PRT_MESSAGE, "%d map locations\n", numlocations);
     botimport.Print(PRT_MESSAGE, "%d camp spots\n", numcampspots);
@@ -535,7 +536,7 @@ void BotInitLevelItems(void) {
     if (!ic->iteminfo[i].modelindex) {
       Log_Write("item %s has modelindex 0", ic->iteminfo[i].classname);
     } // end if
-  }   // end for
+  } // end for
 
   for (ent = AAS_NextBSPEntity(0); ent; ent = AAS_NextBSPEntity(ent)) {
     if (!AAS_ValueForBSPEpairKey(ent, "classname", classname, MAX_EPAIRKEY))
@@ -579,8 +580,8 @@ void BotInitLevelItems(void) {
           if (!goalareanum)
             continue;
         } // end if
-      }   // end if
-    }     // end if
+      } // end if
+    } // end if
 
     li = AllocLevelItem();
     if (!li)
@@ -614,7 +615,7 @@ void BotInitLevelItems(void) {
         botimport.Print(PRT_MESSAGE, "%s in solid at (%1.1f %1.1f %1.1f)\n",
                         classname, origin[0], origin[1], origin[2]);
       } // end if
-    }   // end if
+    } // end if
     // item info of the level item
     li->iteminfo = i;
     // origin of the item
@@ -633,7 +634,7 @@ void BotInitLevelItems(void) {
                         "%s not reachable for bots at (%1.1f %1.1f %1.1f)\n",
                         classname, origin[0], origin[1], origin[2]);
       } // end if
-    }   // end else
+    } // end else
     //
     AddLevelItemToList(li);
   } // end for
@@ -656,7 +657,7 @@ void BotGoalName(int number, char *name, int size) {
       Q_strncpyz(name, itemconfig->iteminfo[li->iteminfo].name, size);
       return;
     } // end for
-  }   // end for
+  } // end for
   strcpy(name, "");
 } // end of the function BotGoalName
 //===========================================================================
@@ -694,7 +695,7 @@ void BotDumpAvoidGoals(int goalstate) {
       Log_Write("avoid goal %s, number %d for %f seconds", name,
                 gs->avoidgoals[i], gs->avoidgoaltimes[i] - AAS_Time());
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotDumpAvoidGoals
 //===========================================================================
 //
@@ -712,7 +713,7 @@ void BotAddToAvoidGoals(bot_goalstate_t *gs, int number, float avoidtime) {
       gs->avoidgoaltimes[i] = AAS_Time() + avoidtime;
       return;
     } // end if
-  }   // end for
+  } // end for
 
   for (i = 0; i < MAX_AVOIDGOALS; i++) {
     // if this avoid goal has expired
@@ -721,7 +722,7 @@ void BotAddToAvoidGoals(bot_goalstate_t *gs, int number, float avoidtime) {
       gs->avoidgoaltimes[i] = AAS_Time() + avoidtime;
       return;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotAddToAvoidGoals
 //===========================================================================
 //
@@ -742,7 +743,7 @@ void BotRemoveFromAvoidGoals(int goalstate, int number) {
       gs->avoidgoaltimes[i] = 0;
       return;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotRemoveFromAvoidGoals
 //===========================================================================
 //
@@ -762,7 +763,7 @@ float BotAvoidGoalTime(int goalstate, int number) {
     if (gs->avoidgoals[i] == number && gs->avoidgoaltimes[i] >= AAS_Time()) {
       return gs->avoidgoaltimes[i] - AAS_Time();
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotAvoidGoalTime
 //===========================================================================
@@ -792,7 +793,7 @@ void BotSetAvoidGoalTime(int goalstate, int number, float avoidtime) {
         BotAddToAvoidGoals(gs, number, avoidtime);
         return;
       } // end for
-    }   // end for
+    } // end for
     return;
   } // end if
   else {
@@ -817,8 +818,8 @@ int BotGetLevelItemGoal(int index, char *name, bot_goal_t *goal) {
         li = li->next;
         break;
       } // end if
-    }   // end for
-  }     // end for
+    } // end for
+  } // end for
   for (; li; li = li->next) {
     //
     if (g_gametype == GT_SINGLE_PLAYER) {
@@ -849,7 +850,7 @@ int BotGetLevelItemGoal(int index, char *name, bot_goal_t *goal) {
       // itemconfig->iteminfo[li->iteminfo].name);
       return li->number;
     } // end if
-  }   // end for
+  } // end for
   return -1;
 } // end of the function BotGetLevelItemGoal
 //===========================================================================
@@ -874,7 +875,7 @@ int BotGetMapLocationGoal(char *name, bot_goal_t *goal) {
       goal->iteminfo = 0;
       return qtrue;
     } // end if
-  }   // end for
+  } // end for
   return qfalse;
 } // end of the function BotGetMapLocationGoal
 //===========================================================================
@@ -903,7 +904,7 @@ int BotGetNextCampSpotGoal(int num, bot_goal_t *goal) {
       goal->iteminfo = 0;
       return num + 1;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotGetNextCampSpotGoal
 //===========================================================================
@@ -942,8 +943,8 @@ void BotFindEntityForLevelItem(levelitem_t *li) {
         // found an entity for this level item
         li->entitynum = ent;
       } // end if
-    }   // end if
-  }     // end for
+    } // end if
+  } // end for
 } // end of the function BotFindEntityForLevelItem
 //===========================================================================
 //
@@ -972,8 +973,8 @@ void BotUpdateEntityItems(void) {
         RemoveLevelItemFromList(li);
         FreeLevelItem(li);
       } // end if
-    }   // end if
-  }     // end for
+    } // end if
+  } // end for
   // find new entity items
   ic = itemconfig;
   if (!itemconfig)
@@ -1021,8 +1022,8 @@ void BotUpdateEntityItems(void) {
           } // end if
           break;
         } // end else
-      }   // end if
-    }     // end for
+      } // end if
+    } // end for
     if (li)
       continue;
     // try to link the entity to a level item
@@ -1065,8 +1066,8 @@ void BotUpdateEntityItems(void) {
 #endif // DEBUG
           break;
         } // end if
-      }   // end else
-    }     // end for
+      } // end else
+    } // end for
     if (li)
       continue;
     // check if the model is from a known item
@@ -1074,7 +1075,7 @@ void BotUpdateEntityItems(void) {
       if (ic->iteminfo[i].modelindex == modelindex) {
         break;
       } // end if
-    }   // end for
+    } // end for
     // if the model is not from a known item
     if (i >= ic->numiteminfo)
       continue;
@@ -1319,9 +1320,9 @@ int BotChooseLTGItem(int goalstate, vec3_t origin, int *inventory,
           bestweight = weight;
           bestitem = li;
         } // end if
-      }   // end if
-    }     // end if
-  }       // end for
+      } // end if
+    } // end if
+  } // end for
   // if no goal item found
   if (!bestitem) {
     /*
@@ -1452,7 +1453,7 @@ int BotChooseNBGItem(int goalstate, vec3_t origin, int *inventory,
     weightnum = gs->itemweightindex[iteminfo->number];
     if (weightnum < 0)
       continue;
-      //
+    //
 #ifdef UNDECIDEDFUZZY
     weight = FuzzyWeightUndecided(inventory, gs->itemweightconfig, weightnum);
 #else
@@ -1492,10 +1493,10 @@ int BotChooseNBGItem(int goalstate, vec3_t origin, int *inventory,
             bestweight = weight;
             bestitem = li;
           } // end if
-        }   // end if
-      }     // end if
-    }       // end if
-  }         // end for
+        } // end if
+      } // end if
+    } // end if
+  } // end for
   // if no goal item found
   if (!bestitem)
     return qfalse;
@@ -1670,7 +1671,7 @@ int BotAllocGoalState(int client) {
       botgoalstates[i]->client = client;
       return i;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotAllocGoalState
 //========================================================================
@@ -1741,5 +1742,5 @@ void BotShutdownGoalAI(void) {
     if (botgoalstates[i]) {
       BotFreeGoalState(i);
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotShutdownGoalAI

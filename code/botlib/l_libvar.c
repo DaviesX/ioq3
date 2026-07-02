@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_libvar.h"
 #include "botlib/l_memory.h"
 #include "qcommon/q_shared.h"
+#include <string.h>
 
 // list with library variables
 libvar_t *libvarlist = NULL;
@@ -55,7 +56,7 @@ float LibVarStringValue(const char *string) {
         dotfound = 10;
         string++;
       } // end if
-    }   // end if
+    } // end if
     if (dotfound) {
       value = value + (float)(*string - '0') / (float)dotfound;
       dotfound *= 10;
@@ -125,7 +126,7 @@ libvar_t *LibVarGet(const char *var_name) {
     if (!Q_stricmp(v->name, var_name)) {
       return v;
     } // end if
-  }   // end for
+  } // end for
   return NULL;
 } // end of the function LibVarGet
 //===========================================================================

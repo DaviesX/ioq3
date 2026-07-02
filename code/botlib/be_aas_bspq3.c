@@ -39,6 +39,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_script.h"
 #include "botlib/l_struct.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 extern botlib_import_t botimport;
 
@@ -121,7 +125,7 @@ void PrintContents(int contents) {
     if (contents & contentnames[i].value) {
       botimport.Print(PRT_MESSAGE, "%s\n", contentnames[i].name);
     } // end if
-  }   // end for
+  } // end for
 } // end of the function PrintContents
 
 #endif // BSP_DEBUG
@@ -267,7 +271,7 @@ int AAS_ValueForBSPEpairKey(int ent, char *key, char *value, int size) {
       Q_strncpyz(value, epair->value, size);
       return qtrue;
     } // end if
-  }   // end for
+  } // end for
   return qfalse;
 } // end of the function AAS_FindBSPEpair
 //===========================================================================
@@ -343,7 +347,7 @@ void AAS_FreeBSPEntities(void) {
         FreeMemory(epair->value);
       FreeMemory(epair);
     } // end for
-  }   // end for
+  } // end for
   bspworld.numentities = 0;
 } // end of the function AAS_FreeBSPEntities
 //===========================================================================
@@ -408,7 +412,7 @@ void AAS_ParseBSPEntities(void) {
       FreeScript(script);
       return;
     } // end if
-  }   // end while
+  } // end while
   FreeScript(script);
 } // end of the function AAS_ParseBSPEntities
 //===========================================================================

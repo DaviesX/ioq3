@@ -22,6 +22,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // tr_light.c
 
 #include "renderergl2/tr_local.h"
+#include <assert.h>
+#include <math.h>
+#include <stddef.h>
+#include <stdint.h>
 
 #define DLIGHT_AT_RADIUS 16
 // at the edge of a dlight's influence, this amount of light will be added
@@ -38,7 +42,7 @@ Used by both the front end (for DlightBmodel) and
 the back end (before doing the lighting calculation)
 ===============
 */
-void R_TransformDlights(int count, dlight_t *dl, orientationr_t * or) {
+void R_TransformDlights(int count, dlight_t *dl, orientationr_t *or) {
   int i;
   vec3_t temp;
 

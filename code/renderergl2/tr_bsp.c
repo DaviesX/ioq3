@@ -25,6 +25,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #define JSON_IMPLEMENTATION
 #include "qcommon/json.h"
+#include <assert.h>
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <string.h>
 #undef JSON_IMPLEMENTATION
 
 /*

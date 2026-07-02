@@ -43,6 +43,7 @@ original crypt.c. Code woven in by Terry Thorsen 1/2003.
 #include "qcommon/unzip.h"
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <string.h>
 
 #ifndef local
 #define local static
@@ -1162,19 +1163,25 @@ const char *password;
 
 extern int ZEXPORT unzOpenCurrentFile(file)
 unzFile file;
-{ return unzOpenCurrentFile3(file, NULL, NULL, 0, NULL); }
+{
+  return unzOpenCurrentFile3(file, NULL, NULL, 0, NULL);
+}
 
 extern int ZEXPORT unzOpenCurrentFilePassword(file, password)
 unzFile file;
 const char *password;
-{ return unzOpenCurrentFile3(file, NULL, NULL, 0, password); }
+{
+  return unzOpenCurrentFile3(file, NULL, NULL, 0, password);
+}
 
 extern int ZEXPORT unzOpenCurrentFile2(file, method, level, raw)
 unzFile file;
 int *method;
 int *level;
 int raw;
-{ return unzOpenCurrentFile3(file, method, level, raw, NULL); }
+{
+  return unzOpenCurrentFile3(file, method, level, raw, NULL);
+}
 
 /*
   Read bytes from the current file.

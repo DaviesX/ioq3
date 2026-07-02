@@ -16,6 +16,8 @@
  */
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <stdint.h>
+#include <string.h>
 
 typedef struct MD5Context {
   uint32_t buf[4];

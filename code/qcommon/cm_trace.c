@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 #include "qcommon/cm_local.h"
+#include <assert.h>
+#include <math.h>
+#include <stddef.h>
 
 // always use bbox vs. bbox collision and never capsule vs. bbox or vice versa
 // #define ALWAYS_BBOX_VS_BBOX

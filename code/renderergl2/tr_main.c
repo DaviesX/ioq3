@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "renderergl2/tr_local.h"
 
+#include <assert.h>
+#include <math.h>
 #include <string.h> // memcpy
 
 trGlobals_t tr;
@@ -393,12 +395,12 @@ R_LocalNormalToWorld
 =================
 */
 void R_LocalNormalToWorld(const vec3_t local, vec3_t world) {
-  world[0] = local[0] * tr.or.axis[0][0] + local[1] * tr.or
-                                 .axis[1][0] + local[2] * tr.or.axis[2][0];
-  world[1] = local[0] * tr.or.axis[0][1] + local[1] * tr.or
-                                 .axis[1][1] + local[2] * tr.or.axis[2][1];
-  world[2] = local[0] * tr.or.axis[0][2] + local[1] * tr.or
-                                 .axis[1][2] + local[2] * tr.or.axis[2][2];
+  world[0] = local[0] * tr.or.axis[0][0] + local[1] * tr.or.axis[1][0] +
+             local[2] * tr.or.axis[2][0];
+  world[1] = local[0] * tr.or.axis[0][1] + local[1] * tr.or.axis[1][1] +
+             local[2] * tr.or.axis[2][1];
+  world[2] = local[0] * tr.or.axis[0][2] + local[1] * tr.or.axis[1][2] +
+             local[2] * tr.or.axis[2][2];
 }
 
 /*
@@ -408,15 +410,12 @@ R_LocalPointToWorld
 =================
 */
 void R_LocalPointToWorld(const vec3_t local, vec3_t world) {
-  world[0] = local[0] * tr.or.axis[0][0] + local[1] * tr.or
-                                 .axis[1][0] + local[2] * tr.or
-                                 .axis[2][0] + tr.or.origin[0];
-  world[1] = local[0] * tr.or.axis[0][1] + local[1] * tr.or
-                                 .axis[1][1] + local[2] * tr.or
-                                 .axis[2][1] + tr.or.origin[1];
-  world[2] = local[0] * tr.or.axis[0][2] + local[1] * tr.or
-                                 .axis[1][2] + local[2] * tr.or
-                                 .axis[2][2] + tr.or.origin[2];
+  world[0] = local[0] * tr.or.axis[0][0] + local[1] * tr.or.axis[1][0] +
+             local[2] * tr.or.axis[2][0] + tr.or.origin[0];
+  world[1] = local[0] * tr.or.axis[0][1] + local[1] * tr.or.axis[1][1] +
+             local[2] * tr.or.axis[2][1] + tr.or.origin[1];
+  world[2] = local[0] * tr.or.axis[0][2] + local[1] * tr.or.axis[1][2] +
+             local[2] * tr.or.axis[2][2] + tr.or.origin[2];
 }
 
 /*
@@ -503,13 +502,13 @@ Called by both the front end and the back end
 =================
 */
 void R_RotateForEntity(const trRefEntity_t *ent, const viewParms_t *viewParms,
-                       orientationr_t * or) {
+                       orientationr_t *or) {
   float glMatrix[16];
   vec3_t delta;
   float axisLength;
 
   if (ent->e.reType != RT_MODEL) {
-    * or = viewParms->world;
+    *or = viewParms->world;
     return;
   }
 
@@ -613,7 +612,7 @@ void R_RotateForViewer(void) {
   // to OpenGL's coordinate system (looking down -Z)
   myGlMultMatrix(viewerMatrix, s_flipMatrix, tr.or.modelMatrix);
 
-  tr.viewParms.world = tr.or ;
+  tr.viewParms.world = tr.or;
 }
 
 /*

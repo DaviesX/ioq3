@@ -81,6 +81,7 @@ typedef enum { qfalse, qtrue } qboolean;
 #include "../bspc/l_mem.h"
 #include "../bspc/qbsp.h"
 #include "botlib/l_precomp.h"
+#include <math.h>
 
 #define qtrue true
 #define qfalse false
@@ -230,7 +231,7 @@ void PC_PushScript(source_t *source, script_t *script) {
       SourceError(source, "%s recursively included", script->filename);
       return;
     } // end if
-  }   // end for
+  } // end for
   // push the script on the script stack
   script->next = source->scriptstack;
   source->scriptstack = script;
@@ -318,7 +319,7 @@ int PC_ReadSourceToken(source_t *source, token_t *token) {
         SourceWarning(source, "missing #endif");
         PC_PopIndent(source, &type, &skip);
       } // end if
-    }   // end if
+    } // end if
     // if this was the initial script
     if (!source->scriptstack->next)
       return qfalse;
@@ -404,7 +405,7 @@ int PC_ReadDefineParms(source_t *source, define_t *define, token_t **parms,
             SourceWarning(source, "too many comma's");
           break;
         } // end if
-      }   // end if
+      } // end if
       lastcomma = 0;
       //
       if (!strcmp(token.string, "(")) {
@@ -419,7 +420,7 @@ int PC_ReadDefineParms(source_t *source, define_t *define, token_t **parms,
           done = 1;
           break;
         } // end if
-      }   // end if
+      } // end if
       //
       if (numparms < define->numparms) {
         //
@@ -431,7 +432,7 @@ int PC_ReadDefineParms(source_t *source, define_t *define, token_t **parms,
           parms[numparms] = t;
         last = t;
       } // end if
-    }   // end while
+    } // end while
     numparms++;
   } // end for
   return qtrue;
@@ -660,7 +661,7 @@ void PC_AddBuiltinDefines(source_t *source) {
     define->next = source->defines;
     source->defines = define;
 #endif // DEFINEHASHING
-  }    // end for
+  } // end for
 } // end of the function PC_AddBuiltinDefines
 //============================================================================
 //
@@ -761,9 +762,9 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
       for (pt = parms[i]; pt; pt = pt->next) {
         Log_Write("%s", pt->string);
       } // end for
-    }   // end for
-#endif  // DEBUG_EVAL
-  }     // end if
+    } // end for
+#endif // DEBUG_EVAL
+  } // end if
   // empty list at first
   first = NULL;
   last = NULL;
@@ -786,7 +787,7 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
           first = t;
         last = t;
       } // end for
-    }   // end if
+    } // end if
     else {
       // if stringizing operator
       if (dt->string[0] == '#' && dt->string[1] == '\0') {
@@ -811,7 +812,7 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
                         "stringizing operator without define parameter");
           continue;
         } // end if
-      }   // end if
+      } // end if
       else {
         t = PC_CopyToken(dt);
       } // end else
@@ -823,7 +824,7 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
         first = t;
       last = t;
     } // end else
-  }   // end for
+  } // end for
   // check for the merging operator
   for (t = first; t;) {
     if (t->next) {
@@ -844,8 +845,8 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
           PC_FreeToken(t2);
           continue;
         } // end if
-      }   // end if
-    }     // end if
+      } // end if
+    } // end if
     t = t->next;
   } // end for
   // store the first and last token of the list
@@ -857,7 +858,7 @@ int PC_ExpandDefine(source_t *source, token_t *deftoken, define_t *define,
       nextpt = pt->next;
       PC_FreeToken(pt);
     } // end for
-  }   // end for
+  } // end for
   //
   return qtrue;
 } // end of the function PC_ExpandDefine
@@ -899,7 +900,7 @@ void PC_ConvertPath(char *path) {
     else {
       ptr++;
     } // end else
-  }   // end while
+  } // end while
   // set OS dependent path seperators
   for (ptr = path; *ptr;) {
     if (*ptr == '/' || *ptr == '\\')
@@ -941,7 +942,7 @@ int PC_Directive_include(source_t *source) {
       Q_strcat(path, sizeof(path), token.string);
       script = LoadScriptFile(path);
     } // end if
-  }   // end if
+  } // end if
   else if (token.type == TT_PUNCTUATION && *token.string == '<') {
     Q_strncpyz(path, source->includepath, sizeof(path));
     while (PC_ReadSourceToken(source, &token)) {
@@ -973,7 +974,7 @@ int PC_Directive_include(source_t *source) {
     script = LoadScriptFile(path);
     if (script)
       Q_strncpyz(script->filename, path, sizeof(script->filename));
-  }    // end if
+  } // end if
 #endif // QUAKE
   if (!script) {
 #ifdef SCREWUP
@@ -983,7 +984,7 @@ int PC_Directive_include(source_t *source) {
     SourceError(source, "file %s not found", path);
     return qfalse;
 #endif // SCREWUP
-  }    // end if
+  } // end if
   PC_PushScript(source, script);
   return qtrue;
 } // end of the function PC_Directive_include
@@ -1073,7 +1074,7 @@ int PC_Directive_undef(source_t *source) {
       break;
     } // end if
     lastdefine = define;
-  }    // end for
+  } // end for
 #else  // DEFINEHASHING
   for (lastdefine = NULL, define = source->defines; define;
        define = define->next) {
@@ -1192,8 +1193,8 @@ int PC_Directive_define(source_t *source) {
           SourceError(source, "define not terminated");
           return qfalse;
         } // end if
-      }   // end while
-    }     // end if
+      } // end while
+    } // end if
     if (!PC_ReadLine(source, &token))
       return qtrue;
   } // end if
@@ -1220,7 +1221,7 @@ int PC_Directive_define(source_t *source) {
       SourceError(source, "define with misplaced ##");
       return qfalse;
     } // end if
-  }   // end if
+  } // end if
   return qtrue;
 } // end of the function PC_Directive_define
 //============================================================================
@@ -1260,7 +1261,7 @@ define_t *PC_DefineFromString(char *string) {
       def = src.definehash[i];
       break;
     } // end if
-  }   // end for
+  } // end for
 #else
   def = src.defines;
 #endif // DEFINEHASHING
@@ -1409,7 +1410,7 @@ void PC_AddGlobalDefinesToSource(source_t *source) {
     newdefine->next = source->defines;
     source->defines = newdefine;
 #endif // DEFINEHASHING
-  }    // end for
+  } // end for
 } // end of the function PC_AddGlobalDefinesToSource
 //============================================================================
 //
@@ -1675,7 +1676,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
           error = 1;
           break;
         } // end if
-      }   // end if
+      } // end if
       brace = qfalse;
       // defined() creates a value
       lastwasvalue = 1;
@@ -1740,7 +1741,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
           error = 1;
           break;
         } // end if
-      }   // end if
+      } // end if
       switch (t->subtype) {
       case P_LOGIC_NOT:
       case P_BIN_NOT: {
@@ -1761,7 +1762,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
           negativevalue = 1;
           break;
         } // end if
-      }   // end case
+      } // end case
 
       case P_MUL:
       case P_DIV:
@@ -1804,7 +1805,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
       if (!error && !negativevalue) {
         // o = (operator_t *) GetClearedMemory(sizeof(operator_t));
         AllocOperator(o);
-        o->operator= t->subtype;
+        o->operator = t->subtype;
         o->priority = PC_OperatorPriority(t->subtype);
         o->parentheses = parentheses;
         o->next = NULL;
@@ -1836,7 +1837,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
       SourceError(source, "too many ( in #if/#elif");
       error = 1;
     } // end else if
-  }   // end if
+  } // end if
   //
   gotquestmarkvalue = qfalse;
   questmarkintvalue = 0;
@@ -1857,7 +1858,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
           break;
       } // end if
       // if the arity of the operator isn't equal to 1
-      if (o->operator!= P_LOGIC_NOT && o->operator!= P_BIN_NOT)
+      if (o->operator != P_LOGIC_NOT && o->operator != P_BIN_NOT)
         v = v->next;
       // if there's no value or no next value
       if (!v) {
@@ -1865,7 +1866,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
         error = 1;
         break;
       } // end if
-    }   // end for
+    } // end for
     if (error)
       break;
     v1 = v;
@@ -1884,7 +1885,7 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
                 v1->floatvalue);
       if (v2)
         Log_Write("value2 = %f", v2->floatvalue);
-    }  // end else
+    } // end else
 #endif // DEBUG_EVAL
     switch (o->operator) {
     case P_LOGIC_NOT:
@@ -2008,9 +2009,9 @@ int PC_EvaluateTokens(source_t *source, token_t *tokens,
     if (error)
       break;
     // if not an operator with arity 1
-    if (o->operator!= P_LOGIC_NOT && o->operator!= P_BIN_NOT) {
+    if (o->operator != P_LOGIC_NOT && o->operator != P_BIN_NOT) {
       // remove the second value if not question mark operator
-      if (o->operator!= P_QUESTIONMARK)
+      if (o->operator != P_QUESTIONMARK)
         v = v->next;
       //
       if (v) {
@@ -2119,7 +2120,7 @@ int PC_Evaluate(source_t *source, signed long int *intvalue, float *floatvalue,
         if (!PC_ExpandDefineIntoSource(source, &token, define))
           return qfalse;
       } // end else
-    }   // end if
+    } // end if
     // if the token is a number or a punctuation
     else if (token.type == TT_NUMBER || token.type == TT_PUNCTUATION) {
       t = PC_CopyToken(&token);
@@ -2129,7 +2130,7 @@ int PC_Evaluate(source_t *source, signed long int *intvalue, float *floatvalue,
       else
         firsttoken = t;
       lasttoken = t;
-    }    // end else
+    } // end else
     else // can't evaluate the token
     {
       SourceError(source, "can't evaluate %s", token.string);
@@ -2139,7 +2140,7 @@ int PC_Evaluate(source_t *source, signed long int *intvalue, float *floatvalue,
   //
   if (!PC_EvaluateTokens(source, firsttoken, intvalue, floatvalue, integer))
     return qfalse;
-    //
+  //
 #ifdef DEBUG_EVAL
   Log_Write("eval:");
 #endif // DEBUG_EVAL
@@ -2225,7 +2226,7 @@ int PC_DollarEvaluate(source_t *source, signed long int *intvalue,
         if (!PC_ExpandDefineIntoSource(source, &token, define))
           return qfalse;
       } // end else
-    }   // end if
+    } // end if
     // if the token is a number or a punctuation
     else if (token.type == TT_NUMBER || token.type == TT_PUNCTUATION) {
       if (*token.string == '(')
@@ -2241,7 +2242,7 @@ int PC_DollarEvaluate(source_t *source, signed long int *intvalue,
       else
         firsttoken = t;
       lasttoken = t;
-    }    // end else
+    } // end else
     else // can't evaluate the token
     {
       SourceError(source, "can't evaluate %s", token.string);
@@ -2251,7 +2252,7 @@ int PC_DollarEvaluate(source_t *source, signed long int *intvalue,
   //
   if (!PC_EvaluateTokens(source, firsttoken, intvalue, floatvalue, integer))
     return qfalse;
-    //
+  //
 #ifdef DEBUG_EVAL
   Log_Write("$eval:");
 #endif // DEBUG_EVAL
@@ -2457,8 +2458,8 @@ int PC_ReadDirective(source_t *source) {
       if (!strcmp(directives[i].name, token.string)) {
         return directives[i].func(source);
       } // end if
-    }   // end for
-  }     // end if
+    } // end for
+  } // end if
   SourceError(source, "unknown precompiler directive %s", token.string);
   return qfalse;
 } // end of the function PC_ReadDirective
@@ -2557,8 +2558,8 @@ int PC_ReadDollarDirective(source_t *source) {
       if (!strcmp(dollardirectives[i].name, token.string)) {
         return dollardirectives[i].func(source);
       } // end if
-    }   // end for
-  }     // end if
+    } // end for
+  } // end if
   PC_UnreadSourceToken(source, &token);
   SourceError(source, "unknown precompiler directive %s", token.string);
   return qfalse;
@@ -2607,7 +2608,7 @@ int QuakeCMacro(source_t *source) {
       PC_UnreadSourceToken(source, &token);
       return qfalse;
     } // end if
-  }   // end for
+  } // end for
   PC_UnreadSourceToken(source, &token);
   return qtrue;
 } // end of the function QuakeCMacro
@@ -2635,7 +2636,7 @@ int PC_ReadToken(source_t *source, token_t *token) {
           return qfalse;
         continue;
       } // end if
-    }   // end if
+    } // end if
     if (token->type == TT_PUNCTUATION && *token->string == '$') {
 #ifdef QUAKEC
       if (!QuakeCMacro(source))
@@ -2646,7 +2647,7 @@ int PC_ReadToken(source_t *source, token_t *token) {
           return qfalse;
         continue;
       } // end if
-    }   // end if
+    } // end if
     // recursively concatenate strings that are behind each other still
     // resolving defines
     if (token->type == TT_STRING) {
@@ -2683,7 +2684,7 @@ int PC_ReadToken(source_t *source, token_t *token) {
           return qfalse;
         continue;
       } // end if
-    }   // end if
+    } // end if
     // copy token for unreading
     Com_Memcpy(&source->token, token, sizeof(token_t));
     // found a token
@@ -2762,13 +2763,13 @@ int PC_ExpectTokenType(source_t *source, int type, int subtype,
       SourceError(source, "expected %s, found %s", str, token->string);
       return qfalse;
     } // end if
-  }   // end if
+  } // end if
   else if (token->type == TT_PUNCTUATION) {
     if (token->subtype != subtype) {
       SourceError(source, "found %s", token->string);
       return qfalse;
     } // end if
-  }   // end else if
+  } // end else if
   return qtrue;
 } // end of the function PC_ExpectTokenType
 //============================================================================
@@ -2983,8 +2984,8 @@ void FreeSource(source_t *source) {
       define = source->definehash[i];
       source->definehash[i] = source->definehash[i]->hashnext;
       PC_FreeDefine(define);
-    }  // end while
-  }    // end for
+    } // end while
+  } // end for
 #else  // DEFINEHASHING
        // free all defines
   while (source->defines) {
@@ -3119,6 +3120,6 @@ void PC_CheckOpenSourceHandles(void) {
       botimport.Print(PRT_ERROR, "file %s still open in precompiler\n",
                       sourceFiles[i]->scriptstack->filename);
 #endif // BOTLIB
-    }  // end if
-  }    // end for
+    } // end if
+  } // end for
 } // end of the function PC_CheckOpenSourceHandles

@@ -33,6 +33,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <sys/types.h>
 #endif
 
+#include <limits.h>
+#include <stddef.h>
+#include <stdint.h>
 #include <sys/mman.h> // for PROT_ stuff
 
 /* need this on NX enabled systems (i386 with PAE kernel or

@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 #include "renderergl2/tr_local.h"
+#include <ctype.h>
+#include <math.h>
+#include <string.h>
 
 // tr_shader.c -- this file deals with the parsing and definition of shaders
 

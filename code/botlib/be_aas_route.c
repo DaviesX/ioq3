@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <stddef.h>
 
 #define ROUTING_DEBUG
 
@@ -440,7 +441,7 @@ void AAS_CreateReversedReachability(void) {
       aasworld.reversedreachability[reach->areanum].first = revlink;
       aasworld.reversedreachability[reach->areanum].numlinks++;
     } // end for
-  }   // end for
+  } // end for
 #ifdef DEBUG
   botimport.Print(PRT_MESSAGE, "reversed reachability %d msec\n",
                   Sys_MilliSeconds() - starttime);
@@ -536,8 +537,8 @@ void AAS_CalculateAreaTravelTimes(void) {
         aasworld.areatraveltimes[i][l][n] =
             AAS_AreaTravelTime(i, end, reach->start);
       } // end for
-    }   // end for
-  }     // end for
+    } // end for
+  } // end for
 #ifdef DEBUG
   botimport.Print(PRT_MESSAGE, "area travel times %d msec\n",
                   Sys_MilliSeconds() - starttime);
@@ -570,8 +571,8 @@ int AAS_PortalMaxTravelTime(int portalnum) {
       if (t > maxt) {
         maxt = t;
       } // end if
-    }   // end for
-  }     // end for
+    } // end for
+  } // end for
   return maxt;
 } // end of the function AAS_PortalMaxTravelTime
 //===========================================================================
@@ -764,7 +765,7 @@ void AAS_FreeAllClusterAreaCache(void) {
       } // end for
       aasworld.clusterareacache[i][j] = NULL;
     } // end for
-  }   // end for
+  } // end for
   // free the cluster cache array
   FreeMemory(aasworld.clusterareacache);
   aasworld.clusterareacache = NULL;
@@ -848,7 +849,7 @@ void AAS_InitRoutingUpdate(void) {
     if (aasworld.clusters[i].numreachabilityareas > maxreachabilityareas) {
       maxreachabilityareas = aasworld.clusters[i].numreachabilityareas;
     } // end if
-  }   // end for
+  } // end for
   // allocate memory for the routing update fields
   aasworld.areaupdate = (aas_routingupdate_t *)GetClearedMemory(
       maxreachabilityareas * sizeof(aas_routingupdate_t));
@@ -883,7 +884,7 @@ void AAS_CreateAllRoutingCache(void) {
       // t = AAS_AreaTravelTimeToGoalArea(i, aasworld.areas[i].center, j,
       // TFL_DEFAULT); Log_Write("traveltime from %d to %d is %d", i, j, t);
     } // end for
-  }   // end for
+  } // end for
   aasworld.initialized = qfalse;
 } // end of the function AAS_CreateAllRoutingCache
 //===========================================================================
@@ -926,7 +927,7 @@ void AAS_WriteRouteCache(void) {
     for (cache = aasworld.portalcache[i]; cache; cache = cache->next) {
       numportalcache++;
     } // end for
-  }   // end for
+  } // end for
   numareacache = 0;
   for (i = 0; i < aasworld.numclusters; i++) {
     cluster = &aasworld.clusters[i];
@@ -935,8 +936,8 @@ void AAS_WriteRouteCache(void) {
            cache = cache->next) {
         numareacache++;
       } // end for
-    }   // end for
-  }     // end for
+    } // end for
+  } // end for
   // open the file for writing
   Com_sprintf(filename, MAX_QPATH, "maps/%s.rcd", aasworld.mapname);
   botimport.FS_FOpenFile(filename, &fp, FS_WRITE);
@@ -966,7 +967,7 @@ void AAS_WriteRouteCache(void) {
       botimport.FS_Write(cache, cache->size, fp);
       totalsize += cache->size;
     } // end for
-  }   // end for
+  } // end for
   for (i = 0; i < aasworld.numclusters; i++) {
     cluster = &aasworld.clusters[i];
     for (j = 0; j < cluster->numareas; j++) {
@@ -975,8 +976,8 @@ void AAS_WriteRouteCache(void) {
         botimport.FS_Write(cache, cache->size, fp);
         totalsize += cache->size;
       } // end for
-    }   // end for
-  }     // end for
+    } // end for
+  } // end for
   // write the visareas
   /*
   for (i = 0; i < aasworld.numareas; i++)
@@ -1187,7 +1188,7 @@ void AAS_InitReachabilityAreas(void) {
     for (j = 0; j < numareas; j++) {
       aasworld.reachabilityareaindex[numreachareas++] = areas[j];
     } // end for
-  }   // end for
+  } // end for
 } // end of the function AAS_InitReachabilityAreas
 //===========================================================================
 //
@@ -1388,9 +1389,9 @@ void AAS_UpdateAreaRoutingCache(aas_routingcache_t *areacache) {
           updatelistend = nextupdate;
           nextupdate->inlist = qtrue;
         } // end if
-      }   // end if
-    }     // end for
-  }       // end while
+      } // end if
+    } // end for
+  } // end while
 } // end of the function AAS_UpdateAreaRoutingCache
 //===========================================================================
 //
@@ -1534,9 +1535,9 @@ void AAS_UpdatePortalRoutingCache(aas_routingcache_t *portalcache) {
           updatelistend = nextupdate;
           nextupdate->inlist = qtrue;
         } // end if
-      }   // end if
-    }     // end for
-  }       // end while
+      } // end if
+    } // end for
+  } // end while
 } // end of the function AAS_UpdatePortalRoutingCache
 //===========================================================================
 //
@@ -1652,7 +1653,7 @@ updates overflowed"); #endif return 0; } //end if
         portal->backcluster == goalclusternum) {
       clusternum = goalclusternum;
     } // end if
-  }   // end if
+  } // end if
   // check if the goalarea is a portal of the area cluster
   else if (clusternum > 0 && goalclusternum < 0) {
     portal = &aasworld.portals[-goalclusternum];
@@ -1660,7 +1661,7 @@ updates overflowed"); #endif return 0; } //end if
         portal->backcluster == clusternum) {
       goalclusternum = clusternum;
     } // end if
-  }   // end if
+  } // end if
   // if both areas are in the same cluster
   // NOTE: there might be a shorter route via another cluster!!! but we don't
   // care
@@ -1688,7 +1689,7 @@ updates overflowed"); #endif return 0; } //end if
       //
       return qtrue;
     } // end if
-  }   // end if
+  } // end if
   //
   clusternum = aasworld.areasettings[areanum].cluster;
   goalclusternum = aasworld.areasettings[goalareanum].cluster;
@@ -1754,7 +1755,7 @@ updates overflowed"); #endif return 0; } //end if
       bestreachnum = *reachnum;
       besttime = t;
     } // end if
-  }   // end for
+  } // end for
   if (bestreachnum < 0) {
     return qfalse;
   }
@@ -1852,7 +1853,7 @@ int AAS_PredictRoute(struct aas_predictroute_s *route, int areanum,
         route->time += reach->traveltime;
         return qtrue;
       } // end if
-    }   // end if
+    } // end if
     reachareas = &aasworld.reachabilityareas[reachnum];
     for (j = 0; j < reachareas->numareas + 1; j++) {
       if (j >= reachareas->numareas)
@@ -1869,7 +1870,7 @@ int AAS_PredictRoute(struct aas_predictroute_s *route, int areanum,
           route->time += reach->traveltime;
           return qtrue;
         } // end if
-      }   // end if
+      } // end if
       if (stopevent & RSE_ENTERAREA) {
         if (testareanum == stopareanum) {
           route->stopevent = RSE_ENTERAREA;
@@ -1878,8 +1879,8 @@ int AAS_PredictRoute(struct aas_predictroute_s *route, int areanum,
           VectorCopy(reach->start, route->endpos);
           return qtrue;
         } // end if
-      }   // end if
-    }     // end for
+      } // end if
+    } // end for
 
     route->time += AAS_AreaTravelTime(areanum, origin, reach->start);
     route->time += reach->traveltime;
@@ -1987,7 +1988,7 @@ int AAS_NextModelReachability(int num, int modelnum) {
       if ((aasworld.reachability[i].facenum & 0x0000FFFF) == modelnum)
         return i;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function AAS_NextModelReachability
 //===========================================================================
@@ -2040,9 +2041,9 @@ int AAS_RandomGoalArea(int areanum, int travelflags, int *goalareanum,
             // *goalareanum);
             return qtrue;
           } // end if
-        }   // end if
-      }     // end if
-    }       // end if
+        } // end if
+      } // end if
+    } // end if
     n++;
   } // end for
   return qfalse;
@@ -2203,8 +2204,8 @@ int AAS_NearestHideArea(int srcnum, vec3_t origin, int areanum, int enemynum,
           updatelistend = nextupdate;
           nextupdate->inlist = qtrue;
         } // end if
-      }   // end if
-    }     // end for
-  }       // end while
+      } // end if
+    } // end for
+  } // end while
   return bestarea;
 } // end of the function AAS_NearestHideArea

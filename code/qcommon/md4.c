@@ -29,6 +29,7 @@
 
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <stdint.h>
 
 struct mdfour {
   uint32_t A, B, C, D;

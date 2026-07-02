@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "client/client.h"
 #include "client/snd_codec.h"
 #include "client/snd_local.h"
+#include <ctype.h>
+#include <string.h>
 
 void S_Update_(void);
 void S_Base_StopAllSounds(void);

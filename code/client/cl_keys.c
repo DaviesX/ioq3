@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 #include "client/client.h"
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*
 
@@ -662,7 +665,7 @@ void Console_Key(int key) {
 
     if (clc.state == CA_DISCONNECTED) {
       SCR_UpdateScreen(); // force an update, because the command
-    }                     // may take some time
+    } // may take some time
     return;
   }
 

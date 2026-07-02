@@ -20,6 +20,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 #include "qcommon/vm_local.h"
+#include <stdint.h>
+#include <string.h>
 
 // #define	DEBUG_VM
 #ifdef DEBUG_VM

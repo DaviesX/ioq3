@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // this is only used for visualization tools in cm_ debug functions
 
 #include "qcommon/cm_local.h"
+#include <math.h>
+#include <stdint.h>
+#include <stdio.h>
 
 // counters are only bumped when running single threaded,
 // because they are an awful coherence problem
@@ -254,7 +257,7 @@ winding_t *CopyWinding(winding_t *w) {
   winding_t *c;
 
   c = AllocWinding(w->numpoints);
-  size = (intptr_t) & (w->p[w->numpoints]) - (intptr_t)w;
+  size = (intptr_t)&(w->p[w->numpoints]) - (intptr_t)w;
   Com_Memcpy(c, w, size);
   return c;
 }

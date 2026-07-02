@@ -46,6 +46,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "../bspc/qbsp.h"
 #include "botlib/l_precomp.h"
 #include "botlib/l_struct.h"
+#include <string.h>
 
 #define qtrue true
 #define qfalse false
@@ -117,7 +118,7 @@ qboolean ReadNumber(source_t *source, fielddef_t *fd, void *p) {
                     fd->floatmax);
         return 0;
       } // end if
-    }   // end if
+    } // end if
     *(float *)p = (float)floatval;
     return 1;
   } // end if
@@ -154,7 +155,7 @@ qboolean ReadNumber(source_t *source, fielddef_t *fd, void *p) {
                   intmax);
       return 0;
     } // end if
-  }   // end if
+  } // end if
   else if ((fd->type & FT_TYPE) == FT_FLOAT) {
     if (fd->type & FT_BOUNDED) {
       if (intval < fd->floatmin || intval > fd->floatmax) {
@@ -162,8 +163,8 @@ qboolean ReadNumber(source_t *source, fielddef_t *fd, void *p) {
                     fd->floatmin, fd->floatmax);
         return 0;
       } // end if
-    }   // end if
-  }     // end else if
+    } // end if
+  } // end else if
   // store the value
   if ((fd->type & FT_TYPE) == FT_CHAR) {
     if (fd->type & FT_UNSIGNED)
@@ -308,9 +309,9 @@ int ReadStructure(source_t *source, structdef_t *def, char *structure) {
           SourceError(source, "expected a comma, found %s", token.string);
           return qfalse;
         } // end if
-      }   // end if
-    }     // end while
-  }       // end while
+      } // end if
+    } // end while
+  } // end while
   return qtrue;
 } // end of the function ReadStructure
 //===========================================================================
@@ -428,8 +429,8 @@ int WriteStructWithIndent(FILE *fp, structdef_t *def, char *structure,
           if (fprintf(fp, "}") < 0)
             return qfalse;
         } // end else
-      }   // end if
-    }     // end while
+      } // end if
+    } // end while
     if (fprintf(fp, "\r\n") < 0)
       return qfalse;
   } // end for

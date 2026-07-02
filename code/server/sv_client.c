@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // sv_client.c -- server code for dealing with clients
 
 #include "server/server.h"
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 static void SV_CloseDownload(client_t *cl);
 

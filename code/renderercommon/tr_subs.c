@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // tr_subs.c - common function replacements for modular renderer
 
 #include "renderercommon/tr_common.h"
+#include <stdarg.h>
 
 void QDECL Com_Printf(const char *msg, ...) {
   va_list argptr;

@@ -43,6 +43,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
+#include <string.h>
 
 #define MAX_CHARACTERISTICS 80
 
@@ -114,7 +116,7 @@ void BotDumpCharacter(bot_character_t *ch) {
       Log_Write(" %4d %s\n", i, ch->c[i].value.string);
       break;
     } // end case
-  }   // end for
+  } // end for
   Log_Write("}\n");
 } // end of the function BotDumpCharacter
 //========================================================================
@@ -130,7 +132,7 @@ void BotFreeCharacterStrings(bot_character_t *ch) {
     if (ch->c[i].type == CT_STRING) {
       FreeMemory(ch->c[i].value.string);
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotFreeCharacterStrings
 //========================================================================
 //
@@ -190,7 +192,7 @@ void BotDefaultCharacteristics(bot_character_t *ch,
           (char *)GetMemory(strlen(defaultch->c[i].value.string) + 1);
       strcpy(ch->c[i].value.string, defaultch->c[i].value.string);
     } // end else if
-  }   // end for
+  } // end for
 } // end of the function BotDefaultCharacteristics
 //===========================================================================
 //
@@ -276,7 +278,7 @@ bot_character_t *BotLoadCharacterFromFile(char *charfile, int skill) {
               ch->c[index].value.integer = token.intvalue;
               ch->c[index].type = CT_INTEGER;
             } // end else
-          }   // end if
+          } // end if
           else if (token.type == TT_STRING) {
             StripDoubleQuotes(token.string);
             ch->c[index].value.string = GetMemory(strlen(token.string) + 1);
@@ -291,7 +293,7 @@ bot_character_t *BotLoadCharacterFromFile(char *charfile, int skill) {
             FreeMemory(ch);
             return NULL;
           } // end else
-        }   // end if
+        } // end if
         break;
       } // end if
       else {
@@ -308,8 +310,8 @@ bot_character_t *BotLoadCharacterFromFile(char *charfile, int skill) {
           else if (!strcmp(token.string, "}"))
             indent--;
         } // end while
-      }   // end else
-    }     // end if
+      } // end else
+    } // end if
     else {
       SourceError(source, "unknown definition %s", token.string);
       FreeSource(source);
@@ -317,7 +319,7 @@ bot_character_t *BotLoadCharacterFromFile(char *charfile, int skill) {
       FreeMemory(ch);
       return NULL;
     } // end else
-  }   // end while
+  } // end while
   FreeSource(source);
   //
   if (!foundcharacter) {
@@ -343,7 +345,7 @@ int BotFindCachedCharacter(char *charfile, float skill) {
         (skill < 0 || fabs(botcharacters[handle]->skill - skill) < 0.01)) {
       return handle;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotFindCachedCharacter
 //===========================================================================
@@ -376,7 +378,7 @@ int BotLoadCachedCharacter(char *charfile, float skill, int reload) {
                       charfile);
       return cachedhandle;
     } // end if
-  }   // end else
+  } // end else
   //
   intskill = (int)(skill + 0.5);
   // try to load the character with the given skill
@@ -390,7 +392,7 @@ int BotLoadCachedCharacter(char *charfile, float skill, int reload) {
     if (botDeveloper) {
       botimport.Print(PRT_MESSAGE, "skill %d loaded in %d msec from %s\n",
                       intskill, Sys_MilliSeconds() - starttime, charfile);
-    }  // end if
+    } // end if
 #endif // DEBUG
     return handle;
   } // end if
@@ -406,7 +408,7 @@ int BotLoadCachedCharacter(char *charfile, float skill, int reload) {
                       intskill, charfile);
       return cachedhandle;
     } // end if
-  }   // end if
+  } // end if
   // try to load the default character with the given skill
   ch = BotLoadCharacterFromFile(DEFAULT_CHARACTER, intskill);
   if (ch) {
@@ -424,7 +426,7 @@ int BotLoadCachedCharacter(char *charfile, float skill, int reload) {
                       botcharacters[cachedhandle]->skill, charfile);
       return cachedhandle;
     } // end if
-  }   // end if
+  } // end if
   // try to load a character with any skill
   ch = BotLoadCharacterFromFile(charfile, -1);
   if (ch) {
@@ -442,7 +444,7 @@ int BotLoadCachedCharacter(char *charfile, float skill, int reload) {
                       botcharacters[cachedhandle]->skill, charfile);
       return cachedhandle;
     } // end if
-  }   // end if
+  } // end if
   // try to load a character with any skill
   ch = BotLoadCharacterFromFile(DEFAULT_CHARACTER, -1);
   if (ch) {
@@ -523,7 +525,7 @@ int BotInterpolateCharacters(int handle1, int handle2, float desiredskill) {
           (char *)GetMemory(strlen(ch1->c[i].value.string) + 1);
       strcpy(out->c[i].value.string, ch1->c[i].value.string);
     } // end else if
-  }   // end for
+  } // end for
   return handle;
 } // end of the function BotInterpolateCharacters
 //===========================================================================
@@ -747,5 +749,5 @@ void BotShutdownCharacters(void) {
     if (botcharacters[handle]) {
       BotFreeCharacter2(handle);
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotShutdownCharacters

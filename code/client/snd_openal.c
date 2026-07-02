@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifdef USE_OPENAL
 
 #include "client/qal.h"
+#include <math.h>
+#include <string.h>
 
 // Console variables specific to OpenAL
 cvar_t *s_alPrecache;

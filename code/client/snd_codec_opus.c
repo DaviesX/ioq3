@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // includes for the Ogg Opus codec
 #include <errno.h>
 #include <opusfile.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // samples are 16 bit
 #define OPUS_SAMPLEWIDTH 2

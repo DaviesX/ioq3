@@ -41,6 +41,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_script.h"
 #include "botlib/l_struct.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
 
 #define MAX_DEBUGLINES 1024
 #define MAX_DEBUGPOLYGONS 8192
@@ -88,7 +89,7 @@ void AAS_ShowPolygon(int color, int numpoints, vec3_t *points) {
       debugpolygons[i] = botimport.DebugPolygonCreate(color, numpoints, points);
       break;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function AAS_ShowPolygon
 //===========================================================================
 //
@@ -107,7 +108,7 @@ void AAS_ClearShownDebugLines(void) {
       debuglines[i] = 0;
       debuglinevisible[i] = qfalse;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function AAS_ClearShownDebugLines
 //===========================================================================
 //
@@ -129,7 +130,7 @@ void AAS_DebugLine(vec3_t start, vec3_t end, int color) {
       debuglinevisible[line] = qtrue;
       return;
     } // end else
-  }   // end for
+  } // end for
 } // end of the function AAS_DebugLine
 //===========================================================================
 //
@@ -212,7 +213,7 @@ void AAS_DrawPlaneCross(vec3_t point, vec3_t normal, float dist, int type,
       lines[j++] = debuglines[line];
       debuglinevisible[line] = qtrue;
     } // end else
-  }   // end for
+  } // end for
   botimport.DebugLineShow(lines[0], start1, end1, color);
   botimport.DebugLineShow(lines[1], start2, end2, color);
 } // end of the function AAS_DrawPlaneCross
@@ -260,7 +261,7 @@ void AAS_ShowBoundingBox(vec3_t origin, vec3_t mins, vec3_t maxs) {
         lines[j++] = debuglines[line];
         debuglinevisible[line] = qtrue;
       } // end else
-    }   // end for
+    } // end for
     // top plane
     botimport.DebugLineShow(lines[0], bboxcorners[i], bboxcorners[(i + 1) & 3],
                             LINECOLOR_RED);
@@ -345,7 +346,7 @@ void AAS_ShowFacePolygon(int facenum, int color, int flip) {
       VectorCopy(aasworld.vertexes[edge->v[edgenum < 0]], points[numpoints]);
       numpoints++;
     } // end for
-  }   // end if
+  } // end if
   else {
     for (i = 0; i < face->numedges; i++) {
       // edge number
@@ -354,7 +355,7 @@ void AAS_ShowFacePolygon(int facenum, int color, int flip) {
       VectorCopy(aasworld.vertexes[edge->v[edgenum < 0]], points[numpoints]);
       numpoints++;
     } // end for
-  }   // end else
+  } // end else
   AAS_ShowPolygon(color, numpoints, points);
 } // end of the function AAS_ShowFacePolygon
 //===========================================================================
@@ -410,7 +411,7 @@ void AAS_ShowArea(int areanum, int groundfacesonly) {
       if (n == numareaedges && numareaedges < MAX_DEBUGLINES) {
         areaedges[numareaedges++] = edgenum;
       } // end if
-    }   // end for
+    } // end for
     // AAS_ShowFace(facenum);
   } // end for
   // draw all the edges
@@ -424,7 +425,7 @@ void AAS_ShowArea(int areanum, int groundfacesonly) {
       if (!debuglinevisible[line]) {
         break;
       } // end else
-    }   // end for
+    } // end for
     if (line >= MAX_DEBUGLINES)
       return;
     edge = &aasworld.edges[areaedges[n]];
@@ -626,7 +627,7 @@ void AAS_ShowReachability(aas_reachability_t *reach) {
       AAS_JumpReachRunStart(reach, dir);
       AAS_DrawCross(dir, 4, LINECOLOR_BLUE);
     } // end if
-  }   // end if
+  } // end if
   else if ((reach->traveltype & TRAVELTYPE_MASK) == TRAVEL_ROCKETJUMP) {
     zvel = AAS_RocketJumpZVelocity(reach->start);
     AAS_HorizontalVelocityForJump(zvel, reach->start, reach->end, &speed);

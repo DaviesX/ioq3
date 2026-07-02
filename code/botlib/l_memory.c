@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/botlib.h"
 #include "botlib/l_log.h"
 #include "qcommon/q_shared.h"
+#include <stddef.h>
 
 // #define MEMDEBUG
 // #define MEMORYMANEGER
@@ -302,7 +303,7 @@ void PrintMemoryLabels(void) {
     else {
       Log_Write("%6d,      %p, %8d: %24s line %6d: %s\r\n", i, block->ptr,
                 block->size, block->file, block->line, block->label);
-    }  // end else
+    } // end else
 #endif // MEMDEBUG
     i++;
   } // end for

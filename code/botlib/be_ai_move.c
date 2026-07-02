@@ -45,6 +45,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/be_ai_goal.h"
 #include "botlib/be_ai_move.h"
 #include "botlib/be_ea.h"
+#include <math.h>
+#include <stdlib.h>
 
 // #define DEBUG_AI_MOVE
 // #define DEBUG_ELEVATOR
@@ -128,7 +130,7 @@ int BotAllocMoveState(void) {
       botmovestates[i] = GetClearedMemory(sizeof(bot_movestate_t));
       return i;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotAllocMoveState
 //========================================================================
@@ -267,12 +269,12 @@ int BotFuzzyPointReachabilityArea(vec3_t origin) {
               bestareanum = areas[j];
               bestdist = dist;
             } // end if
-          }   // end if
+          } // end if
           if (!firstareanum)
             firstareanum = areas[j];
         } // end for
-      }   // end for
-    }     // end for
+      } // end for
+    } // end for
     if (bestareanum)
       return bestareanum;
   } // end for
@@ -314,7 +316,7 @@ int BotReachabilityArea(vec3_t origin, int client) {
         AAS_ReachabilityFromNum(reachnum, &reach);
         return reach.areanum;
       } // end if
-    }   // end else if
+    } // end else if
 
     // if the bot is swimming the bot should be in a valid area
     if (AAS_Swimming(origin)) {
@@ -451,7 +453,7 @@ int BotOnMover(vec3_t origin, int entnum, aas_reachability_t *reach) {
         AAS_EntityModelNum(trace.ent) == modelnum) {
       return qtrue;
     } // end if
-  }   // end if
+  } // end if
   return qfalse;
 } // end of the function BotOnMover
 //===========================================================================
@@ -569,7 +571,7 @@ void BotAddToAvoidReach(bot_movestate_t *ms, int number, float avoidtime) {
       ms->avoidreachtimes[i] = AAS_Time() + avoidtime;
       return;
     } // end if
-  }   // end for
+  } // end for
   // add the reachability to the reachabilities to avoid for a while
   for (i = 0; i < MAX_AVOIDREACH; i++) {
     if (ms->avoidreachtimes[i] < AAS_Time()) {
@@ -578,7 +580,7 @@ void BotAddToAvoidReach(bot_movestate_t *ms, int number, float avoidtime) {
       ms->avoidreachtries[i] = 1;
       return;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotAddToAvoidReach
 //===========================================================================
 //
@@ -697,7 +699,7 @@ int BotAvoidSpots(vec3_t origin, aas_reachability_t *reach,
               squareddist) {
         type = avoidspots[i].type;
       } // end if
-    }   // end if
+    } // end if
     else {
       VectorDistanceSquared(avoidspots[i].origin, reach->end);
       // if the reachability leads closer to the avoid spot
@@ -706,7 +708,7 @@ int BotAvoidSpots(vec3_t origin, aas_reachability_t *reach,
               squareddist) {
         type = avoidspots[i].type;
       } // end if
-    }   // end else
+    } // end else
     if (type == AVOID_ALWAYS)
       return type;
   } // end for
@@ -776,9 +778,9 @@ int BotGetReachabilityToGoal(vec3_t origin, int areanum, int lastgoalareanum,
         botimport.Print(PRT_MESSAGE, "avoiding reachability %d\n",
                         avoidreach[i]);
       } // end if
-#endif  // DEBUG
+#endif // DEBUG
       continue;
-    }  // end if
+    } // end if
 #endif // AVOIDREACH
        // get the reachability from the number
     AAS_ReachabilityFromNum(reachnum, &reach);
@@ -812,7 +814,7 @@ int BotGetReachabilityToGoal(vec3_t origin, int areanum, int lastgoalareanum,
       besttime = t;
       bestreachnum = reachnum;
     } // end if
-  }   // end for
+  } // end for
   //
   return bestreachnum;
 } // end of the function BotGetReachabilityToGoal
@@ -889,7 +891,7 @@ int BotMovementViewTarget(int movestate, bot_goal_t *goal, int travelflags,
       BotAddToTarget(reach.end, goal->origin, lookahead, &dist, target);
       return qtrue;
     } // end if
-  }   // end while
+  } // end while
   //
   return qfalse;
 } // end of the function BotMovementViewTarget
@@ -1038,7 +1040,7 @@ float BotGapDistance(vec3_t origin, vec3_t hordir, int entnum) {
       } // end if
       startz = trace.endpos[2];
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotGapDistance
 //===========================================================================
@@ -1223,7 +1225,7 @@ int BotWalkInDirection(bot_movestate_t *ms, vec3_t dir, float speed, int type) {
       if (ms->velocity[2] < 50) {
         EA_Move(ms->client, dir, speed);
       } // end if
-    }   // end if
+    } // end if
     // FIXME: do air control to avoid hazards
     return qtrue;
   } // end else
@@ -1291,7 +1293,7 @@ void BotCheckBlocked(bot_movestate_t *ms, vec3_t dir, int checkbottom,
   if (fabs(DotProduct(dir, up)) < 0.7) {
     mins[2] += sv_maxstep->value; // if the bot can step on
     maxs[2] -= 10;                // a little lower to avoid low ceiling
-  }                               // end if
+  } // end if
   VectorMA(ms->origin, 3, dir, end);
   trace = AAS_Trace(ms->origin, mins, maxs, end, ms->entitynum,
                     CONTENTS_SOLID | CONTENTS_PLAYERCLIP | CONTENTS_BODY);
@@ -1304,7 +1306,7 @@ void BotCheckBlocked(bot_movestate_t *ms, vec3_t dir, int checkbottom,
     // botimport.Print(PRT_MESSAGE, "%d: BotCheckBlocked: I'm blocked\n",
     // ms->client);
 #endif // DEBUG
-  }    // end if
+  } // end if
   // if not in an area with reachability
   else if (checkbottom && !AAS_AreaReachability(ms->areanum)) {
     // check if the bot is standing on something
@@ -1321,8 +1323,8 @@ void BotCheckBlocked(bot_movestate_t *ms, vec3_t dir, int checkbottom,
       // botimport.Print(PRT_MESSAGE, "%d: BotCheckBlocked: I'm blocked\n",
       // ms->client);
 #endif // DEBUG
-    }  // end if
-  }    // end else
+    } // end if
+  } // end else
 } // end of the function BotCheckBlocked
 //===========================================================================
 //
@@ -1636,7 +1638,7 @@ bot_moveresult_t BotTravel_WalkOffLedge(bot_movestate_t *ms,
                                             &speed)) {
       speed = 400;
     } // end if
-  }   // end if
+  } // end if
   else {
     if (reachhordist < 20) {
       if (dist > 64)
@@ -1646,7 +1648,7 @@ bot_moveresult_t BotTravel_WalkOffLedge(bot_movestate_t *ms,
     else {
       speed = 400;
     } // end else
-  }   // end else
+  } // end else
   //
   BotCheckBlocked(ms, hordir, qtrue, &result);
   // elemantary action
@@ -1685,7 +1687,7 @@ int BotAirControl(vec3_t origin, vec3_t velocity, vec3_t goal, vec3_t dir,
     else {
       VectorAdd(org, vel, org);
     } // end else
-  }   // end for
+  } // end for
   VectorSet(dir, 0, 0, 0);
   *speed = 400;
   return qfalse;
@@ -2099,8 +2101,8 @@ bot_moveresult_t BotTravel_Elevator(bot_movestate_t *ms,
         EA_Move(ms->client, hordir, speed);
         VectorCopy(hordir, result.movedir);
       } // end if
-    }   // end else
-  }     // end if
+    } // end else
+  } // end if
   else {
 #ifdef DEBUG_ELEVATOR
     botimport.Print(PRT_MESSAGE, "bot not on elevator\n");
@@ -2173,7 +2175,7 @@ bot_moveresult_t BotTravel_Elevator(bot_movestate_t *ms,
 #endif // DEBUG_ELEVATOR
       dist = dist2;
       VectorCopy(dir2, dir);
-    }    // end if
+    } // end if
     else // closer to the reachability start
     {
 #ifdef DEBUG_ELEVATOR
@@ -2336,8 +2338,8 @@ bot_moveresult_t BotTravel_FuncBobbing(bot_movestate_t *ms,
         EA_Move(ms->client, hordir, speed);
         VectorCopy(hordir, result.movedir);
       } // end if
-    }   // end else
-  }     // end if
+    } // end else
+  } // end if
   else {
 #ifdef DEBUG_FUNCBOB
     botimport.Print(PRT_MESSAGE, "bot not ontop of func_bobbing\n");
@@ -2414,7 +2416,7 @@ bot_moveresult_t BotTravel_FuncBobbing(bot_movestate_t *ms,
 #endif
       dist = dist2;
       VectorCopy(dir2, dir);
-    }    // end if
+    } // end if
     else // closer to the reachability start
     {
 #ifdef DEBUG_FUNCBOB
@@ -2491,7 +2493,7 @@ bot_moveresult_t BotFinishTravel_FuncBobbing(bot_movestate_t *ms,
       EA_Move(ms->client, hordir, speed);
       VectorCopy(hordir, result.movedir);
     } // end if
-  }   // end else
+  } // end else
   return result;
 } // end of the function BotFinishTravel_FuncBobbing
 //===========================================================================
@@ -2518,8 +2520,8 @@ int GrappleState(bot_movestate_t *ms, aas_reachability_t *reach) {
       if (entinfo.weapon == (int)weapindex_grapple->value) {
         return 1;
       } // end if
-    }   // end if
-  }     // end for
+    } // end if
+  } // end for
   // no valid grapple at all
   return 0;
 } // end of the function GrappleState
@@ -2543,8 +2545,8 @@ void BotResetGrapple(bot_movestate_t *ms) {
 #ifdef DEBUG_GRAPPLE
       botimport.Print(PRT_MESSAGE, "reset grapple\n");
 #endif // DEBUG_GRAPPLE
-    }  // end if
-  }    // end if
+    } // end if
+  } // end if
 } // end of the function BotResetGrapple
 //===========================================================================
 //
@@ -2604,7 +2606,7 @@ bot_moveresult_t BotTravel_Grapple(bot_movestate_t *ms,
         ms->reachability_time = 0; // end the reachability
         return result;
       } // end if
-    }   // end if
+    } // end if
     // if no valid grapple at all, or the grapple hooked and the bot
     // isn't moving anymore
     else if (!state || (state == 2 && dist > ms->lastgrappledist - 2)) {
@@ -2619,7 +2621,7 @@ bot_moveresult_t BotTravel_Grapple(bot_movestate_t *ms,
         ms->reachability_time = 0; // end the reachability
         return result;
       } // end if
-    }   // end if
+    } // end if
     else {
       ms->grapplevisible_time = AAS_Time();
     } // end else
@@ -3083,7 +3085,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
               result->flags |= MOVERESULT_ONTOPOFOBSTACLE;
               return;
             } // end else
-          }   // end if
+          } // end if
           result->flags |= MOVERESULT_ONTOPOF_ELEVATOR;
         } // end if
         else if (modeltype == MODELTYPE_FUNC_BOB) {
@@ -3112,7 +3114,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
               result->flags |= MOVERESULT_ONTOPOFOBSTACLE;
               return;
             } // end else
-          }   // end if
+          } // end if
           result->flags |= MOVERESULT_ONTOPOF_FUNCBOB;
         } // end if
         else if (modeltype == MODELTYPE_FUNC_STATIC ||
@@ -3126,16 +3128,16 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
             result->flags |= MOVERESULT_ONTOPOFOBSTACLE;
             return;
           } // end if
-        }   // end else if
+        } // end else if
         else {
           result->blocked = qtrue;
           result->blockentity = ent;
           result->flags |= MOVERESULT_ONTOPOFOBSTACLE;
           return;
         } // end else
-      }   // end if
-    }     // end if
-  }       // end if
+      } // end if
+    } // end if
+  } // end if
   // if swimming
   if (AAS_Swimming(ms->origin))
     ms->moveflags |= MFL_SWIMMING;
@@ -3180,7 +3182,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
             (ms->moveflags & MFL_GRAPPLERESET)) {
           reachnum = 0;
         } // end if
-      }   // end if
+      } // end if
       // special elevator case
       else if ((reach.traveltype & TRAVELTYPE_MASK) == TRAVEL_ELEVATOR ||
                (reach.traveltype & TRAVELTYPE_MASK) == TRAVEL_FUNCBOB) {
@@ -3194,7 +3196,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
             ms->reachability_time < AAS_Time()) {
           reachnum = 0;
         } // end if
-      }   // end if
+      } // end if
       else {
 #ifdef DEBUG
         if (botDeveloper) {
@@ -3210,17 +3212,17 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
                   botimport.Print(PRT_MESSAGE, "changed from area %d to %d\n",
           ms->lastareanum, ms->areanum); } //end if*/
         } // end if
-#endif    // DEBUG
-          // if the goal area changed or the reachability timed out
-          // or the area changed
+#endif // DEBUG
+       // if the goal area changed or the reachability timed out
+       // or the area changed
         if (ms->lastgoalareanum != goal->areanum ||
             ms->reachability_time < AAS_Time() ||
             ms->lastareanum != ms->areanum) {
           reachnum = 0;
           // botimport.Print(PRT_MESSAGE, "area change or timeout\n");
         } // end else if
-      }   // end else
-    }     // end if
+      } // end else
+    } // end if
     resultflags = 0;
     // if the bot needs a new reachability
     if (!reachnum) {
@@ -3231,8 +3233,8 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
           botimport.Print(PRT_MESSAGE, "area %d no reachability\n",
                           ms->areanum);
         } // end if
-#endif    // DEBUG
-      }   // end if
+#endif // DEBUG
+      } // end if
       // get a new reachability leading towards the goal
       reachnum = BotGetReachabilityToGoal(
           ms->origin, ms->areanum, ms->lastgoalareanum, ms->lastareanum,
@@ -3252,7 +3254,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
 #ifdef AVOIDREACH
         // add the reachability to the reachabilities to avoid for a while
         BotAddToAvoidReach(ms, reachnum, AVOIDREACH_TIME);
-#endif  // AVOIDREACH
+#endif // AVOIDREACH
       } // end if
 #ifdef DEBUG
 
@@ -3260,7 +3262,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
         botimport.Print(PRT_MESSAGE, "goal not reachable\n");
         Com_Memset(&reach, 0, sizeof(aas_reachability_t)); // make compiler
                                                            // happy
-      }                                                    // end else
+      } // end else
       if (botDeveloper) {
         // if still going for the same goal
         if (ms->lastgoalareanum == goal->areanum) {
@@ -3268,10 +3270,10 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
             botimport.Print(PRT_MESSAGE,
                             "same goal, going back to previous area\n");
           } // end if
-        }   // end if
-      }     // end if
-#endif      // DEBUG
-    }       // end else
+        } // end if
+      } // end if
+#endif // DEBUG
+    } // end else
     //
     ms->lastreachnum = reachnum;
     ms->lastgoalareanum = goal->areanum;
@@ -3361,9 +3363,9 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
         AAS_PrintTravelType(reach.traveltype & TRAVELTYPE_MASK);
         botimport.Print(PRT_MESSAGE, "\n");
       } // end if
-    }   // end if
-#endif  // DEBUG
-  }     // end if
+    } // end if
+#endif // DEBUG
+  } // end if
   else {
     int i, numareas, areas[16];
     vec3_t end;
@@ -3400,12 +3402,12 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
               // botimport.Print(PRT_MESSAGE, "found jumppad reachability
               // hard!!\n");
             } // end if
-          }   // end for
+          } // end for
           if (lastreachnum)
             break;
         } // end else
-      }   // end if
-    }     // end for
+      } // end if
+    } // end for
     if (botDeveloper) {
       // if a jumppad is found with the trace but no reachability is found
       if (foundjumppad && !ms->lastreachnum) {
@@ -3413,7 +3415,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
                         "client %d didn't find jumppad reachability\n",
                         ms->client);
       } // end if
-    }   // end if
+    } // end if
     //
     if (ms->lastreachnum) {
       // botimport.Print(PRT_MESSAGE, "%s: NOT onground, swimming or against
@@ -3484,10 +3486,10 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
           AAS_PrintTravelType(reach.traveltype & TRAVELTYPE_MASK);
           botimport.Print(PRT_MESSAGE, "\n");
         } // end if
-      }   // end if
-#endif    // DEBUG
-    }     // end if
-  }       // end else
+      } // end if
+#endif // DEBUG
+    } // end if
+  } // end else
   // FIXME: is it right to do this here?
   if (result->blocked)
     ms->reachability_time -= 10 * ms->thinktime;
@@ -3531,7 +3533,7 @@ void BotResetLastAvoidReach(int movestate) {
       latesttime = ms->avoidreachtimes[i];
       latest = i;
     } // end if
-  }   // end for
+  } // end for
   if (latesttime) {
     ms->avoidreachtimes[latest] = 0;
     if (ms->avoidreachtries[latest] > 0)
@@ -3586,5 +3588,5 @@ void BotShutdownMoveAI(void) {
       FreeMemory(botmovestates[i]);
       botmovestates[i] = NULL;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotShutdownMoveAI

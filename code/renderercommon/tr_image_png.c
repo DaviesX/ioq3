@@ -22,6 +22,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "renderercommon/tr_common.h"
 
 #include "renderercommon/puff.h"
+#include <limits.h>
+#include <math.h>
+#include <stdint.h>
+#include <string.h>
 
 // we could limit the png size to a lower value here
 #ifndef INT_MAX

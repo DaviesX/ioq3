@@ -42,6 +42,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <stdlib.h>
 
 // #define AASFILEDEBUG
 
@@ -62,7 +63,7 @@ void AAS_SwapAASData(void) {
       aasworld.bboxes[i].mins[j] = LittleFloat(aasworld.bboxes[i].mins[j]);
       aasworld.bboxes[i].maxs[j] = LittleFloat(aasworld.bboxes[i].maxs[j]);
     } // end for
-  }   // end for
+  } // end for
   // vertexes
   for (i = 0; i < aasworld.numvertexes; i++) {
     for (j = 0; j < 3; j++)
@@ -107,7 +108,7 @@ void AAS_SwapAASData(void) {
       aasworld.areas[i].maxs[j] = LittleFloat(aasworld.areas[i].maxs[j]);
       aasworld.areas[i].center[j] = LittleFloat(aasworld.areas[i].center[j]);
     } // end for
-  }   // end for
+  } // end for
   // area settings
   for (i = 0; i < aasworld.numareasettings; i++) {
     aasworld.areasettings[i].contents =
@@ -330,7 +331,7 @@ char *AAS_LoadAASLump(fileHandle_t fp, int offset, int length, int *lastoffset,
       botimport.FS_FCloseFile(fp);
       return NULL;
     } // end if
-  }   // end if
+  } // end if
   // allocate memory
   buf = (char *)GetClearedHunkMemory(length + 1);
   // read the data

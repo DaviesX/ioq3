@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <string.h>
 
 #define MAX_INVENTORYVALUE 999999
 #define EVALUATERECURSIVELY
@@ -218,20 +219,20 @@ fuzzyseperator_t *ReadFuzzySeperators_r(source_t *source) {
           FreeFuzzySeperators_r(firstfs);
           return NULL;
         } // end if
-      }   // end if
+      } // end if
       if (!strcmp(token.string, "return")) {
         if (!ReadFuzzyWeight(source, fs)) {
           FreeFuzzySeperators_r(firstfs);
           return NULL;
         } // end if
-      }   // end if
+      } // end if
       else if (!strcmp(token.string, "switch")) {
         fs->child = ReadFuzzySeperators_r(source);
         if (!fs->child) {
           FreeFuzzySeperators_r(firstfs);
           return NULL;
         } // end if
-      }   // end else if
+      } // end else if
       else {
         SourceError(source, "invalid name %s", token.string);
         return NULL;
@@ -241,8 +242,8 @@ fuzzyseperator_t *ReadFuzzySeperators_r(source_t *source) {
           FreeFuzzySeperators_r(firstfs);
           return NULL;
         } // end if
-      }   // end if
-    }     // end if
+      } // end if
+    } // end if
     else {
       FreeFuzzySeperators_r(firstfs);
       SourceError(source, "invalid name %s", token.string);
@@ -302,14 +303,14 @@ weightconfig_t *ReadWeightConfig(char *filename) {
         // botimport.Print( PRT_MESSAGE, "retained %s\n", filename );
         return config;
       } // end if
-    }   // end for
+    } // end for
 
     if (avail == -1) {
       botimport.Print(PRT_ERROR, "weightFileList was full trying to load %s\n",
                       filename);
       return NULL;
     } // end if
-  }   // end if
+  } // end if
 
   PC_SetBaseFolder(BOTFILESBASEFOLDER);
   source = LoadSourceFile(filename);
@@ -350,7 +351,7 @@ weightconfig_t *ReadWeightConfig(char *filename) {
           FreeSource(source);
           return NULL;
         } // end if
-      }   // end if
+      } // end if
       if (!strcmp(token.string, "switch")) {
         fs = ReadFuzzySeperators_r(source);
         if (!fs) {
@@ -386,7 +387,7 @@ weightconfig_t *ReadWeightConfig(char *filename) {
           FreeSource(source);
           return NULL;
         } // end if
-      }   // end if
+      } // end if
       config->numweights++;
     } // end if
     else {
@@ -395,7 +396,7 @@ weightconfig_t *ReadWeightConfig(char *filename) {
       FreeSource(source);
       return NULL;
     } // end else
-  }   // end while
+  } // end while
   // free the source at the end of a pass
   FreeSource(source);
   // if the file was located in a pak file
@@ -404,7 +405,7 @@ weightconfig_t *ReadWeightConfig(char *filename) {
   if (botDeveloper) {
     botimport.Print(PRT_MESSAGE, "weights loaded in %d msec\n",
                     Sys_MilliSeconds() - starttime);
-  }    // end if
+  } // end if
 #endif // DEBUG
        //
   if (!LibVarGetValue("bot_reloadcharacters")) {
@@ -539,7 +540,7 @@ int FindFuzzyWeight(weightconfig_t *wc, char *name) {
     if (!strcmp(wc->weights[i].name, name)) {
       return i;
     } // end if
-  }   // end if
+  } // end if
   return -1;
 } // end of the function FindFuzzyWeight
 //===========================================================================
@@ -653,7 +654,7 @@ float FuzzyWeight(int *inventory, weightconfig_t *wc, int weightnum) {
       else
         return s->weight;
     } // end else
-  }   // end if
+  } // end if
   return 0;
 #endif
 } // end of the function FuzzyWeight
@@ -686,7 +687,7 @@ float FuzzyWeightUndecided(int *inventory, weightconfig_t *wc, int weightnum) {
       else
         return s->minweight + random() * (s->maxweight - s->minweight);
     } // end else
-  }   // end if
+  } // end if
   return 0;
 #endif
 } // end of the function FuzzyWeightUndecided
@@ -768,7 +769,7 @@ void ScaleWeight(weightconfig_t *config, char *name, float scale) {
       ScaleFuzzySeperator_r(config->weights[i].firstseperator, scale);
       break;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function ScaleWeight
 //===========================================================================
 //
@@ -788,7 +789,7 @@ void ScaleFuzzySeperatorBalanceRange_r(fuzzyseperator_t *fs, float scale) {
     if (fs->maxweight < fs->minweight) {
       fs->maxweight = fs->minweight;
     } // end if
-  }   // end else if
+  } // end else if
   if (fs->next)
     ScaleFuzzySeperatorBalanceRange_r(fs->next, scale);
 } // end of the function ScaleFuzzySeperatorBalanceRange_r
@@ -826,7 +827,7 @@ int InterbreedFuzzySeperator_r(fuzzyseperator_t *fs1, fuzzyseperator_t *fs2,
     if (!InterbreedFuzzySeperator_r(fs2->child, fs2->child, fsout->child)) {
       return qfalse;
     } // end if
-  }   // end if
+  } // end if
   else if (fs1->type == WT_BALANCE) {
     if (fs2->type != WT_BALANCE || fsout->type != WT_BALANCE) {
       botimport.Print(PRT_ERROR,
@@ -848,7 +849,7 @@ int InterbreedFuzzySeperator_r(fuzzyseperator_t *fs1, fuzzyseperator_t *fs2,
     if (!InterbreedFuzzySeperator_r(fs1->next, fs2->next, fsout->next)) {
       return qfalse;
     } // end if
-  }   // end if
+  } // end if
   return qtrue;
 } // end of the function InterbreedFuzzySeperator_r
 //===========================================================================
@@ -888,5 +889,5 @@ void BotShutdownWeights(void) {
       FreeWeightConfig2(weightFileList[i]);
       weightFileList[i] = NULL;
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotShutdownWeights

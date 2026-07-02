@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "renderergl2/tr_local.h"
 
 #include "renderergl2/tr_dsa.h"
+#include <ctype.h>
+#include <math.h>
+#include <string.h>
 
 static byte s_intensitytable[256];
 static unsigned char s_gammatable[256];

@@ -39,7 +39,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <lmwksta.h>
 #include <psapi.h>
 #include <shlobj.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <wincrypt.h>
 
 #ifndef KEY_WOW64_32KEY

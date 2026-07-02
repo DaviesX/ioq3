@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "qcommon/cm_patch.h"
 #include "qcommon/cm_local.h"
+#include <math.h>
+#include <stddef.h>
 
 /*
 

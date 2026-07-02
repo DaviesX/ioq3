@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "qcommon/qcommon.h"
 #include "sys/sys_local.h"
 #include "windows.h"
+#include <stdio.h>
+#include <string.h>
 
 #define QCONSOLE_HISTORY 32
 

@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <assert.h>
+#include <string.h>
 
 static huffman_t msgHuff;
 
@@ -722,7 +724,7 @@ typedef struct {
 } netField_t;
 
 // using the stringizing operator to save typing...
-#define NETF(x) #x, (size_t) & ((entityState_t *)0)->x
+#define NETF(x) #x, (size_t)&((entityState_t *)0)->x
 
 netField_t entityStateFields[] = {{NETF(pos.trTime), 32},
                                   {NETF(pos.trBase[0]), 0},
@@ -1037,7 +1039,7 @@ plyer_state_t communication
 */
 
 // using the stringizing operator to save typing...
-#define PSF(x) #x, (size_t) & ((playerState_t *)0)->x
+#define PSF(x) #x, (size_t)&((playerState_t *)0)->x
 
 netField_t playerStateFields[] = {{PSF(commandTime), 32},
                                   {PSF(origin[0]), 0},

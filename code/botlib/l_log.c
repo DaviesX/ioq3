@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_log.h"
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
+#include <stdarg.h>
 
 #define MAX_LOGFILENAMESIZE 1024
 

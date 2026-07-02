@@ -44,12 +44,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <string.h>
 
 // #define DEBUG_AI_WEAP
 
 // structure field offsets
-#define WEAPON_OFS(x) (size_t) & (((weaponinfo_t *)0)->x)
-#define PROJECTILE_OFS(x) (size_t) & (((projectileinfo_t *)0)->x)
+#define WEAPON_OFS(x) (size_t)&(((weaponinfo_t *)0)->x)
+#define PROJECTILE_OFS(x) (size_t)&(((projectileinfo_t *)0)->x)
 
 // weapon definition
 static fielddef_t weaponinfo_fields[] = {
@@ -285,7 +286,7 @@ weaponconfig_t *LoadWeaponConfig(char *filename) {
       FreeSource(source);
       return NULL;
     } // end else
-  }   // end while
+  } // end while
   FreeSource(source);
   // fix up weapons
   for (i = 0; i < wc->numweapons; i++) {
@@ -309,14 +310,14 @@ weaponconfig_t *LoadWeaponConfig(char *filename) {
                    sizeof(projectileinfo_t));
         break;
       } // end if
-    }   // end for
+    } // end for
     if (j == wc->numprojectiles) {
       botimport.Print(PRT_ERROR, "weapon %s uses undefined projectile in %s\n",
                       wc->weaponinfo[i].name, path);
       FreeMemory(wc);
       return NULL;
     } // end if
-  }   // end for
+  } // end for
   if (!wc->numweapons)
     botimport.Print(PRT_WARNING, "no weapon info loaded\n");
   botimport.Print(PRT_MESSAGE, "loaded %s\n", path);
@@ -436,7 +437,7 @@ int BotChooseBestFightWeapon(int weaponstate, int *inventory) {
       bestweight = weight;
       bestweapon = i;
     } // end if
-  }   // end for
+  } // end for
   return bestweapon;
 } // end of the function BotChooseBestFightWeapon
 //===========================================================================
@@ -461,7 +462,7 @@ int BotAllocWeaponState(void) {
       botweaponstates[i] = GetClearedMemory(sizeof(bot_weaponstate_t));
       return i;
     } // end if
-  }   // end for
+  } // end for
   return 0;
 } // end of the function BotAllocWeaponState
 //========================================================================
@@ -522,5 +523,5 @@ void BotShutdownWeaponAI(void) {
     if (botweaponstates[i]) {
       BotFreeWeaponState(i);
     } // end if
-  }   // end for
+  } // end for
 } // end of the function BotShutdownWeaponAI

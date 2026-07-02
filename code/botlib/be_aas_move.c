@@ -40,6 +40,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_script.h"
 #include "botlib/l_struct.h"
 #include "qcommon/q_shared.h"
+#include <math.h>
+#include <stddef.h>
 
 extern botlib_import_t botimport;
 
@@ -143,9 +145,9 @@ int AAS_AgainstLadder(vec3_t origin) {
           org[1] -= 2;
           areanum = AAS_PointAreaNum(org);
         } // end if
-      }   // end if
-    }     // end if
-  }       // end if
+      } // end if
+    } // end if
+  } // end if
   // if in solid... wrrr shouldn't happen
   if (!areanum)
     return qfalse;
@@ -171,7 +173,7 @@ int AAS_AgainstLadder(vec3_t origin) {
       if (AAS_PointInsideFace(abs(facenum), origin, 0.1f))
         return qtrue;
     } // end if
-  }   // end for
+  } // end for
   return qfalse;
 } // end of the function AAS_AgainstLadder
 //===========================================================================
@@ -454,8 +456,8 @@ int AAS_ClipToBBox(aas_trace_t *trace, vec3_t start, vec3_t end,
         mid[i] = planedist;
         break;
       } // end if
-    }   // end if
-  }     // end for
+    } // end if
+  } // end for
   // if there was a collision
   if (i != 3) {
     trace->startsolid = qfalse;
@@ -619,7 +621,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
       if (AAS_PointPresenceType(org) & PRESENCE_NORMAL) {
         presencetype = PRESENCE_NORMAL;
       } // end if
-    }   // end else
+    } // end else
     // save the current origin
     VectorCopy(org, lastorg);
     // move linear during one frame
@@ -655,7 +657,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
               move->frames = n;
               return qtrue;
             } // end if
-          }   // end if
+          } // end if
           // NOTE: if not the first frame
           if ((stopevent & SE_TOUCHJUMPPAD) && n) {
             if (aasworld.areasettings[areas[i]].contents &
@@ -671,7 +673,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
               move->frames = n;
               return qtrue;
             } // end if
-          }   // end if
+          } // end if
           if (stopevent & SE_TOUCHTELEPORTER) {
             if (aasworld.areasettings[areas[i]].contents &
                 AREACONTENTS_TELEPORTER) {
@@ -686,7 +688,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
               move->frames = n;
               return qtrue;
             } // end if
-          }   // end if
+          } // end if
           if (stopevent & SE_TOUCHCLUSTERPORTAL) {
             if (aasworld.areasettings[areas[i]].contents &
                 AREACONTENTS_CLUSTERPORTAL) {
@@ -701,9 +703,9 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
               move->frames = n;
               return qtrue;
             } // end if
-          }   // end if
-        }     // end for
-      }       // end if
+          } // end if
+        } // end for
+      } // end if
       //
       if (stopevent & SE_HITBOUNDINGBOX) {
         if (AAS_ClipToBBox(&trace, org, trace.endpos, presencetype, mins,
@@ -719,7 +721,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
           move->frames = n;
           return qtrue;
         } // end if
-      }   // end if
+      } // end if
       // move the entity to the trace end point
       VectorCopy(trace.endpos, org);
       // if there was a collision
@@ -743,8 +745,8 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
               move->frames = n;
               return qtrue;
             } // end if
-          }   // end if
-        }     // end if
+          } // end if
+        } // end if
         // assume there's no step
         step = qfalse;
         // if it is a vertical plane and the bot didn't jump recently
@@ -768,13 +770,13 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
                   start[2] = steptrace.endpos[2];
                   AAS_DebugLine(org, start, LINECOLOR_BLUE);
                 } // end if
-              }   // end if
+              } // end if
               // #endif //AAS_MOVE_DEBUG
               org[2] = steptrace.endpos[2];
               step = qtrue;
             } // end if
-          }   // end if
-        }     // end if
+          } // end if
+        } // end if
         //
         if (!step) {
           // velocity left to test for this frame is the projection
@@ -823,10 +825,10 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
                 move->frames = n;
                 return qtrue;
               } // end if
-            }   // end if
-          }     // end if
-        }       // end if
-      }         // end if
+            } // end if
+          } // end if
+        } // end if
+      } // end if
       // extra check to prevent endless loop
       if (++j > 20)
         return qfalse;
@@ -866,7 +868,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
         move->frames = n;
         return qtrue;
       } // end if
-    }   // end if
+    } // end if
     //
     onground = AAS_OnGround(org, presencetype, entnum);
     // if onground and on the ground for at least one whole frame
@@ -883,7 +885,7 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
         move->frames = n;
         return qtrue;
       } // end if
-    }   // end if
+    } // end if
     else if (stopevent & SE_LEAVEGROUND) {
       VectorCopy(org, move->endpos);
       move->endarea = AAS_PointAreaNum(org);
@@ -920,10 +922,10 @@ int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
             move->frames = n;
             return qtrue;
           } // end if
-        }   // end if
-      }     // end if
-    }       // end else if
-  }         // end for
+        } // end if
+      } // end if
+    } // end else if
+  } // end for
   //
   VectorCopy(org, move->endpos);
   move->endarea = AAS_PointAreaNum(org);

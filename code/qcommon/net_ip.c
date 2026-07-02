@@ -75,6 +75,8 @@ static qboolean winsockInitialized = qfalse;
 #include <net/if.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 #include <sys/time.h>

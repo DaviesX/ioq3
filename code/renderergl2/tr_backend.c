@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "renderergl2/tr_dsa.h"
 #include "renderergl2/tr_fbo.h"
 #include "renderergl2/tr_local.h"
+#include <math.h>
+#include <stddef.h>
+#include <stdint.h>
 
 backEndData_t *backEndData;
 backEndState_t backEnd;

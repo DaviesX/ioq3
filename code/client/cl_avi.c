@@ -22,6 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "client/client.h"
 #include "client/snd_local.h"
+#include <limits.h>
+#include <math.h>
+#include <string.h>
 
 #define INDEX_FILE_EXTENSION ".index.dat"
 
@@ -286,7 +289,9 @@ void CL_WriteAVIHeader(void) {
       afd.moviOffset = bufIndex;
 
       START_CHUNK("LIST");
-      { WRITE_STRING("movi"); }
+      {
+        WRITE_STRING("movi");
+      }
     }
   }
 }

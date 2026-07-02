@@ -34,6 +34,11 @@ and one exported function: Perform
 */
 
 #include "qcommon/vm_local.h"
+#include <stdarg.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 vm_t *currentVM = NULL;
 vm_t *lastVM = NULL;
@@ -804,9 +809,8 @@ intptr_t QDECL VM_Call(vm_t *vm, int callnum, ...) {
                        args[5], args[6], args[7], args[8], args[9], args[10],
                        args[11]);
   } else {
-#if (id386 || idsparc) &&                                                      \
-    !defined                                                                   \
-        __clang__ // calling convention doesn't need conversion in some cases
+#if (id386 || idsparc) && !defined __clang__ // calling convention doesn't need
+                                             // conversion in some cases
 #ifdef HAVE_VM_COMPILED
     if (vm->compiled)
       r = VM_CallCompiled(vm, (int *)&callnum);

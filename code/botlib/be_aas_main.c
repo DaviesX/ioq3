@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "botlib/l_struct.h"
 #include "botlib/l_utils.h"
 #include "qcommon/q_shared.h"
+#include <stdarg.h>
 
 aas_t aasworld;
 
@@ -129,7 +130,7 @@ void AAS_ContinueInit(float time) {
     else {
       botimport.Print(PRT_ERROR, "couldn't write %s\n", aasworld.filename);
     } // end else
-  }   // end if
+  } // end if
   // initialize the routing
   AAS_InitRouting();
   // at this point AAS is initialized
@@ -166,7 +167,7 @@ int AAS_StartFrame(float time) {
       PrintMemoryLabels();
       LibVarSet("memorydump", "0");
     } // end if
-  }   // end if
+  } // end if
   //
   if (saveroutingcache->value) {
     AAS_WriteRouteCache();
