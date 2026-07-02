@@ -1,0 +1,15 @@
+{
+  // ioquake3 is C; treat headers as C so IntelliSense doesn't guess C++.
+  "files.associations": {
+    "*.h": "c"
+  },
+  "C_Cpp.default.configurationProvider": "",
+  "C_Cpp.default.cStandard": "gnu99",
+  "C_Cpp.default.intelliSenseMode": "windows-clang-x64",
+
+  // Vendored dependencies: keep them out of search/IntelliSense noise.
+  "search.exclude": {
+    "code/thirdparty/**": true,
+    "build/**": true
+  }
+}
