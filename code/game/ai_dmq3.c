@@ -30,28 +30,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "g_local.h"
-#include "../botlib/botlib.h"
-#include "../botlib/be_aas.h"
-#include "../botlib/be_ea.h"
-#include "../botlib/be_ai_char.h"
-#include "../botlib/be_ai_chat.h"
-#include "../botlib/be_ai_gen.h"
-#include "../botlib/be_ai_goal.h"
-#include "../botlib/be_ai_move.h"
-#include "../botlib/be_ai_weap.h"
+#include "game/g_local.h"
+#include "botlib/botlib.h"
+#include "botlib/be_aas.h"
+#include "botlib/be_ea.h"
+#include "botlib/be_ai_char.h"
+#include "botlib/be_ai_chat.h"
+#include "botlib/be_ai_gen.h"
+#include "botlib/be_ai_goal.h"
+#include "botlib/be_ai_move.h"
+#include "botlib/be_ai_weap.h"
 //
-#include "ai_main.h"
-#include "ai_dmq3.h"
-#include "ai_chat.h"
-#include "ai_cmd.h"
-#include "ai_dmnet.h"
-#include "ai_team.h"
+#include "game/ai_main.h"
+#include "game/ai_dmq3.h"
+#include "game/ai_chat.h"
+#include "game/ai_cmd.h"
+#include "game/ai_dmnet.h"
+#include "game/ai_team.h"
 //
-#include "chars.h" //characteristics
-#include "inv.h"   //indexes into the inventory
-#include "syn.h"   //synonyms
-#include "match.h" //string matching types and vars
+#include "game/chars.h" //characteristics
+#include "game/inv.h"   //indexes into the inventory
+#include "game/syn.h"   //synonyms
+#include "game/match.h" //string matching types and vars
 
 // for the voice chats
 #include "../../ui/menudef.h" // sos001205 - for q3_ui also

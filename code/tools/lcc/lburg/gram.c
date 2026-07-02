@@ -62,7 +62,7 @@
 #line 1 "code/tools/lcc/lburg/gram.y" /* yacc.c:339  */
 
 #include <stdio.h>
-#include "lburg.h"
+#include "tools/lcc/lburg/lburg.h"
 // static char rcsid[] = "$Id: gram.y 145 2001-10-17 21:53:10Z timo $";
 /*lint -e616 -e527 -e652 -esym(552,yynerrs) -esym(563,yynewstate,yyerrlab) */
 static int yylineno = 0;

@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
    on other files, where the compiler might then generate Altivec
    instructions for normal floating point, crashing on G3 (etc) processors. */
 
-#include "client.h"
-#include "snd_local.h"
+#include "client/client.h"
+#include "client/snd_local.h"
 
 #if idppc_altivec
 

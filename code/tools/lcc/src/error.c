@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static void printtoken(void);
 int errcnt = 0;
@@ -6,7 +6,7 @@ int errlimit = 20;
 char kind[] = {
 #define xx(a, b, c, d, e, f, g) f,
 #define yy(a, b, c, d, e, f, g) f,
-#include "token.h"
+#include "tools/lcc/src/token.h"
 };
 int wflag; /* != 0 to suppress warning messages */
 

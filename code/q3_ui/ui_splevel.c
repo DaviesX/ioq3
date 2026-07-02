@@ -28,7 +28,7 @@ SINGLE PLAYER LEVEL SELECT MENU
 =============================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define ART_LEVELFRAME_FOCUS "menu/art/maps_select"
 #define ART_LEVELFRAME_SELECTED "menu/art/maps_selected"

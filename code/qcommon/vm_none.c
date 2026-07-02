@@ -1,4 +1,4 @@
-#include "vm_local.h"
+#include "qcommon/vm_local.h"
 
 int VM_CallCompiled(vm_t *vm, int *args) {
   exit(99);

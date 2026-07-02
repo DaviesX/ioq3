@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Rafael particles
 // cg_particles.c
 
-#include "cg_local.h"
+#include "cgame/cg_local.h"
 
 // #define WOLF_PARTICLES
 

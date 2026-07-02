@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 #define I(f) b_##f
 
 static void I(segment)(int n) {

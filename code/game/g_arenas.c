@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // g_arenas.c
 //
 
-#include "g_local.h"
+#include "game/g_local.h"
 
 gentity_t *podium1;
 gentity_t *podium2;

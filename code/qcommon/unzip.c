@@ -40,9 +40,9 @@ original crypt.c. Code woven in by Terry Thorsen 1/2003.
   version without encryption capabilities).
  */
 
-#include "../qcommon/q_shared.h"
-#include "../qcommon/qcommon.h"
-#include "unzip.h"
+#include "qcommon/q_shared.h"
+#include "qcommon/qcommon.h"
+#include "qcommon/unzip.h"
 
 #ifndef local
 #define local static

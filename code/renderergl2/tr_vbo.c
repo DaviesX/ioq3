@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 // tr_vbo.c
-#include "tr_local.h"
+#include "renderergl2/tr_local.h"
 
 void R_VaoPackTangent(int16_t *out, vec4_t v) {
   out[0] = v[0] * 32767.0f + (v[0] > 0.0f ? 0.5f : -0.5f);

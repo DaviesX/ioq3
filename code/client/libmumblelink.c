@@ -40,7 +40,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "libmumblelink.h"
+#include "client/libmumblelink.h"
 
 #ifndef MIN
 #define MIN(a, b) ((a) < (b) ? (a) : (b))

@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // g_bot.c
 
-#include "g_local.h"
+#include "game/g_local.h"
 
 static int g_numBots;
 static char *g_botInfos[MAX_BOTS];

@@ -28,7 +28,7 @@ CREDITS
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 typedef struct {
   menuframework_s menu;

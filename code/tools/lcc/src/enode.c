@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static Tree addtree(int, Tree, Tree);
 static Tree andtree(int, Tree, Tree);
@@ -11,7 +11,7 @@ static Tree subtree(int, Tree, Tree);
 Tree (*optree[])(int, Tree, Tree) = {
 #define xx(a, b, c, d, e, f, g) e,
 #define yy(a, b, c, d, e, f, g) e,
-#include "token.h"
+#include "tools/lcc/src/token.h"
 };
 Tree call(Tree f, Type fty, Coordinate src) {
   int n = 0;

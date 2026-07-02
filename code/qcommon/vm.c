@@ -33,7 +33,7 @@ and one exported function: Perform
 
 */
 
-#include "vm_local.h"
+#include "qcommon/vm_local.h"
 
 vm_t *currentVM = NULL;
 vm_t *lastVM = NULL;

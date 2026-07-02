@@ -1,14 +1,14 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static char prec[] = {
 #define xx(a, b, c, d, e, f, g) c,
 #define yy(a, b, c, d, e, f, g) c,
-#include "token.h"
+#include "tools/lcc/src/token.h"
 };
 static int oper[] = {
 #define xx(a, b, c, d, e, f, g) d,
 #define yy(a, b, c, d, e, f, g) d,
-#include "token.h"
+#include "tools/lcc/src/token.h"
 };
 float refinc = 1.0;
 static Tree expr2(void);

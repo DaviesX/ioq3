@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cpp.h"
+#include "tools/lcc/cpp/cpp.h"
 
 static char wbuf[2 * OBS];
 static char *wbp = wbuf;

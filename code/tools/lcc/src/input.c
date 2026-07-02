@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static void pragma(void);
 static void resynch(void);

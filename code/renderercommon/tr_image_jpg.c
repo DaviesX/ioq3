@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <setjmp.h>
 
-#include "tr_common.h"
+#include "renderercommon/tr_common.h"
 
 /*
  * Include file for users of JPEG library.

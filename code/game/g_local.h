@@ -22,9 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // g_local.h -- local definitions for game module
 
-#include "../qcommon/q_shared.h"
-#include "bg_public.h"
-#include "g_public.h"
+#include "qcommon/q_shared.h"
+#include "game/bg_public.h"
+#include "game/g_public.h"
 
 //==================================================================
 
@@ -688,7 +688,7 @@ int BotAIShutdownClient(int client, qboolean restart);
 int BotAIStartFrame(int time);
 void BotTestAAS(vec3_t origin);
 
-#include "g_team.h" // teamplay specific stuff
+#include "game/g_team.h" // teamplay specific stuff
 
 extern level_locals_t level;
 extern gentity_t g_entities[MAX_GENTITIES];

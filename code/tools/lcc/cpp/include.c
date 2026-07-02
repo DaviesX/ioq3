@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cpp.h"
+#include "tools/lcc/cpp/cpp.h"
 
 Includelist includelist[NINCLUDE];
 
@@ -11,9 +11,15 @@ void appendDirToIncludeList(char *dir) {
   int i;
   char *fqdir;
 
-  fqdir = (char *)newstring((uchar *)includelist[NINCLUDE - 1].file, 256, 0);
-  strcat(fqdir, "/");
-  strcat(fqdir, dir);
+  /* Absolute paths (Unix "/..." or Windows drive "X:...") are used verbatim;
+   * relative -I dirs remain resolved against the current source directory. */
+  if (dir[0] == '/' || dir[0] == '\\' || (dir[0] != '\0' && dir[1] == ':')) {
+    fqdir = (char *)newstring((uchar *)dir, strlen(dir), 0);
+  } else {
+    fqdir = (char *)newstring((uchar *)includelist[NINCLUDE - 1].file, 256, 0);
+    strcat(fqdir, "/");
+    strcat(fqdir, dir);
+  }
 
   // avoid adding it more than once
   for (i = NINCLUDE - 2; i >= 0; i--) {

@@ -21,12 +21,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // cl_cgame.c  -- client system interaction with client game
 
-#include "client.h"
+#include "client/client.h"
 
-#include "../botlib/botlib.h"
+#include "botlib/botlib.h"
 
 #ifdef USE_MUMBLE
-#include "libmumblelink.h"
+#include "client/libmumblelink.h"
 #endif
 
 extern botlib_export_t *botlib_export;

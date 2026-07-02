@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 //
-#include "g_local.h"
+#include "game/g_local.h"
 
 void InitTrigger(gentity_t *self) {
   if (!VectorCompare(self->s.angles, vec3_origin))

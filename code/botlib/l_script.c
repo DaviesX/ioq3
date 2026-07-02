@@ -40,8 +40,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <limits.h>
 #include <string.h>
 #include <stdarg.h>
-#include "l_memory.h"
-#include "l_script.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_script.h"
 
 typedef enum { qfalse, qtrue } qboolean;
 
@@ -49,21 +49,21 @@ typedef enum { qfalse, qtrue } qboolean;
 
 #ifdef BOTLIB
 // include files for usage in the bot library
-#include "../qcommon/q_shared.h"
-#include "botlib.h"
-#include "be_interface.h"
-#include "l_script.h"
-#include "l_memory.h"
-#include "l_log.h"
-#include "l_libvar.h"
+#include "qcommon/q_shared.h"
+#include "botlib/botlib.h"
+#include "botlib/be_interface.h"
+#include "botlib/l_script.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_log.h"
+#include "botlib/l_libvar.h"
 #endif // BOTLIB
 
 #ifdef MEQCC
 // include files for usage in MrElusive's QuakeC Compiler
 #include "qcc.h"
-#include "l_script.h"
-#include "l_memory.h"
-#include "l_log.h"
+#include "botlib/l_script.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_log.h"
 
 #define qtrue true
 #define qfalse false

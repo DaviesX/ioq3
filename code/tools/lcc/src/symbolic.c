@@ -1,6 +1,6 @@
 #include <time.h>
 #include <ctype.h>
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 #define I(f) s_##f
 

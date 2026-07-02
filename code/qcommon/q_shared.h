@@ -160,7 +160,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifdef Q3_VM
 
-#include "../game/bg_lib.h"
+#include "game/bg_lib.h"
 
 typedef int intptr_t;
 
@@ -189,7 +189,7 @@ int Q_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 
 #endif
 
-#include "q_platform.h"
+#include "qcommon/q_platform.h"
 
 //=============================================================
 
@@ -995,7 +995,7 @@ COLLISION DETECTION
 ==============================================================
 */
 
-#include "surfaceflags.h" // shared with the q3map utility
+#include "qcommon/surfaceflags.h" // shared with the q3map utility
 
 // plane types are used to speed some tests
 // 0-2 are axial planes

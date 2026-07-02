@@ -23,9 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // bg_pmove.c -- both games player movement code
 // takes a playerstate and a usercmd as input and returns a modifed playerstate
 
-#include "../qcommon/q_shared.h"
-#include "bg_public.h"
-#include "bg_local.h"
+#include "qcommon/q_shared.h"
+#include "game/bg_public.h"
+#include "game/bg_local.h"
 
 pmove_t *pm;
 pml_t pml;

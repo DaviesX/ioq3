@@ -21,13 +21,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include "snd_local.h"
-#include "snd_codec.h"
-#include "client.h"
+#include "client/snd_local.h"
+#include "client/snd_codec.h"
+#include "client/client.h"
 
 #ifdef USE_OPENAL
 
-#include "qal.h"
+#include "client/qal.h"
 
 // Console variables specific to OpenAL
 cvar_t *s_alPrecache;

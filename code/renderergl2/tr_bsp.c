@@ -21,10 +21,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // tr_map.c
 
-#include "tr_local.h"
+#include "renderergl2/tr_local.h"
 
 #define JSON_IMPLEMENTATION
-#include "../qcommon/json.h"
+#include "qcommon/json.h"
 #undef JSON_IMPLEMENTATION
 
 /*

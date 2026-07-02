@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 #define I(f) null_##f
 
 static Node I(gen)(Node p) { return p; }

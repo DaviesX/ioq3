@@ -28,7 +28,7 @@ SETUP MENU
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define SETUP_MENU_VERTICAL_SPACING 34
 

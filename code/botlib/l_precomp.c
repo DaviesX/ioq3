@@ -45,31 +45,31 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <string.h>
 #include <stdarg.h>
 #include <time.h>
-#include "l_memory.h"
-#include "l_script.h"
-#include "l_precomp.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_script.h"
+#include "botlib/l_precomp.h"
 
 typedef enum { qfalse, qtrue } qboolean;
 #endif // SCREWUP
 
 #ifdef BOTLIB
-#include "../qcommon/q_shared.h"
-#include "botlib.h"
-#include "be_interface.h"
-#include "l_memory.h"
-#include "l_script.h"
-#include "l_precomp.h"
-#include "l_log.h"
+#include "qcommon/q_shared.h"
+#include "botlib/botlib.h"
+#include "botlib/be_interface.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_script.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_log.h"
 #endif // BOTLIB
 
 #ifdef MEQCC
 #include "qcc.h"
 #include "time.h" //time & ctime
 #include "math.h" //fabs
-#include "l_memory.h"
-#include "l_script.h"
-#include "l_precomp.h"
-#include "l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_script.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_log.h"
 
 #define qtrue true
 #define qfalse false
@@ -80,7 +80,7 @@ typedef enum { qfalse, qtrue } qboolean;
 #include "../bspc/qbsp.h"
 #include "../bspc/l_log.h"
 #include "../bspc/l_mem.h"
-#include "l_precomp.h"
+#include "botlib/l_precomp.h"
 
 #define qtrue true
 #define qfalse false
@@ -89,7 +89,7 @@ typedef enum { qfalse, qtrue } qboolean;
 #endif // BSPC
 
 #if defined(QUAKE) && !defined(BSPC)
-#include "l_utils.h"
+#include "botlib/l_utils.h"
 #endif // QUAKE
 
 // #define DEBUG_EVAL

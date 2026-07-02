@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static char rcsid[] = "main.c - faked rcsid";
 

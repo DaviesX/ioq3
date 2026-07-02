@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // cmodel.c -- model loading
 
-#include "cm_local.h"
+#include "qcommon/cm_local.h"
 
 #ifdef BSPC
 

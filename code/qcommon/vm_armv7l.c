@@ -42,7 +42,7 @@ ARMv7-A_ARMv7-R_DDI0406_2007.pdf
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "vm_local.h"
+#include "qcommon/vm_local.h"
 #define R0 0
 #define R1 1
 #define R2 2

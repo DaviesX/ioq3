@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // cl_parse.c  -- parse a message received from the server
 
-#include "client.h"
+#include "client/client.h"
 
 char *svc_strings[256] = {
     "svc_bad",

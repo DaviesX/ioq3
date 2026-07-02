@@ -21,17 +21,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // client.h -- primary header for client
 
-#include "../qcommon/q_shared.h"
-#include "../qcommon/qcommon.h"
-#include "../renderercommon/tr_public.h"
-#include "../ui/ui_public.h"
-#include "keys.h"
-#include "snd_public.h"
-#include "../cgame/cg_public.h"
-#include "../game/bg_public.h"
+#include "qcommon/q_shared.h"
+#include "qcommon/qcommon.h"
+#include "renderercommon/tr_public.h"
+#include "ui/ui_public.h"
+#include "client/keys.h"
+#include "client/snd_public.h"
+#include "cgame/cg_public.h"
+#include "game/bg_public.h"
 
 #ifdef USE_HTTP
-#include "cl_http.h"
+#include "client/cl_http.h"
 #endif /* USE_HTTP */
 
 #ifdef USE_VOIP

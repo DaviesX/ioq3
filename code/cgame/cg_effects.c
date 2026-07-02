@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // cg_effects.c -- these functions generate localentities, usually as a result
 // of event processing
 
-#include "cg_local.h"
+#include "cgame/cg_local.h"
 
 /*
 ==================

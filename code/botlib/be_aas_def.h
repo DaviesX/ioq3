@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "../qcommon/q_shared.h"
+#include "qcommon/q_shared.h"
 
 // debugging on
 #define AAS_DEBUG
@@ -259,17 +259,17 @@ typedef struct aas_s {
 
 #ifndef BSPCINCLUDE
 
-#include "be_aas_main.h"
-#include "be_aas_entity.h"
-#include "be_aas_sample.h"
-#include "be_aas_cluster.h"
-#include "be_aas_reach.h"
-#include "be_aas_route.h"
-#include "be_aas_routealt.h"
-#include "be_aas_debug.h"
-#include "be_aas_file.h"
-#include "be_aas_optimize.h"
-#include "be_aas_bsp.h"
-#include "be_aas_move.h"
+#include "botlib/be_aas_main.h"
+#include "botlib/be_aas_entity.h"
+#include "botlib/be_aas_sample.h"
+#include "botlib/be_aas_cluster.h"
+#include "botlib/be_aas_reach.h"
+#include "botlib/be_aas_route.h"
+#include "botlib/be_aas_routealt.h"
+#include "botlib/be_aas_debug.h"
+#include "botlib/be_aas_file.h"
+#include "botlib/be_aas_optimize.h"
+#include "botlib/be_aas_bsp.h"
+#include "botlib/be_aas_move.h"
 
 #endif // BSPCINCLUDE

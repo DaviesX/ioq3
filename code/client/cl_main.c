@@ -21,14 +21,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // cl_main.c  -- client main loop
 
-#include "client.h"
+#include "client/client.h"
 #include <limits.h>
 
-#include "../sys/sys_local.h"
-#include "../sys/sys_loadlib.h"
+#include "sys/sys_local.h"
+#include "sys/sys_loadlib.h"
 
 #ifdef USE_MUMBLE
-#include "libmumblelink.h"
+#include "client/libmumblelink.h"
 #endif
 
 #ifdef USE_MUMBLE

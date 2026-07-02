@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION ${CMAKE_MINIMUM_REQUIRED_VERSION})
 project(qvm_tools LANGUAGES C)
 
+# Includes are written relative to the code/ root (e.g. "tools/lcc/cpp/cpp.h").
+include_directories(${SOURCE_DIR})
+
 include(utils/set_output_dirs)
 
 set(Q3ASM_SOURCES

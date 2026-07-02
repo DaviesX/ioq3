@@ -21,9 +21,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // tr_init.c -- functions that are not called every frame
 
-#include "tr_local.h"
+#include "renderergl2/tr_local.h"
 
-#include "tr_dsa.h"
+#include "renderergl2/tr_dsa.h"
 
 glconfig_t glConfig;
 glRefConfig_t glRefConfig;

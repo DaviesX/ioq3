@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 #include <stdio.h>
 
 #define equalp(x) v.x == p->sym.u.c.v.x

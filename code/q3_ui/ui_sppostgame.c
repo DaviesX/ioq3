@@ -28,7 +28,7 @@ SINGLE PLAYER POSTGAME MENU
 =============================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define MAX_SCOREBOARD_CLIENTS 8
 

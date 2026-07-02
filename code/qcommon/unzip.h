@@ -54,7 +54,7 @@ extern "C" {
 #else
 #include <zlib.h>
 #endif
-#include "ioapi.h"
+#include "qcommon/ioapi.h"
 
 #define NOUNCRYPT
 

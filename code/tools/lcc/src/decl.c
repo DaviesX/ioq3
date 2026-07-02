@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 #define add(x, n)                                                              \
   (x > inttype->u.sym->u.limits.max.i - (n) ? (overflow = 1, x) : x + (n))

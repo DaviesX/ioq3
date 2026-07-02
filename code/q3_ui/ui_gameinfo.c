@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // gameinfo.c
 //
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 //
 // arena and bot info

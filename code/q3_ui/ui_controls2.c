@@ -28,7 +28,7 @@ CONTROLS MENU
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define ART_BACK0 "menu/art/back_0"
 #define ART_BACK1 "menu/art/back_1"

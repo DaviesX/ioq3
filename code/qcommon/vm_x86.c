@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #if defined(__i386__) || defined(__x86_64__) || defined(_M_IX86) ||            \
     defined(_M_X64)
 
-#include "vm_local.h"
+#include "qcommon/vm_local.h"
 
 #ifdef _WIN32
 #include <windows.h>

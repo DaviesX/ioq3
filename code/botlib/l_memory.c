@@ -29,11 +29,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "../qcommon/q_shared.h"
-#include "botlib.h"
-#include "l_log.h"
-#include "l_memory.h"
-#include "be_interface.h"
+#include "qcommon/q_shared.h"
+#include "botlib/botlib.h"
+#include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/be_interface.h"
 
 // #define MEMDEBUG
 // #define MEMORYMANEGER

@@ -32,7 +32,7 @@ USER INTERFACE MAIN
 // demo ui files to build
 // #define PRE_RELEASE_TADEMO
 
-#include "ui_local.h"
+#include "ui/ui_local.h"
 
 uiInfo_t uiInfo;
 

@@ -11,7 +11,7 @@ prof.out format:
     file# x y count
     ... (#points-1 times)
 */
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 struct count { /* count data: */
   int x, y;    /* source coordinate */

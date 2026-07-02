@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define __Q3_VM_MATH
 #endif
 
-#include "q_shared.h"
+#include "qcommon/q_shared.h"
 
 vec3_t vec3_origin = {0.0f, 0.0f, 0.0f};
 vec3_t axisDefault[3] = {

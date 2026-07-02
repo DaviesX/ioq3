@@ -101,7 +101,7 @@ typedef union {
   unsigned int ui;
 } floatint_t;
 
-#include "config.h"
+#include "tools/lcc/src/config.h"
 typedef struct metrics {
   unsigned char size, align, outofline;
 } Metrics;
@@ -171,7 +171,7 @@ typedef struct {
 enum {
 #define xx(a, b, c, d, e, f, g) a = b,
 #define yy(a, b, c, d, e, f, g)
-#include "token.h"
+#include "tools/lcc/src/token.h"
   LAST
 };
 struct node {

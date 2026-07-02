@@ -23,9 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // cg_consolecmds.c -- text commands typed in at the local console, or
 // executed by a key binding
 
-#include "cg_local.h"
+#include "cgame/cg_local.h"
 #ifdef MISSIONPACK
-#include "../ui/ui_shared.h"
+#include "ui/ui_shared.h"
 extern menuDef_t *menuScoreboard;
 #endif
 

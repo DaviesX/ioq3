@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "lburg.h"
+#include "tools/lcc/lburg/lburg.h"
 
 static char rcsid[] = "lburg.c - faked rcsid";
 

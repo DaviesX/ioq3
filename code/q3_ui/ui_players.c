@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // ui_players.c
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define UI_TIMER_GESTURE 2300
 #define UI_TIMER_JUMP 1000

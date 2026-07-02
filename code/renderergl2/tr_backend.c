@@ -19,9 +19,9 @@ along with Quake III Arena source code; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
-#include "tr_local.h"
-#include "tr_fbo.h"
-#include "tr_dsa.h"
+#include "renderergl2/tr_local.h"
+#include "renderergl2/tr_fbo.h"
+#include "renderergl2/tr_dsa.h"
 
 backEndData_t *backEndData;
 backEndState_t backEnd;

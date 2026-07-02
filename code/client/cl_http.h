@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __CL_HTTP_H__
 #define __CL_HTTP_H__
 
-#include "../qcommon/q_shared.h"
+#include "qcommon/q_shared.h"
 
 qboolean CL_HTTP_Init(void);
 qboolean CL_HTTP_Available(void);

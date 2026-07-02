@@ -29,8 +29,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "snd_local.h"
-#include "snd_codec.h"
+#include "client/snd_local.h"
+#include "client/snd_codec.h"
 
 #define DEF_COMSOUNDMEGS "8"
 

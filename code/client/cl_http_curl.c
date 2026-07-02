@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifdef USE_HTTP
 
-#include "client.h"
+#include "client/client.h"
 
 #ifdef USE_INTERNAL_CURL_HEADERS
 #include "curl/curl.h"
@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define ALTERNATE_CURL_LIB "libcurl.so.3"
 #endif
 
-#include "../sys/sys_loadlib.h"
+#include "sys/sys_loadlib.h"
 
 cvar_t *cl_cURLLib;
 

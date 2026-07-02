@@ -29,9 +29,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "../qcommon/q_shared.h"
-#include "l_memory.h"
-#include "l_libvar.h"
+#include "qcommon/q_shared.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_libvar.h"
 
 // list with library variables
 libvar_t *libvarlist = NULL;

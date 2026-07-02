@@ -28,7 +28,7 @@ START SERVER MENU *****
 =============================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define GAMESERVER_BACK0 "menu/art/back_0"
 #define GAMESERVER_BACK1 "menu/art/back_1"

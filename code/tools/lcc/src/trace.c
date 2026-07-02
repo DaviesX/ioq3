@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static char *fmt, *fp, *fmtend; /* format string, current & limit pointer */
 static Tree args;               /* printf arguments */

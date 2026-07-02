@@ -28,7 +28,7 @@ MULTIPLAYER MENU (SERVER BROWSER)
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define MAX_GLOBALSERVERS 128
 #define MAX_PINGREQUESTS 32

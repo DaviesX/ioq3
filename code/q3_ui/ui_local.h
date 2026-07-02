@@ -23,15 +23,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __UI_LOCAL_H__
 #define __UI_LOCAL_H__
 
-#include "../qcommon/q_shared.h"
-#include "../renderercommon/tr_types.h"
+#include "qcommon/q_shared.h"
+#include "renderercommon/tr_types.h"
 // NOTE: include the ui_public.h from the new UI
-#include "../ui/ui_public.h"
+#include "ui/ui_public.h"
 // redefine to old API version
 #undef UI_API_VERSION
 #define UI_API_VERSION 4
-#include "../client/keycodes.h"
-#include "../game/bg_public.h"
+#include "client/keycodes.h"
+#include "game/bg_public.h"
 
 typedef void (*voidfunc_f)(void);
 

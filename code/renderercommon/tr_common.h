@@ -22,9 +22,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef TR_COMMON_H
 #define TR_COMMON_H
 
-#include "../qcommon/q_shared.h"
-#include "../renderercommon/tr_public.h"
-#include "qgl.h"
+#include "qcommon/q_shared.h"
+#include "renderercommon/tr_public.h"
+#include "renderercommon/qgl.h"
 
 typedef enum {
   IMGTYPE_COLORALPHA, // for color, lightmap, diffuse, and specular

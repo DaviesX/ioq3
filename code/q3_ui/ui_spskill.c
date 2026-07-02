@@ -28,7 +28,7 @@ SINGLE PLAYER SKILL MENU
 =============================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define ART_FRAME "menu/art/cut_frame"
 #define ART_BACK "menu/art/back_0.tga"

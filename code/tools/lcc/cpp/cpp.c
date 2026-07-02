@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdarg.h>
-#include "cpp.h"
+#include "tools/lcc/cpp/cpp.h"
 
 char rcsid[] = "cpp.c - faked rcsid";
 

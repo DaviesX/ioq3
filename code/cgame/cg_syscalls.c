@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #error "Do not use in VM build"
 #endif
 
-#include "cg_local.h"
+#include "cgame/cg_local.h"
 
 static intptr_t(QDECL *syscall)(intptr_t arg,
                                 ...) = (intptr_t(QDECL *)(intptr_t, ...)) - 1;

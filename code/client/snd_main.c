@@ -21,10 +21,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include "client.h"
-#include "snd_codec.h"
-#include "snd_local.h"
-#include "snd_public.h"
+#include "client/client.h"
+#include "client/snd_codec.h"
+#include "client/snd_local.h"
+#include "client/snd_public.h"
 
 cvar_t *s_volume;
 cvar_t *s_muted;

@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // console.c
 
-#include "client.h"
+#include "client/client.h"
 
 #define DEFAULT_CONSOLE_WIDTH 78
 int g_console_field_width = DEFAULT_CONSOLE_WIDTH;

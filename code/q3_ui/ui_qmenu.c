@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
         Quake's menu framework system.
 **********************************************************************/
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 sfxHandle_t menu_in_sound;
 sfxHandle_t menu_move_sound;

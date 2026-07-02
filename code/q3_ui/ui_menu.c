@@ -28,7 +28,7 @@ MAIN MENU
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define ID_SINGLEPLAYER 10
 #define ID_MULTIPLAYER 11

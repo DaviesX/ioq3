@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // cg_info.c -- display information while data is being loading
 
-#include "cg_local.h"
+#include "cgame/cg_local.h"
 
 #define MAX_LOADING_PLAYER_ICONS 16
 #define MAX_LOADING_ITEM_ICONS 26

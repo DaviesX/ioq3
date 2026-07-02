@@ -23,9 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Use EnumProcesses() with Windows XP compatibility
 #define PSAPI_VERSION 1
 
-#include "../qcommon/q_shared.h"
-#include "../qcommon/qcommon.h"
-#include "sys_local.h"
+#include "qcommon/q_shared.h"
+#include "qcommon/qcommon.h"
+#include "sys/sys_local.h"
 
 #include <windows.h>
 #include <lmerr.h>

@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 struct block {
   struct block *next;
   char *limit;

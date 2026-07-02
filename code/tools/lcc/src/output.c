@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 static char *outs(const char *str, FILE *f, char *bp) {
   if (f)
@@ -129,7 +129,7 @@ void vfprint(FILE *f, char *bp, const char *fmt, va_list ap) {
         static char *tokens[] = {
 #define xx(a, b, c, d, e, f, g) g,
 #define yy(a, b, c, d, e, f, g) g,
-#include "token.h"
+#include "tools/lcc/src/token.h"
         };
         assert(tokens[t & 0177]);
         bp = outs(tokens[t & 0177], f, bp);

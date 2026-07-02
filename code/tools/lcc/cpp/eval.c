@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "cpp.h"
+#include "tools/lcc/cpp/cpp.h"
 
 #define NSTAK 32
 #define SGN 0

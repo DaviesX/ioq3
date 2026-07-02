@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include "qasm-inline.h"
-#include "../qcommon/q_shared.h"
+#include "asm/qasm-inline.h"
+#include "qcommon/q_shared.h"
 
 #if defined(__i386__) || defined(__x86_64__)
 

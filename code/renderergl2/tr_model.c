@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // tr_models.c -- model loading and caching
 
-#include "tr_local.h"
+#include "renderergl2/tr_local.h"
 
 #define LL(x) x = LittleLong(x)
 

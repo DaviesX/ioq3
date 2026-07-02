@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 
 #define readsreg(p) (generic((p)->op) == INDIR && (p)->kids[0]->op == VREG + P)
 #define setsrc(d)                                                              \

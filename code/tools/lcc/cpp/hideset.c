@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cpp.h"
+#include "tools/lcc/cpp/cpp.h"
 
 /*
  * A hideset is a null-terminated array of Nlist pointers.

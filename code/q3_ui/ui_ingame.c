@@ -28,7 +28,7 @@ INGAME MENU
 =======================================================================
 */
 
-#include "ui_local.h"
+#include "q3_ui/ui_local.h"
 
 #define INGAME_FRAME "menu/art/addbotframe"
 // #define INGAME_FRAME					"menu/art/cut_frame"

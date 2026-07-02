@@ -1,4 +1,4 @@
-#include "c.h"
+#include "tools/lcc/src/c.h"
 #include <float.h>
 
 #define foldcnst(TYPE, VAR, OP)                                                \
