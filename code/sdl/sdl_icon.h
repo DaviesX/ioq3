@@ -1,5 +1,8 @@
 /* GIMP RGBA C-Source image dump (sdl_icon.h) */
 
+#ifndef SDL_SDL_ICON_H_INCLUDED
+#define SDL_SDL_ICON_H_INCLUDED
+
 static const struct {
   unsigned int width;
   unsigned int height;
@@ -131,3 +134,5 @@ static const struct {
     "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
     "\0\0\0\0\0\0\0\0",
 };
+
+#endif // SDL_SDL_ICON_H_INCLUDED

@@ -1,6 +1,10 @@
 /*
-xx(symbol,	value,	prec,	op,	optree,	kind,	string)
-*/
+ * X-macro token list: intentionally #included multiple times (e.g. twice in
+ * expr.c) with xx()/yy() redefined between inclusions. It must therefore NOT
+ * have an include guard.
+ *
+ * xx(symbol,	value,	prec,	op,	optree,	kind,	string)
+ */
 yy(0, 0, 0, 0, 0, 0, 0) xx(FLOAT, 1, 0, 0, 0, CHAR,
                            "float") xx(DOUBLE, 2, 0, 0, 0, CHAR, "double")
     xx(CHAR, 3, 0, 0, 0, CHAR, "char") xx(SHORT, 4, 0, 0, 0, CHAR, "short") xx(

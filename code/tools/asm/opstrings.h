@@ -19,6 +19,9 @@ along with Quake III Arena source code; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
+#ifndef TOOLS_ASM_OPSTRINGS_H_INCLUDED
+#define TOOLS_ASM_OPSTRINGS_H_INCLUDED
+
 {"BREAK", OP_BREAK},
 
     {"CNSTF4", OP_CONST}, {"CNSTI4", OP_CONST}, {"CNSTP4", OP_CONST},
@@ -119,3 +122,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
     {"LOADB4", OP_UNDEF}, {"LOADF4", OP_UNDEF}, {"LOADI4", OP_UNDEF},
     {"LOADP4", OP_UNDEF}, {"LOADU4", OP_UNDEF},
+
+#endif // TOOLS_ASM_OPSTRINGS_H_INCLUDED
