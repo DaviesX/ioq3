@@ -29,22 +29,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_libvar.h"
-#include "botlib/l_utils.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
 #include "botlib/aasfile.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
 #include "botlib/be_aas_funcs.h"
 #include "botlib/be_interface.h"
+#include "botlib/botlib.h"
+#include "botlib/l_libvar.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "botlib/l_utils.h"
+#include "qcommon/q_shared.h"
 
-#include "botlib/be_ea.h"
 #include "botlib/be_ai_goal.h"
 #include "botlib/be_ai_move.h"
+#include "botlib/be_ea.h"
 
 // #define DEBUG_AI_MOVE
 // #define DEBUG_ELEVATOR
@@ -1893,7 +1893,7 @@ bot_moveresult_t BotTravel_Jump(bot_movestate_t *ms,
   // if just before the reachability start
   if (DotProduct(dir1, dir2) < -0.8 || dist2 < 5) {
     //		botimport.Print(PRT_MESSAGE, "between jump start and run start
-    //point\n");
+    // point\n");
     hordir[0] = reach->end[0] - ms->origin[0];
     hordir[1] = reach->end[1] - ms->origin[1];
     hordir[2] = 0;
@@ -3211,8 +3211,8 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
           ms->lastareanum, ms->areanum); } //end if*/
         } // end if
 #endif    // DEBUG
-       // if the goal area changed or the reachability timed out
-       // or the area changed
+          // if the goal area changed or the reachability timed out
+          // or the area changed
         if (ms->lastgoalareanum != goal->areanum ||
             ms->reachability_time < AAS_Time() ||
             ms->lastareanum != ms->areanum) {
@@ -3260,7 +3260,7 @@ void BotMoveToGoal(bot_moveresult_t *result, int movestate, bot_goal_t *goal,
         botimport.Print(PRT_MESSAGE, "goal not reachable\n");
         Com_Memset(&reach, 0, sizeof(aas_reachability_t)); // make compiler
                                                            // happy
-      } // end else
+      }                                                    // end else
       if (botDeveloper) {
         // if still going for the same goal
         if (ms->lastgoalareanum == goal->areanum) {

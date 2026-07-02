@@ -1,7 +1,7 @@
+#include "tools/lcc/cpp/cpp.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tools/lcc/cpp/cpp.h"
 
 /*
  * do a macro definition.  tp points to the name being defined in the line

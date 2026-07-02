@@ -21,6 +21,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // make sure this is the same character as we use in chats in g_cmd.c
+#ifndef GAME_MATCH_H_INCLUDED
+#define GAME_MATCH_H_INCLUDED
+
 #define EC "\x19"
 
 // match template contexts
@@ -129,3 +132,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define TIME 6
 #define NAME 6
 #define MORE 6
+
+#endif // GAME_MATCH_H_INCLUDED

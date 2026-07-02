@@ -20,6 +20,9 @@
 
 */
 
+#ifndef CLIENT_LIBMUMBLELINK_H_INCLUDED
+#define CLIENT_LIBMUMBLELINK_H_INCLUDED
+
 int mumble_link(const char *name);
 int mumble_islinked(void);
 void mumble_update_coordinates(float fPosition[3], float fFront[3],
@@ -35,3 +38,5 @@ void mumble_set_context(const unsigned char *context, size_t len);
 void mumble_set_identity(const char *identity);
 
 void mumble_unlink(void);
+
+#endif // CLIENT_LIBMUMBLELINK_H_INCLUDED

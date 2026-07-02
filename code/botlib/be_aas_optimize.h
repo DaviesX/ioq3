@@ -29,4 +29,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_OPTIMIZE_H_INCLUDED
+#define BOTLIB_BE_AAS_OPTIMIZE_H_INCLUDED
+
 void AAS_Optimize(void);
+
+#endif // BOTLIB_BE_AAS_OPTIMIZE_H_INCLUDED

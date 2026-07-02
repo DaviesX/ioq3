@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // g_public.h -- game module information visible to server
 
+#ifndef GAME_G_PUBLIC_H_INCLUDED
+#define GAME_G_PUBLIC_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define GAME_API_VERSION 8
 
 // entity->svFlags
@@ -150,7 +154,7 @@ typedef enum {
   G_LOCATE_GAME_DATA, // ( gentity_t *gEnts, int numGEntities, int
                       // sizeofGEntity_t,
   //							playerState_t *clients,
-  //int sizeofGameClient );
+  // int sizeofGameClient );
   // the game needs to let the server system know where and how big the
   // gentities
   // are, so it can look at them directly without going through an interface
@@ -440,3 +444,5 @@ typedef enum {
 
   BOTAI_START_FRAME // ( int time );
 } gameExport_t;
+
+#endif // GAME_G_PUBLIC_H_INCLUDED

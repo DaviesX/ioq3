@@ -2,4 +2,16 @@
 # Google C++ Style Guide -- https://google.github.io/styleguide/cppguide.html
 BasedOnStyle: LLVM
 Standard: c++20
-SortIncludes: Never
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve
+# Some Windows SDK headers must follow <winsock2.h>/<windows.h>; give those a
+# lower priority so alphabetical sorting keeps them ahead of dependents.
+IncludeCategories:
+  - Regex: '^"'
+    Priority: 1
+  - Regex: '^<winsock2\.h>'
+    Priority: 2
+  - Regex: '^<windows\.h>'
+    Priority: 3
+  - Regex: '.*'
+    Priority: 4

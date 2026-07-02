@@ -21,14 +21,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // client.h -- primary header for client
 
+#ifndef CLIENT_CLIENT_H_INCLUDED
+#define CLIENT_CLIENT_H_INCLUDED
+
+#include "cgame/cg_public.h"
+#include "client/keys.h"
+#include "client/snd_public.h"
+#include "game/bg_public.h"
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
 #include "renderercommon/tr_public.h"
 #include "ui/ui_public.h"
-#include "client/keys.h"
-#include "client/snd_public.h"
-#include "cgame/cg_public.h"
-#include "game/bg_public.h"
 
 #ifdef USE_HTTP
 #include "client/cl_http.h"
@@ -103,7 +106,7 @@ typedef struct {
   qboolean extrapolatedSnapshot; // set if any cgame frame has been forced to
                                  // extrapolate cleared when CL_AdjustTimeDelta
                                  // looks at it
-  qboolean newSnapshots; // set on parse of any valid packet
+  qboolean newSnapshots;         // set on parse of any valid packet
 
   gameState_t gameState;   // configstrings
   char mapname[MAX_QPATH]; // extracted from CS_SERVERINFO
@@ -655,3 +658,5 @@ qboolean CL_VideoRecording(void);
 // cl_main.c
 //
 void CL_WriteDemoMessage(msg_t *msg, int headerBytes);
+
+#endif // CLIENT_CLIENT_H_INCLUDED

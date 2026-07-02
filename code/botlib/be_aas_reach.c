@@ -29,18 +29,18 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
+#include "botlib/aasfile.h"
+#include "botlib/be_aas.h"
+#include "botlib/be_aas_def.h"
+#include "botlib/be_aas_funcs.h"
+#include "botlib/botlib.h"
+#include "botlib/l_libvar.h"
 #include "botlib/l_log.h"
 #include "botlib/l_memory.h"
-#include "botlib/l_script.h"
-#include "botlib/l_libvar.h"
 #include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
 #include "botlib/l_struct.h"
-#include "botlib/aasfile.h"
-#include "botlib/botlib.h"
-#include "botlib/be_aas.h"
-#include "botlib/be_aas_funcs.h"
-#include "botlib/be_aas_def.h"
+#include "qcommon/q_shared.h"
 
 extern int Sys_MilliSeconds(void);
 
@@ -1179,7 +1179,7 @@ int AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge(int area1num,
           // if the two projected edge lines have no overlap
           if (x2 <= x3 || x4 <= x1) {
             //						Log_Write("lines no
-            //overlap: from area %d to %d\r\n", area1num, area2num);
+            // overlap: from area %d to %d\r\n", area1num, area2num);
             continue;
           } // end if
           // if the two lines fully overlap
@@ -1429,7 +1429,7 @@ int AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge(int area1num,
   //        |
   //~~~~~~~~|         higher than step height lower than barrier height
   //--------|         and a thin layer of water in the area to jump from ->
-  //TRAVEL_BARRIERJUMP
+  // TRAVEL_BARRIERJUMP
   //
   // check for a barrier jump reachability
   if (ground_foundreach) {
@@ -1614,9 +1614,10 @@ void VectorMiddle(vec3_t v1, vec3_t v2, vec3_t middle) {
 // Parameter:			beststart1		start of the range of
 // points on edge v1-v2
 //						beststart2		end of
-//the range of points  on edge v1-v2 						bestend1		start of the range of
-//points on edge v3-v4 						bestend2		end of the range of points  on edge
-//v3-v4 						bestdist		best distance so far
+// the range of points  on edge v1-v2
+// bestend1		start of the range of points on edge v3-v4
+// bestend2		end of the range of points  on edge v3-v4
+// bestdist		best distance so far
 // Returns:				-
 // Changes Globals:		-
 //===========================================================================
@@ -2133,7 +2134,7 @@ int AAS_Reachability_Jump(int area1num, int area2num) {
   VectorMiddle(bestend, bestend2, bestend);
   if (bestdist > 4 && bestdist < maxjumpdistance) {
     //		Log_Write("shortest distance between %d and %d is %f\r\n",
-    //area1num, area2num, bestdist);
+    // area1num, area2num, bestdist);
     // if very close and almost no height difference then the bot can walk
     if (bestdist <= 48 && fabs(beststart[2] - bestend[2]) < 8) {
       speed = 400;
@@ -2527,7 +2528,7 @@ int AAS_Reachability_Ladder(int area1num, int area2num) {
         Log_Write("trace from area %d started in solid\r\n", area1num);
       } // end if
 #endif  // REACH_DEBUG
-       //
+        //
       trace.endpos[2] += 1;
       area2num = AAS_PointAreaNum(trace.endpos);
       //
@@ -3442,9 +3443,9 @@ void AAS_Reachability_FuncBobbing(void) {
           VectorCopy(endreach->end, lreach->end);
 #ifndef BSPC
 //					AAS_DrawArrow(lreach->start,
-//lreach->end, LINECOLOR_BLUE, LINECOLOR_YELLOW);
+// lreach->end, LINECOLOR_BLUE, LINECOLOR_YELLOW);
 //					AAS_PermanentLine(lreach->start,
-//lreach->end, 1);
+// lreach->end, 1);
 #endif
           lreach->traveltype = TRAVEL_FUNCBOB;
           lreach->traveltype |= AAS_TravelFlagsForTeam(ent);
@@ -4545,7 +4546,7 @@ void AAS_InitReachability(void) {
   // start with area 1 because area zero is a dummy
   aasworld.numreachabilityareas = 1;
   ////aasworld.numreachabilityareas = aasworld.numareas + 1;		//only
-  ///calculate entity reachabilities
+  /// calculate entity reachabilities
   // setup the heap with reachability links
   AAS_SetupReachabilityHeap();
   // allocate area reachability link array

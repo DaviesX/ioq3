@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // Microsoft Developer Studio generated include file.
 // Used by winquake.rc
 //
+#ifndef SYS_WIN_RESOURCE_H_INCLUDED
+#define SYS_WIN_RESOURCE_H_INCLUDED
+
 #define IDS_STRING1 1
 #define IDI_ICON1 1
 #define IDB_BITMAP1 1
@@ -42,3 +45,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define _APS_NEXT_SYMED_VALUE 101
 #endif
 #endif
+
+#endif // SYS_WIN_RESOURCE_H_INCLUDED

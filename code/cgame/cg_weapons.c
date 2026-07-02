@@ -812,7 +812,7 @@ void CG_RegisterWeapon(int weaponNum) {
 
   case WP_PLASMAGUN:
     //		weaponInfo->missileModel =
-    //cgs.media.invulnerabilityPowerupModel;
+    // cgs.media.invulnerabilityPowerupModel;
     weaponInfo->missileTrailFunc = CG_PlasmaTrail;
     weaponInfo->missileSound =
         trap_S_RegisterSound("sound/weapons/plasma/lasfly.wav", qfalse);

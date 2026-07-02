@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <SDL.h>
 #endif
 
-#include "renderergl2/tr_local.h"
 #include "renderergl2/tr_dsa.h"
+#include "renderergl2/tr_local.h"
 
 void GLimp_InitExtraExtensions(void) {
   char *extension;

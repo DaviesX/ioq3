@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #ifndef __TR_EXTRAMATH_H__
 #define __TR_EXTRAMATH_H__
+#include "qcommon/q_shared.h"
 
 typedef vec_t mat4_t[16];
 typedef int ivec2_t[2];

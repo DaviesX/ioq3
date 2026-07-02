@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AI_WEIGHT_H_INCLUDED
+#define BOTLIB_BE_AI_WEIGHT_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define WT_BALANCE 1
 #define MAX_WEIGHTS 128
 
@@ -80,3 +84,5 @@ void InterbreedWeightConfigs(weightconfig_t *config1, weightconfig_t *config2,
                              weightconfig_t *configout);
 // frees cached weight configurations
 void BotShutdownWeights(void);
+
+#endif // BOTLIB_BE_AI_WEIGHT_H_INCLUDED

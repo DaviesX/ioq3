@@ -61,6 +61,10 @@ degenerate a few triangles.  Completely degenerate rows and columns are handled
 properly.
 */
 
+#ifndef QCOMMON_CM_PATCH_H_INCLUDED
+#define QCOMMON_CM_PATCH_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define MAX_FACETS 1024
 #define MAX_PATCH_PLANES 4096
 
@@ -103,3 +107,5 @@ typedef struct {
 
 struct patchCollide_s *CM_GeneratePatchCollide(int width, int height,
                                                vec3_t *points);
+
+#endif // QCOMMON_CM_PATCH_H_INCLUDED

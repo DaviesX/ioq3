@@ -484,7 +484,7 @@ float Q_rsqrt(float number) {
   y = t.f;
   y = y * (threehalfs - (x2 * y * y)); // 1st iteration
   //	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can
-  //be removed
+  // be removed
 
   return y;
 }

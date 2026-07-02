@@ -24,12 +24,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define TR_LOCAL_H
 
 #include "qcommon/q_shared.h"
-#include "qcommon/qfiles.h"
 #include "qcommon/qcommon.h"
-#include "renderercommon/tr_public.h"
-#include "renderercommon/tr_common.h"
+#include "qcommon/qfiles.h"
 #include "renderercommon/iqm.h"
 #include "renderercommon/qgl.h"
+#include "renderercommon/tr_common.h"
+#include "renderercommon/tr_public.h"
 
 #define GLE(ret, name, ...) extern name##proc *qgl##name;
 QGL_1_1_PROCS;

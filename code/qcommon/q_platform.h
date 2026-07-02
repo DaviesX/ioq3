@@ -225,8 +225,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
 
-#include <sys/types.h>
 #include <machine/endian.h>
+#include <sys/types.h>
 
 #ifndef __BSD__
 #define __BSD__

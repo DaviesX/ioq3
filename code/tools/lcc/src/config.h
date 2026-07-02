@@ -1,3 +1,6 @@
+#ifndef TOOLS_LCC_SRC_CONFIG_H_INCLUDED
+#define TOOLS_LCC_SRC_CONFIG_H_INCLUDED
+
 typedef struct {
   unsigned char max_unaligned_load;
   Symbol (*rmap)(int);
@@ -98,3 +101,5 @@ extern unsigned emitbin(Node, int);
 #else
 #define debug(x) (void)(dflag && ((x), 0))
 #endif
+
+#endif // TOOLS_LCC_SRC_CONFIG_H_INCLUDED

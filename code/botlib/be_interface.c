@@ -29,28 +29,28 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_log.h"
-#include "botlib/l_libvar.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
-#include "botlib/aasfile.h"
-#include "botlib/botlib.h"
-#include "botlib/be_aas.h"
-#include "botlib/be_aas_funcs.h"
-#include "botlib/be_aas_def.h"
 #include "botlib/be_interface.h"
+#include "botlib/aasfile.h"
+#include "botlib/be_aas.h"
+#include "botlib/be_aas_def.h"
+#include "botlib/be_aas_funcs.h"
+#include "botlib/botlib.h"
+#include "botlib/l_libvar.h"
+#include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "qcommon/q_shared.h"
 
-#include "botlib/be_ea.h"
-#include "botlib/be_ai_weight.h"
+#include "botlib/be_ai_char.h"
+#include "botlib/be_ai_chat.h"
+#include "botlib/be_ai_gen.h"
 #include "botlib/be_ai_goal.h"
 #include "botlib/be_ai_move.h"
 #include "botlib/be_ai_weap.h"
-#include "botlib/be_ai_chat.h"
-#include "botlib/be_ai_char.h"
-#include "botlib/be_ai_gen.h"
+#include "botlib/be_ai_weight.h"
+#include "botlib/be_ea.h"
 
 // library globals in a structure
 botlib_globals_t botlibglobals;
@@ -179,8 +179,8 @@ int Export_BotLibShutdown(void) {
     return BLERR_LIBRARYNOTSETUP;
 #ifndef DEMO
     // DumpFileCRCs();
-#endif // DEMO
-       //
+#endif                     // DEMO
+                           //
   BotShutdownChatAI();     // be_ai_chat.c
   BotShutdownMoveAI();     // be_ai_move.c
   BotShutdownGoalAI();     // be_ai_goal.c
@@ -458,7 +458,7 @@ int BotExportTest(int parm0, char *parm1, vec3_t parm2, vec3_t parm3) {
   //	{
   //		botlibglobals.runai = !botlibglobals.runai;
   //		if (botlibglobals.runai) botimport.Print(PRT_MESSAGE, "started
-  //AI\n"); 		else botimport.Print(PRT_MESSAGE, "stopped AI\n");
+  // AI\n"); 		else botimport.Print(PRT_MESSAGE, "stopped AI\n");
   //* /
   /*
   goal.areanum = botlibglobals.goalareanum;
@@ -485,7 +485,7 @@ int BotExportTest(int parm0, char *parm1, vec3_t parm2, vec3_t parm3) {
   } //end else*/
   //		botimport.Print(PRT_MESSAGE, "travel time to goal = %d\n",
   //					AAS_AreaTravelTimeToGoalArea(area,
-  //origin, botlibglobals.goalareanum, TFL_DEFAULT));
+  // origin, botlibglobals.goalareanum, TFL_DEFAULT));
   //		botimport.Print(PRT_MESSAGE, "test rj from 703 to 716\n");
   //		AAS_Reachability_WeaponJump(703, 716);
   //	} //end if*/

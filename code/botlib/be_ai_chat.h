@@ -29,6 +29,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AI_CHAT_H_INCLUDED
+#define BOTLIB_BE_AI_CHAT_H_INCLUDED
+
 #define MAX_MESSAGE_SIZE 256
 #define MAX_CHATTYPE_NAME 32
 #define MAX_MATCHVARIABLES 8
@@ -112,3 +115,5 @@ int BotLoadChatFile(int chatstate, char *chatfile, char *chatname);
 void BotSetChatGender(int chatstate, int gender);
 // store the bot name in the chat state
 void BotSetChatName(int chatstate, char *name, int client);
+
+#endif // BOTLIB_BE_AI_CHAT_H_INCLUDED

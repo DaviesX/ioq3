@@ -30,5 +30,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef GAME_AI_VCMD_H_INCLUDED
+#define GAME_AI_VCMD_H_INCLUDED
+#include "game/ai_main.h"
+
 int BotVoiceChatCommand(bot_state_t *bs, int mode, char *voicechat);
 void BotVoiceChat_Defend(bot_state_t *bs, int client, int mode);
+
+#endif // GAME_AI_VCMD_H_INCLUDED

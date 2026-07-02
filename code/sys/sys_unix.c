@@ -24,23 +24,23 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "qcommon/qcommon.h"
 #include "sys/sys_local.h"
 
-#include <signal.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <dirent.h>
-#include <unistd.h>
-#include <sys/mman.h>
-#include <sys/time.h>
-#include <pwd.h>
-#include <libgen.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <fenv.h>
+#include <libgen.h>
+#include <pwd.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <sys/resource.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <time.h>
-#include <sys/resource.h>
+#include <unistd.h>
 
 qboolean stdinIsATTY;
 

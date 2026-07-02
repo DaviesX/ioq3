@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_FILE_H_INCLUDED
+#define BOTLIB_BE_AAS_FILE_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 // loads the AAS file with the given name
 int AAS_LoadAASFile(char *filename);
@@ -39,3 +43,5 @@ void AAS_DumpAASData(void);
 // print AAS file information
 void AAS_FileInfo(void);
 #endif // AASINTERN
+
+#endif // BOTLIB_BE_AAS_FILE_H_INCLUDED

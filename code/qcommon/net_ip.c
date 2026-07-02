@@ -70,15 +70,15 @@ static qboolean winsockInitialized = qfalse;
 #define _BSD_SOCKLEN_T_
 #endif
 
-#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <errno.h>
+#include <net/if.h>
 #include <netdb.h>
 #include <netinet/in.h>
-#include <arpa/inet.h>
-#include <net/if.h>
 #include <sys/ioctl.h>
-#include <sys/types.h>
+#include <sys/socket.h>
 #include <sys/time.h>
+#include <sys/types.h>
 #include <unistd.h>
 #if !defined(__sun) && !defined(__sgi)
 #include <ifaddrs.h>

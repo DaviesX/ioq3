@@ -30,8 +30,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_H_INCLUDED
+#define BOTLIB_BE_AAS_H_INCLUDED
+
 #ifndef MAX_STRINGFIELD
 #define MAX_STRINGFIELD 80
+#include "qcommon/q_shared.h"
 #endif
 
 // travel flags
@@ -211,3 +215,5 @@ typedef struct aas_predictroute_s {
   int numareas;       // number of areas predicted ahead
   int time;           // time predicted ahead (in hundredths of a sec)
 } aas_predictroute_t;
+
+#endif // BOTLIB_BE_AAS_H_INCLUDED

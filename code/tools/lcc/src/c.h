@@ -1,8 +1,11 @@
+#ifndef TOOLS_LCC_SRC_C_H_INCLUDED
+#define TOOLS_LCC_SRC_C_H_INCLUDED
+
 #include <assert.h>
+#include <limits.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 #include <string.h>
 
 #define NEW(p, a) ((p) = allocate(sizeof *(p), (a)))
@@ -708,3 +711,5 @@ extern Type qual(int, Type);
 extern void rmtypes(int);
 extern int ttob(Type);
 extern int variadic(Type);
+
+#endif // TOOLS_LCC_SRC_C_H_INCLUDED

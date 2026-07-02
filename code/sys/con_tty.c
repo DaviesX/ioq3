@@ -28,11 +28,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "client/client.h"
 #endif
 
-#include <unistd.h>
-#include <signal.h>
-#include <termios.h>
 #include <fcntl.h>
+#include <signal.h>
 #include <sys/time.h>
+#include <termios.h>
+#include <unistd.h>
 
 /*
 =============================================================

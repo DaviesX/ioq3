@@ -2,7 +2,7 @@
 #include <string.h>
 #define EPR                 fprintf(stderr,
 #define ERR(str, chr)                                                          \
-  if (opterr) {EPR "%s%c\n", str, chr);                \
+  if (opterr) {EPR "%s%c\n", str, chr);                                        \
   }
 int opterr = 1;
 int optind = 1;

@@ -1,6 +1,6 @@
 #include "tools/lcc/src/c.h"
-#include <float.h>
 #include <errno.h>
+#include <float.h>
 
 #define MAXTOKEN 32
 

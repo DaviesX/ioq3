@@ -663,7 +663,7 @@ static void UI_SPLevelMenu_MenuDraw(void) {
 
   //	fraglimit = atoi( Info_ValueForKey( levelMenuInfo.selectedArenaInfo,
   //"fraglimit" ) ); 	UI_DrawString( 18, 212, va("Frags %i", fraglimit) ,
-  //UI_LEFT|UI_SMALLFONT, color_orange );
+  // UI_LEFT|UI_SMALLFONT, color_orange );
 
   // draw bot opponents
   y += 24;

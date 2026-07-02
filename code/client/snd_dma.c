@@ -29,9 +29,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "client/snd_local.h"
-#include "client/snd_codec.h"
 #include "client/client.h"
+#include "client/snd_codec.h"
+#include "client/snd_local.h"
 
 void S_Update_(void);
 void S_Base_StopAllSounds(void);
@@ -388,7 +388,7 @@ void S_memoryLoad(sfx_t *sfx) {
   // load the sound file
   if (!S_LoadSound(sfx)) {
     //		Com_Printf( S_COLOR_YELLOW "WARNING: couldn't load sound: %s\n",
-    //sfx->soundName );
+    // sfx->soundName );
     sfx->defaultSound = qtrue;
   }
   sfx->inMemory = qtrue;
@@ -551,7 +551,8 @@ static void S_Base_StartSoundEx(vec3_t origin, int entityNum, int entchannel,
     if (ch->entnum == entityNum && ch->thesfx == sfx) {
       if (time - ch->allocTime < 50) {
         //				if (Cvar_VariableValue( "cg_showmiss" ))
-        //{ 					Com_Printf("double sound start\n");
+        //{ 					Com_Printf("double sound
+        // start\n");
         //				}
         return;
       }

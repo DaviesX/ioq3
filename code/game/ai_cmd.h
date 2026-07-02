@@ -30,7 +30,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef GAME_AI_CMD_H_INCLUDED
+#define GAME_AI_CMD_H_INCLUDED
+#include "game/ai_main.h"
+
 extern int notleader[MAX_CLIENTS];
 
 int BotMatchMessage(bot_state_t *bs, char *message);
 void BotPrintTeamGoal(bot_state_t *bs);
+
+#endif // GAME_AI_CMD_H_INCLUDED

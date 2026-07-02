@@ -29,20 +29,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
 #include "botlib/l_memory.h"
-#include "botlib/l_script.h"
 #include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
 #include "botlib/l_struct.h"
+#include "qcommon/q_shared.h"
 #ifndef BSPC
 #include "botlib/l_libvar.h"
 #endif
 #include "botlib/aasfile.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
-#include "botlib/be_interface.h"
-#include "botlib/be_aas_funcs.h"
 #include "botlib/be_aas_def.h"
+#include "botlib/be_aas_funcs.h"
+#include "botlib/be_interface.h"
+#include "botlib/botlib.h"
 
 // #define AAS_SAMPLE_DEBUG
 
@@ -493,9 +493,9 @@ aas_trace_t AAS_TraceClientBBox(vec3_t start, vec3_t end, int presencetype,
         return trace;
       } // end if
 #endif  // AAS_SAMPLE_DEBUG
-       // botimport.Print(PRT_MESSAGE, "areanum = %d, must be %d\n", -nodenum,
-       // AAS_PointAreaNum(start)); if can't enter the area because it hasn't
-       // got the right presence type
+        // botimport.Print(PRT_MESSAGE, "areanum = %d, must be %d\n", -nodenum,
+        // AAS_PointAreaNum(start)); if can't enter the area because it hasn't
+        // got the right presence type
       if (!(aasworld.areasettings[-nodenum].presencetype & presencetype)) {
         // if the start point is still the initial start point
         // NOTE: no need for epsilons because the points will be
@@ -662,7 +662,7 @@ aas_trace_t AAS_TraceClientBBox(vec3_t start, vec3_t end, int presencetype,
       cur_mid[2] = cur_start[2] + (cur_end[2] - cur_start[2]) * frac;
 
       //			AAS_DrawPlaneCross(cur_mid, plane->normal,
-      //plane->dist, plane->type, LINECOLOR_RED); side the front part of the
+      // plane->dist, plane->type, LINECOLOR_RED); side the front part of the
       // line is on
       side = front < 0;
       // first put the end part of the line on the stack (back side)
@@ -744,8 +744,8 @@ int AAS_TraceAreas(vec3_t start, vec3_t end, int *areas, vec3_t *points,
         return numareas;
       } // end if
 #endif  // AAS_SAMPLE_DEBUG
-       // botimport.Print(PRT_MESSAGE, "areanum = %d, must be %d\n", -nodenum,
-       // AAS_PointAreaNum(start));
+        // botimport.Print(PRT_MESSAGE, "areanum = %d, must be %d\n", -nodenum,
+        // AAS_PointAreaNum(start));
       areas[numareas] = -nodenum;
       if (points)
         VectorCopy(tstack_p->start, points[numareas]);
@@ -846,7 +846,7 @@ int AAS_TraceAreas(vec3_t start, vec3_t end, int *areas, vec3_t *points,
       cur_mid[2] = cur_start[2] + (cur_end[2] - cur_start[2]) * frac;
 
       //			AAS_DrawPlaneCross(cur_mid, plane->normal,
-      //plane->dist, plane->type, LINECOLOR_RED); side the front part of the
+      // plane->dist, plane->type, LINECOLOR_RED); side the front part of the
       // line is on
       side = front < 0;
       // first put the end part of the line on the stack (back side)
@@ -894,8 +894,8 @@ int AAS_TraceAreas(vec3_t start, vec3_t end, int *areas, vec3_t *points,
 // Parameter:				face		: face to test if the
 // point is in it
 //								pnormal	: normal
-//of the plane to use for the face 								point		: point to test if
-//inside face boundaries
+// of the plane to use for the face
+// point		: point to test if inside face boundaries
 // Returns:					qtrue if the point is within the
 // face boundaries Changes Globals:		-
 //===========================================================================

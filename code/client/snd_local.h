@@ -21,9 +21,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // snd_local.h -- private sound definations
 
+#ifndef CLIENT_SND_LOCAL_H_INCLUDED
+#define CLIENT_SND_LOCAL_H_INCLUDED
+
+#include "client/snd_public.h"
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
-#include "client/snd_public.h"
 
 #define PAINTBUFFER_SIZE 4096 // this is in samples
 
@@ -271,3 +274,5 @@ void S_PaintChannelFrom16_altivec(
     channel_t *ch, const sfx_t *sc, int count, int sampleOffset,
     int bufferOffset);
 #endif
+
+#endif // CLIENT_SND_LOCAL_H_INCLUDED

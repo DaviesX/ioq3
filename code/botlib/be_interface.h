@@ -30,6 +30,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // #define DEBUG			//debug code
+#ifndef BOTLIB_BE_INTERFACE_H_INCLUDED
+#define BOTLIB_BE_INTERFACE_H_INCLUDED
+
+#include "botlib/botlib.h"
+#include "qcommon/q_shared.h"
 #define RANDOMIZE // randomize bot behaviour
 
 // FIXME: get rid of this global structure
@@ -52,3 +57,5 @@ extern int botDeveloper; // true if developer is on
 
 //
 int Sys_MilliSeconds(void);
+
+#endif // BOTLIB_BE_INTERFACE_H_INCLUDED

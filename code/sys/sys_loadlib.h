@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef SYS_SYS_LOADLIB_H_INCLUDED
+#define SYS_SYS_LOADLIB_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef DEDICATED
 #ifdef _WIN32
 #include <windows.h>
@@ -49,3 +53,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 
 void *QDECL Sys_LoadDll(const char *name, qboolean useSystemLib);
+
+#endif // SYS_SYS_LOADLIB_H_INCLUDED

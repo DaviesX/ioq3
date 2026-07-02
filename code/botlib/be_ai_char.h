@@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // loads a bot character from a file
+#ifndef BOTLIB_BE_AI_CHAR_H_INCLUDED
+#define BOTLIB_BE_AI_CHAR_H_INCLUDED
+
 int BotLoadCharacter(char *charfile, float skill);
 // frees a bot character
 void BotFreeCharacter(int character);
@@ -46,3 +49,5 @@ int Characteristic_BInteger(int character, int index, int min, int max);
 void Characteristic_String(int character, int index, char *buf, int size);
 // free cached bot characters
 void BotShutdownCharacters(void);
+
+#endif // BOTLIB_BE_AI_CHAR_H_INCLUDED

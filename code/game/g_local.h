@@ -22,9 +22,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 // g_local.h -- local definitions for game module
 
-#include "qcommon/q_shared.h"
+#ifndef GAME_G_LOCAL_H_INCLUDED
+#define GAME_G_LOCAL_H_INCLUDED
+
 #include "game/bg_public.h"
 #include "game/g_public.h"
+#include "qcommon/q_shared.h"
 
 //==================================================================
 
@@ -92,7 +95,7 @@ struct gentity_s {
 
   qboolean physicsObject; // if true, it can be pushed by movers and fall off
                           // edges all game items are physicsObjects,
-  float physicsBounce; // 1.0 = continuous bounce, 0.0 = no bounce
+  float physicsBounce;    // 1.0 = continuous bounce, 0.0 = no bounce
   int clipmask; // brushes with this content value will be collided against
                 // when moving.  items and corpses do not collide against
                 // players, for instance
@@ -995,3 +998,5 @@ int trap_GeneticParentsAndChildSelection(int numranks, float *ranks,
                                          int *child);
 
 void trap_SnapVector(float *v);
+
+#endif // GAME_G_LOCAL_H_INCLUDED

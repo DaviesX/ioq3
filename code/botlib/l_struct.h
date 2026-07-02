@@ -29,6 +29,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_L_STRUCT_H_INCLUDED
+#define BOTLIB_L_STRUCT_H_INCLUDED
+
+#include "botlib/l_precomp.h"
+#include <stdio.h>
+
 #define MAX_STRINGFIELD 80
 // field types
 #define FT_CHAR 1   // char
@@ -68,3 +74,5 @@ int WriteStructure(FILE *fp, structdef_t *def, char *structure);
 int WriteIndent(FILE *fp, int indent);
 // writes a float without traling zeros
 int WriteFloat(FILE *fp, float value);
+
+#endif // BOTLIB_L_STRUCT_H_INCLUDED

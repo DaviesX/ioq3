@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef CLIENT_SND_PUBLIC_H_INCLUDED
+#define CLIENT_SND_PUBLIC_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 void S_Init(void);
 void S_Shutdown(void);
 
@@ -80,3 +84,5 @@ void S_Capture(int samples, byte *data);
 void S_StopCapture(void);
 void S_MasterGain(float gain);
 #endif
+
+#endif // CLIENT_SND_PUBLIC_H_INCLUDED

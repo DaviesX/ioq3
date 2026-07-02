@@ -467,10 +467,10 @@ void SV_DirectConnect(netadr_t from) {
       // this doesn't work because it nukes the players userinfo
 
       //			// disconnect the client from the game first so
-      //any flags the
+      // any flags the
       //			// player might have are dropped
       //			VM_Call( gvm, GAME_CLIENT_DISCONNECT, newcl -
-      //svs.clients );
+      // svs.clients );
       //
       goto gotnewcl;
     }

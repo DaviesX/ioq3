@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_MAIN_H_INCLUDED
+#define BOTLIB_BE_AAS_MAIN_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 
 extern aas_t aasworld;
@@ -56,3 +60,5 @@ float AAS_Time(void);
 //
 void AAS_ProjectPointOntoVector(vec3_t point, vec3_t vStart, vec3_t vEnd,
                                 vec3_t vProj);
+
+#endif // BOTLIB_BE_AAS_MAIN_H_INCLUDED

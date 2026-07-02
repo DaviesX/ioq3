@@ -21,6 +21,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 //
 
+#ifndef CGAME_CG_PUBLIC_H_INCLUDED
+#define CGAME_CG_PUBLIC_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define CMD_BACKUP 64
 #define CMD_MASK (CMD_BACKUP - 1)
 // allow a lot of command backups for very fast systems
@@ -195,7 +199,7 @@ functions exported to the main executable
 typedef enum {
   CG_INIT,
   //	void CG_Init( int serverMessageNum, int serverCommandSequence, int
-  //clientNum )
+  // clientNum )
   // called when the level loads or when the renderer is restarted
   // all media should be registered at this time
   // cgame will display loading status by calling SCR_Update, which
@@ -216,7 +220,7 @@ typedef enum {
 
   CG_DRAW_ACTIVE_FRAME,
   //	void (*CG_DrawActiveFrame)( int serverTime, stereoFrame_t stereoView,
-  //qboolean demoPlayback );
+  // qboolean demoPlayback );
   // Generates and draws a game scene and status information at the given time.
   // If demoPlayback is set, local movement prediction will not be enabled
 
@@ -236,3 +240,5 @@ typedef enum {
 } cgameExport_t;
 
 //----------------------------------------------
+
+#endif // CGAME_CG_PUBLIC_H_INCLUDED

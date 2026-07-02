@@ -182,8 +182,9 @@ static void RllSetupTable(void) {
 // Parameters:	from -> buffer holding encoded data
 //				to ->	buffer to hold decoded data
 //				size =	number of bytes of input (= # of shorts
-//of output) 				signedOutput = 0 for unsigned output, non-zero for signed output
-//				flag = flags from asset header
+// of output) 				signedOutput = 0 for unsigned output,
+// non-zero for signed output 				flag = flags from asset
+// header
 //
 // Returns:		Number of samples placed in output buffer
 //-----------------------------------------------------------------------------
@@ -212,8 +213,9 @@ long RllDecodeMonoToMono(unsigned char *from, short *to, unsigned int size,
 // Parameters:	from -> buffer holding encoded data
 //				to ->	buffer to hold decoded data
 //				size =	number of bytes of input (= 1/4 # of
-//bytes of output) 				signedOutput = 0 for unsigned output, non-zero for signed
-//output 				flag = flags from asset header
+// bytes of output) 				signedOutput = 0 for unsigned
+// output, non-zero for signed output 				flag = flags
+// from asset header
 //
 // Returns:		Number of samples placed in output buffer
 //-----------------------------------------------------------------------------
@@ -243,8 +245,9 @@ long RllDecodeMonoToStereo(unsigned char *from, short *to, unsigned int size,
 // Parameters:	from -> buffer holding encoded data
 //				to ->	buffer to hold decoded data
 //				size =	number of bytes of input (= 1/2 # of
-//bytes of output) 				signedOutput = 0 for unsigned output, non-zero for signed
-//output 				flag = flags from asset header
+// bytes of output) 				signedOutput = 0 for unsigned
+// output, non-zero for signed output 				flag = flags
+// from asset header
 //
 // Returns:		Number of samples placed in output buffer
 //-----------------------------------------------------------------------------
@@ -280,8 +283,9 @@ long RllDecodeStereoToStereo(unsigned char *from, short *to, unsigned int size,
 // Parameters:	from -> buffer holding encoded data
 //				to ->	buffer to hold decoded data
 //				size =	number of bytes of input (= # of bytes
-//of output) 				signedOutput = 0 for unsigned output, non-zero for signed output
-//				flag = flags from asset header
+// of output) 				signedOutput = 0 for unsigned output,
+// non-zero for signed output 				flag = flags from asset
+// header
 //
 // Returns:		Number of samples placed in output buffer
 //-----------------------------------------------------------------------------
@@ -1264,7 +1268,7 @@ redump:
   //
   //	assert(cinTable[currentHandle].RoQFrameSize <= 65536);
   //	r = FS_Read( cin.file, cinTable[currentHandle].RoQFrameSize+8,
-  //cinTable[currentHandle].iFile );
+  // cinTable[currentHandle].iFile );
   cinTable[currentHandle].RoQPlayed += cinTable[currentHandle].RoQFrameSize + 8;
 }
 
@@ -1524,7 +1528,7 @@ int CIN_PlayCinematic(const char *arg, int x, int y, int w, int h,
   if (RoQID == 0x1084) {
     RoQ_init();
     //		FS_Read (cin.file, cinTable[currentHandle].RoQFrameSize+8,
-    //cinTable[currentHandle].iFile);
+    // cinTable[currentHandle].iFile);
 
     cinTable[currentHandle].status = FMV_PLAY;
     Com_DPrintf("trFMV::play(), playing %s\n", arg);

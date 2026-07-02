@@ -19,7 +19,12 @@ along with Quake III Arena source code; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
+#ifndef CLIENT_KEYS_H_INCLUDED
+#define CLIENT_KEYS_H_INCLUDED
+
 #include "client/keycodes.h"
+#include "qcommon/q_shared.h"
+#include "qcommon/qcommon.h"
 
 typedef struct {
   qboolean down;
@@ -56,3 +61,5 @@ qboolean Key_GetOverstrikeMode(void);
 void Key_SetOverstrikeMode(qboolean state);
 void Key_ClearStates(void);
 int Key_GetKey(const char *binding);
+
+#endif // CLIENT_KEYS_H_INCLUDED

@@ -762,7 +762,8 @@ void CM_TraceThroughSphere(traceWork_t *tw, vec3_t origin, float radius,
   //	| origin - (start + t * dir) | = radius
   //	a = dir[0]^2 + dir[1]^2 + dir[2]^2;
   //	b = 2 * (dir[0] * (start[0] - origin[0]) + dir[1] * (start[1] -
-  //origin[1]) + dir[2] * (start[2] - origin[2])); 	c = (start[0] - origin[0])^2
+  // origin[1]) + dir[2] * (start[2] - origin[2])); 	c = (start[0] -
+  // origin[0])^2
   //+ (start[1] - origin[1])^2 + (start[2] - origin[2])^2 - radius^2;
   //
   VectorSubtract(start, origin, v1);
@@ -863,11 +864,11 @@ void CM_TraceThroughVerticalCylinder(traceWork_t *tw, vec3_t origin,
   // dir[1]) ^ 2 = radius ^ 2 (v1[0] + t * dir[0]) ^ 2 + (v1[1] + t * dir[1]) ^
   // 2 = radius ^ 2; v1[0] ^ 2 + 2 * v1[0] * t * dir[0] + (t * dir[0]) ^ 2 +
   //						v1[1] ^ 2 + 2 * v1[1] * t *
-  //dir[1] + (t * dir[1]) ^ 2 = radius ^ 2
+  // dir[1] + (t * dir[1]) ^ 2 = radius ^ 2
   // t ^ 2 * (dir[0] ^ 2 + dir[1] ^ 2) + t * (2 * v1[0] * dir[0] + 2 * v1[1] *
   // dir[1]) +
   //						v1[0] ^ 2 + v1[1] ^ 2 - radius ^
-  //2 = 0
+  // 2 = 0
   //
   VectorSubtract(start, origin, v1);
   // dir is normalized so we can use a = 1
@@ -1430,9 +1431,9 @@ void CM_TransformedBoxTrace(trace_t *results, const vec3_t start,
     // NOTE: This is still incorrect for bounding boxes because the actual
     // bounding
     //		 box that is swept through the model is not rotated. We cannot
-    //rotate 		 the bounding box or the bmodel because that would make all the
-    //brush 		 bevels invalid. 		 However this is correct for capsules since a capsule
-    //itself is rotated too.
+    // rotate 		 the bounding box or the bmodel because that would make
+    // all the brush 		 bevels invalid. 		 However this is
+    // correct for capsules since a capsule itself is rotated too.
     CreateRotationMatrix(angles, matrix);
     RotatePoint(start_l, matrix);
     RotatePoint(end_l, matrix);

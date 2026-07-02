@@ -709,7 +709,7 @@ void Console_Key(int key) {
   }
 
   if (key == K_MWHEELUP) { //----(SA)	added some mousewheel functionality to
-                           //the console
+                           // the console
     Con_PageUp();
     if (keys[K_CTRL].down) { // hold <ctrl> to accelerate scrolling
       Con_PageUp();
@@ -719,7 +719,7 @@ void Console_Key(int key) {
   }
 
   if (key == K_MWHEELDOWN) { //----(SA)	added some mousewheel functionality to
-                             //the console
+                             // the console
     Con_PageDown();
     if (keys[K_CTRL].down) { // hold <ctrl> to accelerate scrolling
       Con_PageDown();

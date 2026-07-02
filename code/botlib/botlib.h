@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BOTLIB_H_INCLUDED
+#define BOTLIB_BOTLIB_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define BOTLIB_API_VERSION 2
 
 struct aas_clientmove_s;
@@ -561,3 +565,5 @@ be_ai_goal.c		maximum number of item info "max_levelitems"
 items
 
 */
+
+#endif // BOTLIB_BOTLIB_H_INCLUDED

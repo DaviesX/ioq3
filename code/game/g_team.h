@@ -21,6 +21,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 //
 
+#ifndef GAME_G_TEAM_H_INCLUDED
+#define GAME_G_TEAM_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef MISSIONPACK
 
 #define CTF_CAPTURE_BONUS 100 // what you get for capture
@@ -109,3 +113,5 @@ void TeamplayInfoMessage(gentity_t *ent);
 void CheckTeamStatus(void);
 
 int Pickup_Team(gentity_t *ent, gentity_t *other);
+
+#endif // GAME_G_TEAM_H_INCLUDED

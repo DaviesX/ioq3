@@ -137,7 +137,7 @@ void VM_PrepareInterpreter(vm_t *vm, vmHeader_t *header) {
   vm->codeBase =
       Hunk_Alloc(vm->codeLength * 4, h_high); // we're now int aligned
   //	memcpy( vm->codeBase, (byte *)header + header->codeOffset,
-  //vm->codeLength );
+  // vm->codeLength );
 
   // we don't need to translate the instructions, but we still need
   // to find each instructions starting point for jumps
@@ -531,7 +531,7 @@ int VM_CallInterpreted(vm_t *vm, int *args) {
           vm->breakCount++;
           //					vm_debugLevel = 2;
           //					VM_StackTrace( vm,
-          //programCounter, programStack );
+          // programCounter, programStack );
         }
         //				vm->callLevel++;
       }

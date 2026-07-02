@@ -31,6 +31,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // #define DEBUG
+#ifndef GAME_AI_MAIN_H_INCLUDED
+#define GAME_AI_MAIN_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define CTF
 
 #define MAX_ITEMS 256
@@ -179,18 +183,18 @@ typedef struct bot_state_s {
   float enemydeath_time;      // time the enemy died
   float enemyposition_time; // time the position and velocity of the enemy were
                             // stored
-  float defendaway_time;            // time away while defending
-  float defendaway_range;           // max travel time away from defend area
-  float rushbaseaway_time;          // time away from rushing to the base
-  float attackaway_time;            // time away from attacking the enemy base
-  float harvestaway_time;           // time away from harvesting
-  float ctfroam_time;               // time the bot is roaming in ctf
-  float killedenemy_time;           // time the bot killed the enemy
-  float arrive_time;                // time arrived (at companion)
-  float lastair_time;               // last time the bot had air
-  float teleport_time;              // last time the bot teleported
-  float camp_time;                  // last time camped
-  float weaponchange_time;          // time the bot started changing weapons
+  float defendaway_time;    // time away while defending
+  float defendaway_range;   // max travel time away from defend area
+  float rushbaseaway_time;  // time away from rushing to the base
+  float attackaway_time;    // time away from attacking the enemy base
+  float harvestaway_time;   // time away from harvesting
+  float ctfroam_time;       // time the bot is roaming in ctf
+  float killedenemy_time;   // time the bot killed the enemy
+  float arrive_time;        // time arrived (at companion)
+  float lastair_time;       // last time the bot had air
+  float teleport_time;      // last time the bot teleported
+  float camp_time;          // last time camped
+  float weaponchange_time;  // time the bot started changing weapons
   float firethrottlewait_time;      // amount of time to wait
   float firethrottleshoot_time;     // amount of time to shoot
   float notblocked_time;            // last time the bot was not blocked
@@ -292,3 +296,5 @@ int BotAI_GetClientState(int clientNum, playerState_t *state);
 int BotAI_GetEntityState(int entityNum, entityState_t *state);
 int BotAI_GetSnapshotEntity(int clientNum, int sequence, entityState_t *state);
 int BotTeamLeader(bot_state_t *bs);
+
+#endif // GAME_AI_MAIN_H_INCLUDED

@@ -30,22 +30,22 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "game/g_local.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
-#include "botlib/be_ea.h"
 #include "botlib/be_ai_char.h"
 #include "botlib/be_ai_chat.h"
 #include "botlib/be_ai_gen.h"
 #include "botlib/be_ai_goal.h"
 #include "botlib/be_ai_move.h"
 #include "botlib/be_ai_weap.h"
+#include "botlib/be_ea.h"
+#include "botlib/botlib.h"
+#include "game/g_local.h"
 //
-#include "game/ai_main.h"
-#include "game/ai_dmq3.h"
 #include "game/ai_chat.h"
 #include "game/ai_cmd.h"
 #include "game/ai_dmnet.h"
+#include "game/ai_dmq3.h"
+#include "game/ai_main.h"
 #include "game/ai_team.h"
 #include "game/ai_vcmd.h"
 

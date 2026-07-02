@@ -31,6 +31,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // projectile flags
+#ifndef BOTLIB_BE_AI_WEAP_H_INCLUDED
+#define BOTLIB_BE_AI_WEAP_H_INCLUDED
+
+#include "botlib/be_aas.h"
+
+#include "qcommon/q_shared.h"
 #define PFL_WINDOWDAMAGE 1 // projectile damages through window
 #define PFL_RETURN 2       // set when projectile returns to owner
 // weapon flags
@@ -100,3 +106,5 @@ int BotAllocWeaponState(void);
 void BotFreeWeaponState(int weaponstate);
 // resets the whole weapon state
 void BotResetWeaponState(int weaponstate);
+
+#endif // BOTLIB_BE_AI_WEAP_H_INCLUDED

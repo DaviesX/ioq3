@@ -30,6 +30,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef GAME_AI_DMNET_H_INCLUDED
+#define GAME_AI_DMNET_H_INCLUDED
+#include "game/ai_main.h"
+
 #define MAX_NODESWITCHES 50
 
 void AIEnter_Intermission(bot_state_t *bs, char *s);
@@ -58,3 +62,5 @@ int AINode_Battle_NBG(bot_state_t *bs);
 
 void BotResetNodeSwitches(void);
 void BotDumpNodeSwitches(bot_state_t *bs);
+
+#endif // GAME_AI_DMNET_H_INCLUDED

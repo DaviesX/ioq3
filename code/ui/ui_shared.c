@@ -3118,29 +3118,29 @@ void Item_Text_Paint(itemDef_t *item) {
   */
 
   //	if (item->textStyle == ITEM_TEXTSTYLE_OUTLINED || item->textStyle ==
-  //ITEM_TEXTSTYLE_OUTLINESHADOWED) { 		Fade(&item->window.flags,
+  // ITEM_TEXTSTYLE_OUTLINESHADOWED) { 		Fade(&item->window.flags,
   //&item->window.outlineColor[3], DC->Assets.fadeClamp, &item->window.nextTime,
-  //DC->Assets.fadeCycle, qfalse);
+  // DC->Assets.fadeCycle, qfalse);
   //		/*
   //		Text_Paint(item->textRect.x-1, item->textRect.y-1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x, item->textRect.y-1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x+1, item->textRect.y-1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x-1, item->textRect.y,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x+1, item->textRect.y,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x-1, item->textRect.y+1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x, item->textRect.y+1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		Text_Paint(item->textRect.x+1, item->textRect.y+1,
-  //item->textscale, item->window.foreColor, textPtr, adjust);
+  // item->textscale, item->window.foreColor, textPtr, adjust);
   //		*/
   //		DC->drawText(item->textRect.x - 1, item->textRect.y + 1,
-  //item->textscale * 1.02, item->window.outlineColor, textPtr, adjust);
+  // item->textscale * 1.02, item->window.outlineColor, textPtr, adjust);
   //	}
 
   DC->drawText(item->textRect.x, item->textRect.y, item->textscale, color,

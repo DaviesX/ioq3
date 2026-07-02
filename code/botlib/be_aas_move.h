@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_MOVE_H_INCLUDED
+#define BOTLIB_BE_AAS_MOVE_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 extern aas_settings_t aassettings;
 #endif // AASINTERN
@@ -67,3 +71,5 @@ void AAS_SetMovedir(vec3_t angles, vec3_t movedir);
 int AAS_DropToFloor(vec3_t origin, vec3_t mins, vec3_t maxs);
 //
 void AAS_InitSettings(void);
+
+#endif // BOTLIB_BE_AAS_MOVE_H_INCLUDED

@@ -1,8 +1,8 @@
 /* quake3 bytecode target */
 
-#include <string.h>
-#include <stdio.h>
 #include "qcommon/q_platform.h"
+#include <stdio.h>
+#include <string.h>
 
 #ifdef _WIN32
 #define BINEXT ".exe"

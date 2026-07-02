@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include "tools/lcc/cpp/cpp.h"
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "tools/lcc/cpp/cpp.h"
 
 extern int lcc_getopt(int, char *const *, const char *);
 extern char *optarg, rcsid[];

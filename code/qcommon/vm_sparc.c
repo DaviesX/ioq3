@@ -26,11 +26,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * Przemyslaw Iskra.  All I did was make it work on Sparc :-) -DaveM
  */
 
-#include <sys/types.h>
+#include <stddef.h>
 #include <sys/mman.h>
 #include <sys/time.h>
+#include <sys/types.h>
 #include <time.h>
-#include <stddef.h>
 
 #include "qcommon/vm_local.h"
 

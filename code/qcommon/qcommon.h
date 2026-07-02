@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ref modules
 #ifndef _QCOMMON_H_
 #define _QCOMMON_H_
+#include "qcommon/q_shared.h"
 
 #include "qcommon/cm_public.h"
 

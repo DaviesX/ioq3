@@ -29,21 +29,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_libvar.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
-#include "botlib/l_utils.h"
-#include "botlib/l_log.h"
+#include "botlib/be_ai_chat.h"
 #include "botlib/aasfile.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
 #include "botlib/be_aas_funcs.h"
-#include "botlib/be_interface.h"
 #include "botlib/be_ea.h"
-#include "botlib/be_ai_chat.h"
+#include "botlib/be_interface.h"
+#include "botlib/botlib.h"
+#include "botlib/l_libvar.h"
+#include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "botlib/l_utils.h"
+#include "qcommon/q_shared.h"
 
 // escape character
 #define ESCAPE_CHAR 0x01 //'_'
@@ -2121,7 +2121,7 @@ int BotLoadChatFile(int chatstate, char *chatfile, char *chatname) {
       }
       cs->chat = ichatdata[n]->chat;
       //		botimport.Print( PRT_MESSAGE, "retained %s from %s\n",
-      //chatname, chatfile );
+      // chatname, chatfile );
       return BLERR_NOERROR;
     }
 

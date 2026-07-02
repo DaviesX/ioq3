@@ -28,19 +28,19 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "sys/sys_local.h"
 
 #include <windows.h>
-#include <lmerr.h>
-#include <lmcons.h>
-#include <lmwksta.h>
+#include <conio.h>
+#include <direct.h>
 #include <errno.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <direct.h>
-#include <io.h>
-#include <conio.h>
-#include <wincrypt.h>
-#include <shlobj.h>
-#include <psapi.h>
 #include <float.h>
+#include <io.h>
+#include <lmcons.h>
+#include <lmerr.h>
+#include <lmwksta.h>
+#include <psapi.h>
+#include <shlobj.h>
+#include <stdio.h>
+#include <wincrypt.h>
 
 #ifndef KEY_WOW64_32KEY
 #define KEY_WOW64_32KEY 0x0200

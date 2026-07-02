@@ -30,6 +30,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // undef if binary numbers of the form 0b... or 0B... are not allowed
+#ifndef BOTLIB_L_SCRIPT_H_INCLUDED
+#define BOTLIB_L_SCRIPT_H_INCLUDED
+
+#include "qcommon/q_shared.h"
+#include <stdio.h>
+
 #define BINARYNUMBERS
 // undef if not using the token.intvalue and token.floatvalue
 #define NUMBERVALUE
@@ -240,3 +246,5 @@ void PS_SetBaseFolder(char *path);
 void QDECL ScriptError(script_t *script, char *str, ...) Q_PRINTF_FUNC(2, 3);
 // print a script warning with filename and line number
 void QDECL ScriptWarning(script_t *script, char *str, ...) Q_PRINTF_FUNC(2, 3);
+
+#endif // BOTLIB_L_SCRIPT_H_INCLUDED

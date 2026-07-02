@@ -299,9 +299,9 @@ static void GLSL_GetShaderHeader(GLenum shaderType, const GLchar *extra,
   // maintenance
   // Q_strcat(dest, size,
   //		 va("#ifndef r_SpecularExponent\n#define r_SpecularExponent
-  //%f\n#endif\n", r_specularExponent->value)); Q_strcat(dest, size, 		 va("#ifndef
-  //r_SpecularScale\n#define r_SpecularScale %f\n#endif\n",
-  //r_specularScale->value)); Q_strcat(dest, size,
+  //%f\n#endif\n", r_specularExponent->value)); Q_strcat(dest, size,
+  // va("#ifndef r_SpecularScale\n#define r_SpecularScale %f\n#endif\n",
+  // r_specularScale->value)); Q_strcat(dest, size,
   //       va("#ifndef r_NormalScale\n#define r_NormalScale %f\n#endif\n",
   //       r_normalScale->value));
 

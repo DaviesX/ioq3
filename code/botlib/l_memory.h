@@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // #define MEMDEBUG
 
+#ifndef BOTLIB_L_MEMORY_H_INCLUDED
+#define BOTLIB_L_MEMORY_H_INCLUDED
+
 #ifdef MEMDEBUG
 #define GetMemory(size) GetMemoryDebug(size, #size, __FILE__, __LINE__);
 #define GetClearedMemory(size)                                                 \
@@ -78,3 +81,5 @@ void PrintMemoryLabels(void);
 int MemoryByteSize(void *ptr);
 // free all allocated memory
 void DumpMemory(void);
+
+#endif // BOTLIB_L_MEMORY_H_INCLUDED

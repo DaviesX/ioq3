@@ -20,9 +20,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef QCOMMON_CM_LOCAL_H_INCLUDED
+#define QCOMMON_CM_LOCAL_H_INCLUDED
+
+#include "qcommon/cm_polylib.h"
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
-#include "qcommon/cm_polylib.h"
 
 #define MAX_SUBMODELS 256
 #define BOX_MODEL_HANDLE 255
@@ -194,3 +197,5 @@ void CM_TraceThroughPatchCollide(traceWork_t *tw,
 qboolean CM_PositionTestInPatchCollide(traceWork_t *tw,
                                        const struct patchCollide_s *pc);
 void CM_ClearLevelPatches(void);
+
+#endif // QCOMMON_CM_LOCAL_H_INCLUDED

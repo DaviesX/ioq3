@@ -29,17 +29,17 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
-#include "botlib/l_libvar.h"
 #include "botlib/aasfile.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
-#include "botlib/be_aas_funcs.h"
 #include "botlib/be_aas_def.h"
+#include "botlib/be_aas_funcs.h"
+#include "botlib/botlib.h"
+#include "botlib/l_libvar.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "qcommon/q_shared.h"
 
 extern botlib_import_t botimport;
 
@@ -479,13 +479,19 @@ int AAS_ClipToBBox(aas_trace_t *trace, vec3_t start, vec3_t end,
 //
 // Parameter:			origin			: origin to start with
 //						presencetype	: presence type
-//to start with 						velocity		: velocity to start with 						cmdmove
-//: client command movement 						cmdframes		: number of frame cmdmove is
-//valid 						maxframes		: maximum number of predicted frames 						frametime
-//: duration of one predicted frame 						stopevent		: events that stop the
-//prediction 						stopareanum		: stop as soon as entered this area
-// Returns:				aas_clientmove_t
-// Changes Globals:		-
+// to start with 						velocity
+// : velocity to start with 						cmdmove
+//: client command movement
+//: cmdframes		: number of frame cmdmove is
+// valid 						maxframes
+// : maximum number of predicted frames
+// frametime
+//: duration of one predicted frame
+//: stopevent		: events that stop the
+// prediction 						stopareanum
+// : stop as soon as entered this area
+//  Returns:				aas_clientmove_t
+//  Changes Globals:		-
 //===========================================================================
 int AAS_ClientMovementPrediction(struct aas_clientmove_s *move, int entnum,
                                  vec3_t origin, int presencetype, int onground,
@@ -994,7 +1000,8 @@ void AAS_TestMovementPrediction(int entnum, vec3_t origin, vec3_t dir) {
 // Parameter:			zvel	: z velocity for jump
 //						start	: start position of jump
 //						end		: end position
-//of jump 						*speed	: returned speed for jump
+// of jump 						*speed	: returned speed
+// for jump
 // Returns:				qfalse if too high or too far from start
 // to end Changes Globals:		-
 //===========================================================================

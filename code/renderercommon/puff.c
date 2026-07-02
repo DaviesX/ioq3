@@ -69,8 +69,8 @@
  * 1.8   9 Jan 2004     - Added some comments on no distance codes case
  */
 
-#include <setjmp.h> /* for setjmp(), longjmp(), and jmp_buf */
-#include "renderercommon/puff.h"   /* prototype for puff() */
+#include "renderercommon/puff.h" /* prototype for puff() */
+#include <setjmp.h>              /* for setjmp(), longjmp(), and jmp_buf */
 
 #define local static /* for local function definitions */
 

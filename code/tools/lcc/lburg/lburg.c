@@ -1,11 +1,11 @@
+#include "tools/lcc/lburg/lburg.h"
 #include <assert.h>
 #include <ctype.h>
 #include <stdarg.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "tools/lcc/lburg/lburg.h"
 
 static char rcsid[] = "lburg.c - faked rcsid";
 

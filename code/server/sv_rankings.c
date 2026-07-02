@@ -21,9 +21,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // sv_rankings.c -- global rankings interface
 
-#include "server/server.h"
 #include "..\rankings\1.0\gr\grapi.h"
 #include "..\rankings\1.0\gr\grlog.h"
+#include "server/server.h"
 
 typedef struct {
   GR_CONTEXT context;
@@ -590,7 +590,7 @@ void SV_RankReportInt(int index1, int index2, int key, int value,
   assert(s_ranked_players);
 
   //	Com_DPrintf( "SV_RankReportInt( %d, %d, %d, %d, %d );\n", index1,
-  //index2, 		key, value, accum );
+  // index2, 		key, value, accum );
 
   // get context, match, and player_id for player index1
   if (index1 == -1) {
@@ -671,7 +671,7 @@ void SV_RankReportStr(int index1, int index2, int key, char *value) {
   assert(s_ranked_players);
 
   //	Com_DPrintf( "SV_RankReportStr( %d, %d, %d, \"%s\" );\n", index1,
-  //index2, 		key, value );
+  // index2, 		key, value );
 
   // get context, match, and player_id for player index1
   if (index1 == -1) {

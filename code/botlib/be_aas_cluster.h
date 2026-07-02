@@ -29,9 +29,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_CLUSTER_H_INCLUDED
+#define BOTLIB_BE_AAS_CLUSTER_H_INCLUDED
+
 #ifdef AASINTERN
 // initialize the AAS clustering
 void AAS_InitClustering(void);
 //
 void AAS_SetViewPortalsAsClusterPortals(void);
 #endif // AASINTERN
+
+#endif // BOTLIB_BE_AAS_CLUSTER_H_INCLUDED

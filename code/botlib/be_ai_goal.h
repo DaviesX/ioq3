@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AI_GOAL_H_INCLUDED
+#define BOTLIB_BE_AI_GOAL_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define MAX_AVOIDGOALS 256
 #define MAX_GOALSTACK 8
 
@@ -119,3 +123,5 @@ void BotFreeGoalState(int handle);
 int BotSetupGoalAI(void);
 // shut down the goal AI
 void BotShutdownGoalAI(void);
+
+#endif // BOTLIB_BE_AI_GOAL_H_INCLUDED

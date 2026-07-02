@@ -27,6 +27,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // these definitions also need to be in q_shared.h!
 
+#ifndef QCOMMON_SURFACEFLAGS_H_INCLUDED
+#define QCOMMON_SURFACEFLAGS_H_INCLUDED
+
 #define CONTENTS_SOLID 1 // an eye is never valid in a solid
 #define CONTENTS_LAVA 8
 #define CONTENTS_SLIME 16
@@ -80,3 +83,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define SURF_ALPHASHADOW 0x10000 // do per-pixel light shadow casting in q3map
 #define SURF_NODLIGHT 0x20000 // don't dlight even if solid (solid lava, skies)
 #define SURF_DUST 0x40000     // leave a dust trail when walking on this surface
+
+#endif // QCOMMON_SURFACEFLAGS_H_INCLUDED

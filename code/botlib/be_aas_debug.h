@@ -30,6 +30,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // clear the shown debug lines
+#ifndef BOTLIB_BE_AAS_DEBUG_H_INCLUDED
+#define BOTLIB_BE_AAS_DEBUG_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 void AAS_ClearShownDebugLines(void);
 //
 void AAS_ClearShownPolygons(void);
@@ -60,3 +64,5 @@ void AAS_DrawArrow(vec3_t start, vec3_t end, int linecolor, int arrowcolor);
 void AAS_ShowReachability(struct aas_reachability_s *reach);
 // show the reachable areas from the given area
 void AAS_ShowReachableAreas(int areanum);
+
+#endif // BOTLIB_BE_AAS_DEBUG_H_INCLUDED

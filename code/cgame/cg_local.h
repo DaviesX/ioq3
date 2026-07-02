@@ -20,10 +20,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 //
+#ifndef CGAME_CG_LOCAL_H_INCLUDED
+#define CGAME_CG_LOCAL_H_INCLUDED
+
+#include "cgame/cg_public.h"
+#include "game/bg_public.h"
 #include "qcommon/q_shared.h"
 #include "renderercommon/tr_types.h"
-#include "game/bg_public.h"
-#include "cgame/cg_public.h"
 
 // The entire cgame module is unloaded and reloaded on each level change,
 // so there is NO persistant data between levels on the client side.
@@ -1700,3 +1703,5 @@ void CG_ParticleExplosion(char *animStr, vec3_t origin, vec3_t vel,
                           int duration, int sizeStart, int sizeEnd);
 extern qboolean initparticles;
 int CG_NewParticleArea(int num);
+
+#endif // CGAME_CG_LOCAL_H_INCLUDED

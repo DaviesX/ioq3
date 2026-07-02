@@ -22,6 +22,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 // this is only used for visualization tools in cm_ debug functions
 
+#ifndef QCOMMON_CM_POLYLIB_H_INCLUDED
+#define QCOMMON_CM_POLYLIB_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 typedef struct {
   int numpoints;
   vec3_t p[4]; // variable sized
@@ -66,3 +70,5 @@ void ChopWindingInPlace(winding_t **w, vec3_t normal, vec_t dist,
 // frees the original if clipped
 
 void pw(winding_t *w);
+
+#endif // QCOMMON_CM_POLYLIB_H_INCLUDED

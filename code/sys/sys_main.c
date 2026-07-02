@@ -20,16 +20,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include <signal.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <sys/types.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <sys/stat.h>
-#include <string.h>
 #include <ctype.h>
 #include <errno.h>
+#include <limits.h>
+#include <signal.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
@@ -45,8 +45,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endif
 #endif
 
-#include "sys/sys_local.h"
 #include "sys/sys_loadlib.h"
+#include "sys/sys_local.h"
 
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"

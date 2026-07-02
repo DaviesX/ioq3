@@ -30,6 +30,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // library variable
+#ifndef BOTLIB_L_LIBVAR_H_INCLUDED
+#define BOTLIB_L_LIBVAR_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 typedef struct libvar_s {
   char *name;
   char *string;
@@ -60,3 +64,5 @@ void LibVarSet(const char *var_name, const char *value);
 qboolean LibVarChanged(const char *var_name);
 // sets the library variable to unmodified
 void LibVarSetNotModified(const char *var_name);
+
+#endif // BOTLIB_L_LIBVAR_H_INCLUDED

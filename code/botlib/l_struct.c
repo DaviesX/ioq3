@@ -30,20 +30,20 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 #ifdef BOTLIB
-#include "qcommon/q_shared.h"
-#include "botlib/botlib.h" //for the include of be_interface.h
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
 #include "botlib/l_struct.h"
-#include "botlib/l_utils.h"
 #include "botlib/be_interface.h"
+#include "botlib/botlib.h" //for the include of be_interface.h
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_utils.h"
+#include "qcommon/q_shared.h"
 #endif // BOTLIB
 
 #ifdef BSPC
 // include files for usage in the BSP Converter
-#include "../bspc/qbsp.h"
 #include "../bspc/l_log.h"
 #include "../bspc/l_mem.h"
+#include "../bspc/qbsp.h"
 #include "botlib/l_precomp.h"
 #include "botlib/l_struct.h"
 

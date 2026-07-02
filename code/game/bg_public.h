@@ -26,6 +26,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // because games can change separately from the main system version, we need a
 // second version that must match between game and cgame
 
+#ifndef GAME_BG_PUBLIC_H_INCLUDED
+#define GAME_BG_PUBLIC_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define GAME_VERSION BASEGAME "-1"
 
 #define DEFAULT_GRAVITY 800
@@ -742,3 +746,5 @@ qboolean BG_PlayerTouchesItem(playerState_t *ps, entityState_t *item,
 #define KAMI_SHOCKWAVE_MAXRADIUS 1320
 #define KAMI_BOOMSPHERE_MAXRADIUS 720
 #define KAMI_SHOCKWAVE2_MAXRADIUS 704
+
+#endif // GAME_BG_PUBLIC_H_INCLUDED

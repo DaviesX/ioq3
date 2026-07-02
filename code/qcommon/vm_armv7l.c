@@ -32,15 +32,15 @@ ARMv7-A_ARMv7-R_DDI0406_2007.pdf
 
 #ifdef __arm__
 
-#include <sys/types.h>
+#include <stddef.h>
 #include <sys/mman.h>
 #include <sys/time.h>
-#include <time.h>
-#include <stddef.h>
-
 #include <sys/types.h>
-#include <sys/stat.h>
+#include <time.h>
+
 #include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 #include "qcommon/vm_local.h"
 #define R0 0

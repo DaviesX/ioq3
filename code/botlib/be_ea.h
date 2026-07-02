@@ -31,6 +31,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // ClientCommand elementary actions
+#ifndef BOTLIB_BE_EA_H_INCLUDED
+#define BOTLIB_BE_EA_H_INCLUDED
+
+#include "botlib/botlib.h"
+
+#include "qcommon/q_shared.h"
 void EA_Say(int client, char *str);
 void EA_SayTeam(int client, char *str);
 void EA_Command(int client, char *command);
@@ -64,3 +70,5 @@ void EA_ResetInput(int client);
 // setup and shutdown routines
 int EA_Setup(void);
 void EA_Shutdown(void);
+
+#endif // BOTLIB_BE_EA_H_INCLUDED

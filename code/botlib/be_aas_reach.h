@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_REACH_H_INCLUDED
+#define BOTLIB_BE_AAS_REACH_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 // initialize calculating the reachabilities
 void AAS_InitReachability(void);
@@ -68,3 +72,5 @@ int AAS_AreaLadder(int areanum);
 int AAS_AreaJumpPad(int areanum);
 // returns true if the area is donotenter
 int AAS_AreaDoNotEnter(int areanum);
+
+#endif // BOTLIB_BE_AAS_REACH_H_INCLUDED

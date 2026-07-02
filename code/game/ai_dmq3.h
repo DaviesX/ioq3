@@ -31,6 +31,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // setup the deathmatch AI
+#ifndef GAME_AI_DMQ3_H_INCLUDED
+#define GAME_AI_DMQ3_H_INCLUDED
+#include "game/ai_main.h"
+
+#include "qcommon/q_shared.h"
 void BotSetupDeathmatchAI(void);
 // shutdown the deathmatch AI
 void BotShutdownDeathmatchAI(void);
@@ -207,3 +212,5 @@ extern bot_goal_t redobelisk;
 extern bot_goal_t blueobelisk;
 extern bot_goal_t neutralobelisk;
 #endif
+
+#endif // GAME_AI_DMQ3_H_INCLUDED

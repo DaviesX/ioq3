@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_SAMPLE_H_INCLUDED
+#define BOTLIB_BE_AAS_SAMPLE_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 void AAS_InitAASLinkHeap(void);
 void AAS_InitAASLinkedEntities(void);
@@ -72,3 +76,5 @@ int AAS_PointAreaNum(vec3_t point);
 int AAS_PointReachabilityAreaIndex(vec3_t point);
 // returns the plane the given face is in
 void AAS_FacePlane(int facenum, vec3_t normal, float *dist);
+
+#endif // BOTLIB_BE_AAS_SAMPLE_H_INCLUDED

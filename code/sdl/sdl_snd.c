@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifdef USE_INTERNAL_SDL_HEADERS
 #include "SDL.h"
@@ -29,9 +29,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <SDL.h>
 #endif
 
-#include "qcommon/q_shared.h"
-#include "client/snd_local.h"
 #include "client/client.h"
+#include "client/snd_local.h"
+#include "qcommon/q_shared.h"
 
 qboolean snd_inited = qfalse;
 

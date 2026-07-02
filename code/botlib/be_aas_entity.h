@@ -29,6 +29,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_BE_AAS_ENTITY_H_INCLUDED
+#define BOTLIB_BE_AAS_ENTITY_H_INCLUDED
+
+#include "botlib/botlib.h"
+#include "qcommon/q_shared.h"
 #ifdef AASINTERN
 // invalidates all entity infos
 void AAS_InvalidateEntities(void);
@@ -60,3 +65,5 @@ void AAS_EntityOrigin(int entnum, vec3_t origin);
 int AAS_EntityType(int entnum);
 // returns the model index of the entity
 int AAS_EntityModelindex(int entnum);
+
+#endif // BOTLIB_BE_AAS_ENTITY_H_INCLUDED

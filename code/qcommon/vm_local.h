@@ -19,6 +19,9 @@ along with Quake III Arena source code; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
+#ifndef QCOMMON_VM_LOCAL_H_INCLUDED
+#define QCOMMON_VM_LOCAL_H_INCLUDED
+
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
 
@@ -198,3 +201,5 @@ const char *VM_ValueToSymbol(vm_t *vm, int value);
 void VM_LogSyscalls(int *args);
 
 void VM_BlockCopy(unsigned int dest, unsigned int src, size_t n);
+
+#endif // QCOMMON_VM_LOCAL_H_INCLUDED

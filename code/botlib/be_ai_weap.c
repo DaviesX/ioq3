@@ -29,21 +29,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
+#include "botlib/be_ai_weap.h"
+#include "botlib/aasfile.h"
+#include "botlib/be_aas.h"
+#include "botlib/be_aas_funcs.h"
+#include "botlib/be_ai_weight.h" //fuzzy weights
+#include "botlib/be_interface.h"
+#include "botlib/botlib.h"
 #include "botlib/l_libvar.h"
 #include "botlib/l_log.h"
 #include "botlib/l_memory.h"
-#include "botlib/l_utils.h"
-#include "botlib/l_script.h"
 #include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
 #include "botlib/l_struct.h"
-#include "botlib/aasfile.h"
-#include "botlib/botlib.h"
-#include "botlib/be_aas.h"
-#include "botlib/be_aas_funcs.h"
-#include "botlib/be_interface.h"
-#include "botlib/be_ai_weight.h" //fuzzy weights
-#include "botlib/be_ai_weap.h"
+#include "botlib/l_utils.h"
+#include "qcommon/q_shared.h"
 
 // #define DEBUG_AI_WEAP
 
@@ -72,7 +72,7 @@ static fielddef_t weaponinfo_fields[] = {
      FT_FLOAT}, // speed of the projectile (0 = instant hit)
     {"acceleration", WEAPON_OFS(acceleration),
      FT_FLOAT}, //"acceleration" * time (in seconds) + "speed" = projectile
-                //speed
+                // speed
     {"recoil", WEAPON_OFS(recoil), FT_FLOAT | FT_ARRAY,
      3}, // amount of recoil the player gets from the weapon
     {"offset", WEAPON_OFS(offset), FT_FLOAT | FT_ARRAY,

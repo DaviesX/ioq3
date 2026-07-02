@@ -29,21 +29,21 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_utils.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_log.h"
-#include "botlib/l_crc.h"
-#include "botlib/l_libvar.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
 #include "botlib/aasfile.h"
-#include "botlib/botlib.h"
 #include "botlib/be_aas.h"
+#include "botlib/be_aas_def.h"
 #include "botlib/be_aas_funcs.h"
 #include "botlib/be_interface.h"
-#include "botlib/be_aas_def.h"
+#include "botlib/botlib.h"
+#include "botlib/l_crc.h"
+#include "botlib/l_libvar.h"
+#include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "botlib/l_utils.h"
+#include "qcommon/q_shared.h"
 
 #define ROUTING_DEBUG
 
@@ -1294,7 +1294,7 @@ void AAS_UpdateAreaRoutingCache(aas_routingcache_t *areacache) {
   aasworld.frameroutingupdates++;
   // clear the routing update fields
   //	Com_Memset(aasworld.areaupdate, 0, aasworld.numareas *
-  //sizeof(aas_routingupdate_t));
+  // sizeof(aas_routingupdate_t));
   //
   badtravelflags = ~areacache->travelflags;
   //
@@ -1457,7 +1457,7 @@ void AAS_UpdatePortalRoutingCache(aas_routingcache_t *portalcache) {
 #endif // ROUTING_DEBUG
        // clear the routing update fields
   //	Com_Memset(aasworld.portalupdate, 0, (aasworld.numportals+1) *
-  //sizeof(aas_routingupdate_t));
+  // sizeof(aas_routingupdate_t));
   //
   curupdate = &aasworld.portalupdate[aasworld.numportals];
   curupdate->cluster = portalcache->cluster;
@@ -1740,7 +1740,7 @@ updates overflowed"); #endif return 0; } //end if
     // NOTE: for now we just add the largest travel time through the portal area
     //		because we can't directly calculate the exact travel time
     //		to be more specific we don't know which reachability was used to
-    //travel 		into the portal area
+    // travel 		into the portal area
     t += aasworld.portalmaxtraveltimes[portalnum];
     //
     if (origin) {

@@ -167,16 +167,16 @@ typedef int intptr_t;
 #else
 
 #include <assert.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <time.h>
 #include <ctype.h>
 #include <limits.h>
+#include <math.h>
+#include <stdarg.h>
+#include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 #ifdef _WIN32
 // vsnprintf is ISO/IEC 9899:1999

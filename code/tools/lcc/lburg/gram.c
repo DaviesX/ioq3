@@ -61,8 +61,8 @@
 /* Copy the first part of user declarations.  */
 #line 1 "code/tools/lcc/lburg/gram.y" /* yacc.c:339  */
 
-#include <stdio.h>
 #include "tools/lcc/lburg/lburg.h"
+#include <stdio.h>
 // static char rcsid[] = "$Id: gram.y 145 2001-10-17 21:53:10Z timo $";
 /*lint -e616 -e527 -e652 -esym(552,yynerrs) -esym(563,yynewstate,yyerrlab) */
 static int yylineno = 0;
@@ -1400,10 +1400,10 @@ yyreturn:
 #line 59 "code/tools/lcc/lburg/gram.y" /* yacc.c:1906  */
 
 #include <assert.h>
-#include <stdarg.h>
 #include <ctype.h>
-#include <string.h>
 #include <limits.h>
+#include <stdarg.h>
+#include <string.h>
 
 int errcnt = 0;
 FILE *infp = NULL;

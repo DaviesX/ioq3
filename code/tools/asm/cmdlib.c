@@ -22,12 +22,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // cmdlib.c
 
 #include "tools/asm/cmdlib.h"
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 
 #ifdef WIN32
-#include <direct.h>
 #include <windows.h>
+#include <direct.h>
 #elif defined(NeXT)
 #include <libc.h>
 #else

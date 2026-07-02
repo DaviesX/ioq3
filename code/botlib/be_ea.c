@@ -29,14 +29,14 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#include "qcommon/q_shared.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_struct.h"
-#include "botlib/botlib.h"
-#include "botlib/be_interface.h"
 #include "botlib/be_ea.h"
+#include "botlib/be_interface.h"
+#include "botlib/botlib.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "botlib/l_struct.h"
+#include "qcommon/q_shared.h"
 
 #define MAX_USERMOVE 400
 

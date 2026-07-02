@@ -39,37 +39,37 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // #define MEQCC
 
 #ifdef SCREWUP
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include <string.h>
-#include <stdarg.h>
-#include <time.h>
+#include "botlib/l_precomp.h"
 #include "botlib/l_memory.h"
 #include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
+#include <limits.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 typedef enum { qfalse, qtrue } qboolean;
 #endif // SCREWUP
 
 #ifdef BOTLIB
-#include "qcommon/q_shared.h"
-#include "botlib/botlib.h"
 #include "botlib/be_interface.h"
-#include "botlib/l_memory.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
+#include "botlib/botlib.h"
 #include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "qcommon/q_shared.h"
 #endif // BOTLIB
 
 #ifdef MEQCC
+#include "botlib/l_log.h"
+#include "botlib/l_memory.h"
+#include "botlib/l_precomp.h"
+#include "botlib/l_script.h"
+#include "math.h" //fabs
 #include "qcc.h"
 #include "time.h" //time & ctime
-#include "math.h" //fabs
-#include "botlib/l_memory.h"
-#include "botlib/l_script.h"
-#include "botlib/l_precomp.h"
-#include "botlib/l_log.h"
 
 #define qtrue true
 #define qfalse false
@@ -77,9 +77,9 @@ typedef enum { qfalse, qtrue } qboolean;
 
 #ifdef BSPC
 // include files for usage in the BSP Converter
-#include "../bspc/qbsp.h"
 #include "../bspc/l_log.h"
 #include "../bspc/l_mem.h"
+#include "../bspc/qbsp.h"
 #include "botlib/l_precomp.h"
 
 #define qtrue true
@@ -589,7 +589,7 @@ define_t *PC_FindDefine(define_t *defines, char *name) {
 // Parameter:				-
 // Returns:					number of the parm
 //								if no parm found
-//with the given name -1 is returned
+// with the given name -1 is returned
 // Changes Globals:		-
 //============================================================================
 int PC_FindDefineParm(define_t *define, char *name) {
@@ -2983,10 +2983,10 @@ void FreeSource(source_t *source) {
       define = source->definehash[i];
       source->definehash[i] = source->definehash[i]->hashnext;
       PC_FreeDefine(define);
-    } // end while
-  }   // end for
-#else // DEFINEHASHING
-      // free all defines
+    }  // end while
+  }    // end for
+#else  // DEFINEHASHING
+       // free all defines
   while (source->defines) {
     define = source->defines;
     source->defines = source->defines->next;

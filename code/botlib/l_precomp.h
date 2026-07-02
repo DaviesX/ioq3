@@ -29,6 +29,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef BOTLIB_L_PRECOMP_H_INCLUDED
+#define BOTLIB_L_PRECOMP_H_INCLUDED
+
+#include "botlib/l_script.h"
+
 #ifndef PATH_SEPERATORSTR
 #if defined(WIN32) | defined(_WIN32) | defined(__NT__) |                       \
     defined(__WINDOWS__) | defined(__WINDOWS_386__)
@@ -171,3 +176,5 @@ int PC_FreeSourceHandle(int handle);
 int PC_ReadTokenHandle(int handle, pc_token_t *pc_token);
 int PC_SourceFileAndLine(int handle, char *filename, int *line);
 void PC_CheckOpenSourceHandles(void);
+
+#endif // BOTLIB_L_PRECOMP_H_INCLUDED

@@ -30,6 +30,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // open a log file
+#ifndef BOTLIB_L_LOG_H_INCLUDED
+#define BOTLIB_L_LOG_H_INCLUDED
+
 void Log_Open(char *filename);
 // close the current log file
 void Log_Close(void);
@@ -43,3 +46,5 @@ void QDECL Log_WriteTimeStamped(char *fmt, ...) Q_PRINTF_FUNC(1, 2);
 FILE *Log_FilePointer(void);
 // flush log file
 void Log_Flush(void);
+
+#endif // BOTLIB_L_LOG_H_INCLUDED

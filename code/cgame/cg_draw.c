@@ -525,7 +525,7 @@ static void CG_DrawStatusBar(void) {
   vec3_t origin;
 
   static float colors[4][4] = {//		{ 0.2, 1.0, 0.2, 1.0 } , { 1.0,
-                               //0.2, 0.2, 1.0 }, {0.5, 0.5, 0.5, 1} };
+                               // 0.2, 0.2, 1.0 }, {0.5, 0.5, 0.5, 1} };
                                {1.0f, 0.69f, 0.0f, 1.0f}, // normal
                                {1.0f, 0.2f, 0.2f, 1.0f},  // low health
                                {0.5f, 0.5f, 0.5f, 1.0f},  // weapon firing
@@ -913,9 +913,9 @@ static float CG_DrawTeamOverlay(float y, qboolean right, qboolean upper) {
         //					len = lwidth;
 
         //				xx = x + TINYCHAR_WIDTH * 2 +
-        //TINYCHAR_WIDTH * pwidth +
+        // TINYCHAR_WIDTH * pwidth +
         //					((lwidth/2 - len/2) *
-        //TINYCHAR_WIDTH);
+        // TINYCHAR_WIDTH);
         xx = x + TINYCHAR_WIDTH * 2 + TINYCHAR_WIDTH * pwidth;
         CG_DrawStringExt(xx, y, p, hcolor, qfalse, qfalse, TINYCHAR_WIDTH,
                          TINYCHAR_HEIGHT, TEAM_OVERLAY_MAXLOCATION_WIDTH);

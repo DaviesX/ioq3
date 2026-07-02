@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // NOTE:	int =	default signed
 //				default long
 
+#ifndef BOTLIB_AASFILE_H_INCLUDED
+#define BOTLIB_AASFILE_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define AASID (('S' << 24) + ('A' << 16) + ('A' << 8) + 'E')
 #define AASVERSION_OLD 4
 #define AASVERSION 5
@@ -255,3 +259,5 @@ typedef struct aas_header_s {
 -	area zero is a dummy
 -	node zero is a dummy
 */
+
+#endif // BOTLIB_AASFILE_H_INCLUDED

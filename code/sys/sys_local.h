@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef SYS_SYS_LOCAL_H_INCLUDED
+#define SYS_SYS_LOCAL_H_INCLUDED
+
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
 
@@ -79,3 +82,5 @@ char *Sys_ParseProtocolUri(const char *uri);
 #ifdef USE_AUTOUPDATER
 void Sys_LaunchAutoupdater(int argc, char **argv);
 #endif
+
+#endif // SYS_SYS_LOCAL_H_INCLUDED

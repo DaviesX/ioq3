@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef GAME_SYN_H_INCLUDED
+#define GAME_SYN_H_INCLUDED
+
 #define CONTEXT_ALL 0xFFFFFFFF
 #define CONTEXT_NORMAL 1
 #define CONTEXT_NEARBYITEM 2
@@ -32,3 +35,5 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define CONTEXT_HARVESTERBLUETEAM 256
 
 #define CONTEXT_NAMES 1024
+
+#endif // GAME_SYN_H_INCLUDED

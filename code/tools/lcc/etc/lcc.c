@@ -4,16 +4,16 @@
  */
 static char rcsid[] = "Id: dummy rcsid";
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
 #include <assert.h>
 #include <ctype.h>
 #include <signal.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifdef WIN32
-#include <process.h> /* getpid() */
 #include <io.h>      /* access() */
+#include <process.h> /* getpid() */
 #else
 #include <unistd.h>
 #endif

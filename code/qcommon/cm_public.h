@@ -20,6 +20,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+#ifndef QCOMMON_CM_PUBLIC_H_INCLUDED
+#define QCOMMON_CM_PUBLIC_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #include "qcommon/qfiles.h"
 
 void CM_LoadMap(const char *name, qboolean clientload, int *checksum);
@@ -67,3 +71,5 @@ int CM_WriteAreaBits(byte *buffer, int area);
 // cm_patch.c
 void CM_DrawDebugSurface(void (*drawPoly)(int color, int numPoints,
                                           float *points));
+
+#endif // QCOMMON_CM_PUBLIC_H_INCLUDED

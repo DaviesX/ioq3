@@ -20,9 +20,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-#include "qcommon/q_platform.h"
+// cmdlib.h/mathlib.h provide this tool's byte/vec_t types and must precede
+// qfiles.h; keep them in a separate, earlier include block.
 #include "tools/asm/cmdlib.h"
 #include "tools/asm/mathlib.h"
+
+#include "qcommon/q_platform.h"
 #include "qcommon/qfiles.h"
 
 /* 19079 total symbols in FI, 2002 Jan 23 */

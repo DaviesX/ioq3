@@ -3790,9 +3790,10 @@ static int UI_HeadCountByTeam(void) {
     for (j = 0; j < TEAM_MEMBERS; j++) {
       if (uiInfo.teamList[tIndex].teamMembers[j] != NULL) {
         if (uiInfo.characterList[i].reference &
-            (1 << tIndex)) { // &&
-                             // Q_stricmp(uiInfo.teamList[tIndex].teamMembers[j],
-                             // uiInfo.characterList[i].name)==0) {
+            (1
+             << tIndex)) { // &&
+                           // Q_stricmp(uiInfo.teamList[tIndex].teamMembers[j],
+                           // uiInfo.characterList[i].name)==0) {
           uiInfo.characterList[i].active = qtrue;
           c++;
           break;

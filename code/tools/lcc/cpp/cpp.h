@@ -1,3 +1,6 @@
+#ifndef TOOLS_LCC_CPP_CPP_H_INCLUDED
+#define TOOLS_LCC_CPP_CPP_H_INCLUDED
+
 #define INS 32768   /* input buffer */
 #define OBS 4096    /* outbut buffer */
 #define NARG 32     /* Max number arguments to a macro */
@@ -237,3 +240,5 @@ extern char wd[];
 #include <io.h>
 #endif
 #include <fcntl.h>
+
+#endif // TOOLS_LCC_CPP_CPP_H_INCLUDED

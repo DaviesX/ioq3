@@ -1,5 +1,6 @@
 #ifndef BURG_INCLUDED
 #define BURG_INCLUDED
+#include <stdio.h>
 
 /* iburg.c: */
 extern void *alloc(int nbytes);

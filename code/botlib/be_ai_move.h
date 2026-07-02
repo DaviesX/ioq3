@@ -31,6 +31,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 // movement types
+#ifndef BOTLIB_BE_AI_MOVE_H_INCLUDED
+#define BOTLIB_BE_AI_MOVE_H_INCLUDED
+
+#include "qcommon/q_shared.h"
 #define MOVE_WALK 1
 #define MOVE_CROUCH 2
 #define MOVE_JUMP 4
@@ -142,3 +146,5 @@ void BotSetBrushModelTypes(void);
 int BotSetupMoveAI(void);
 // shutdown movement AI
 void BotShutdownMoveAI(void);
+
+#endif // BOTLIB_BE_AI_MOVE_H_INCLUDED

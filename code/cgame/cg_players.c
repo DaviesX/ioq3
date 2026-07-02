@@ -857,8 +857,8 @@ static void CG_SetDeferredClientInfo(int clientNum, clientInfo_t *ci) {
     if (Q_stricmp(ci->skinName, match->skinName) ||
         Q_stricmp(ci->modelName, match->modelName) ||
         //			 Q_stricmp( ci->headModelName,
-        //match->headModelName ) || 			 Q_stricmp( ci->headSkinName,
-        //match->headSkinName ) ||
+        // match->headModelName ) || 			 Q_stricmp(
+        // ci->headSkinName, match->headSkinName ) ||
         (cgs.gametype >= GT_TEAM && ci->team != match->team)) {
       continue;
     }

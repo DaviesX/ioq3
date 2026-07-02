@@ -550,7 +550,7 @@ void CG_AddKamikaze(localEntity_t *le) {
 
     if (!(le->leFlags & LEF_SOUND1)) {
       //			trap_S_StartSound (re->origin, ENTITYNUM_WORLD,
-      //CHAN_AUTO, cgs.media.kamikazeExplodeSound );
+      // CHAN_AUTO, cgs.media.kamikazeExplodeSound );
       trap_S_StartLocalSound(cgs.media.kamikazeExplodeSound, CHAN_AUTO);
       le->leFlags |= LEF_SOUND1;
     }
@@ -604,7 +604,7 @@ void CG_AddKamikaze(localEntity_t *le) {
     } else {
       if (!(le->leFlags & LEF_SOUND2)) {
         //				trap_S_StartSound (re->origin,
-        //ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.kamikazeImplodeSound );
+        // ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.kamikazeImplodeSound );
         trap_S_StartLocalSound(cgs.media.kamikazeImplodeSound, CHAN_AUTO);
         le->leFlags |= LEF_SOUND2;
       }
