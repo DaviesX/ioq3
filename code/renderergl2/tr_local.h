@@ -106,7 +106,7 @@ typedef struct {
 typedef struct {
   vec3_t origin;     // in world coordinates
   vec3_t axis[3];    // orientation in world
-  vec3_t viewOrigin; // viewParms->or.origin in local coordinates
+  vec3_t viewOrigin; // viewParms->ori.origin in local coordinates
   float modelMatrix[16];
   float transformMatrix[16];
 } orientationr_t;
@@ -790,7 +790,7 @@ typedef enum {
 } viewParmFlags_t;
 
 typedef struct {
-  orientationr_t or ;
+  orientationr_t ori;
   orientationr_t world;
   vec3_t pvsOrigin;  // may be different than or.origin for portals
   qboolean isPortal; // true if this view is through a portal
@@ -1414,7 +1414,7 @@ typedef struct {
 typedef struct {
   trRefdef_t refdef;
   viewParms_t viewParms;
-  orientationr_t or ;
+  orientationr_t ori;
   backEndCounters_t pc;
   qboolean isHyperspace;
   trRefEntity_t *currentEntity;
@@ -1561,7 +1561,7 @@ typedef struct {
   int identityLightByte; // identityLight * 255
   int overbrightBits; // r_overbrightBits->integer, but set to 0 if no hw gamma
 
-  orientationr_t or ; // for current entity
+  orientationr_t ori; // for current entity
 
   trRefdef_t refdef;
 
@@ -1805,7 +1805,8 @@ static ID_INLINE qboolean ShaderRequiresCPUDeforms(const shader_t *shader) {
     case DEFORM_BULGE:
       // need CPU deforms at high level-times to avoid floating point percision
       // loss
-      return (backEnd.refdef.floatTime != (float)backEnd.refdef.floatTime);
+      return (qboolean)((backEnd.refdef.floatTime !=
+                         (float)backEnd.refdef.floatTime));
 
     default:
       return qtrue;
@@ -1861,7 +1862,7 @@ int R_CullLocalPointAndRadius(const vec3_t origin, float radius);
 void R_SetupProjection(viewParms_t *dest, float zProj, float zFar,
                        qboolean computeFrustum);
 void R_RotateForEntity(const trRefEntity_t *ent, const viewParms_t *viewParms,
-                       orientationr_t * or);
+                       orientationr_t *ori);
 
 /*
 ** GL wrapper/helper functions
@@ -2096,7 +2097,7 @@ LIGHTS
 
 void R_DlightBmodel(bmodel_t *bmodel);
 void R_SetupEntityLighting(const trRefdef_t *refdef, trRefEntity_t *ent);
-void R_TransformDlights(int count, dlight_t *dl, orientationr_t * or);
+void R_TransformDlights(int count, dlight_t *dl, orientationr_t *ori);
 int R_LightForPoint(vec3_t point, vec3_t ambientLight, vec3_t directedLight,
                     vec3_t lightDir);
 int R_LightDirForPoint(vec3_t point, vec3_t lightDir, vec3_t normal,
@@ -2483,11 +2484,18 @@ void RE_StretchPic(float x, float y, float w, float h, float s1, float t1,
                    float s2, float t2, qhandle_t hShader);
 void RE_BeginFrame(stereoFrame_t stereoFrame);
 void RE_EndFrame(int *frontEndMsec, int *backEndMsec);
+// Defined in renderercommon/tr_image_jpg.c, which is compiled as C.
+#ifdef __cplusplus
+extern "C" {
+#endif
 void RE_SaveJPG(char *filename, int quality, int image_width, int image_height,
                 unsigned char *image_buffer, int padding);
 size_t RE_SaveJPGToBuffer(byte *buffer, size_t bufSize, int quality,
                           int image_width, int image_height, byte *image_buffer,
                           int padding);
+#ifdef __cplusplus
+}
+#endif
 void RE_TakeVideoFrame(int width, int height, byte *captureBuffer,
                        byte *encodeBuffer, qboolean motionJpeg);
 

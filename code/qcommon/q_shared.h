@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __Q_SHARED_H
 #define __Q_SHARED_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // q_shared.h -- included first by ALL program modules.
 // A user mod should never modify this file
 
@@ -208,7 +212,7 @@ typedef int sfxHandle_t;
 typedef int fileHandle_t;
 typedef int clipHandle_t;
 
-#define PAD(base, alignment) (((base) + (alignment)-1) & ~((alignment)-1))
+#define PAD(base, alignment) (((base) + (alignment) - 1) & ~((alignment) - 1))
 #define PADLEN(base, alignment) (PAD((base), (alignment)) - (base))
 
 #define PADP(base, alignment) ((void *)PAD((intptr_t)(base), (alignment)))
@@ -1433,5 +1437,9 @@ typedef enum _flag_status {
 #define LERP(a, b, w) ((a) * (1.0f - (w)) + (b) * (w))
 #define LUMA(red, green, blue)                                                 \
   (0.2126f * (red) + 0.7152f * (green) + 0.0722f * (blue))
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // __Q_SHARED_H

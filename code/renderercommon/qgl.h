@@ -26,6 +26,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __QGL_H__
 #define __QGL_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef USE_INTERNAL_SDL_HEADERS
 #include "SDL_opengl.h"
 #else
@@ -400,5 +404,9 @@ extern int qglesMajorVersion, qglesMinorVersion;
 #define QGLES_VERSION_ATLEAST(major, minor)                                    \
   (qglesMajorVersion > major ||                                                \
    (qglesMajorVersion == major && qglesMinorVersion >= minor))
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

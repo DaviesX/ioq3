@@ -6,29 +6,29 @@ include(utils/set_output_dirs)
 include(renderer_common)
 
 set(RENDERER_GL1_SOURCES
-    ${SOURCE_DIR}/renderergl1/tr_altivec.c
-    ${SOURCE_DIR}/renderergl1/tr_animation.c
-    ${SOURCE_DIR}/renderergl1/tr_backend.c
-    ${SOURCE_DIR}/renderergl1/tr_bsp.c
-    ${SOURCE_DIR}/renderergl1/tr_cmds.c
-    ${SOURCE_DIR}/renderergl1/tr_curve.c
-    ${SOURCE_DIR}/renderergl1/tr_flares.c
-    ${SOURCE_DIR}/renderergl1/tr_image.c
-    ${SOURCE_DIR}/renderergl1/tr_init.c
-    ${SOURCE_DIR}/renderergl1/tr_light.c
-    ${SOURCE_DIR}/renderergl1/tr_main.c
-    ${SOURCE_DIR}/renderergl1/tr_marks.c
-    ${SOURCE_DIR}/renderergl1/tr_mesh.c
-    ${SOURCE_DIR}/renderergl1/tr_model.c
-    ${SOURCE_DIR}/renderergl1/tr_model_iqm.c
-    ${SOURCE_DIR}/renderergl1/tr_scene.c
-    ${SOURCE_DIR}/renderergl1/tr_shade.c
-    ${SOURCE_DIR}/renderergl1/tr_shade_calc.c
-    ${SOURCE_DIR}/renderergl1/tr_shader.c
-    ${SOURCE_DIR}/renderergl1/tr_shadows.c
-    ${SOURCE_DIR}/renderergl1/tr_sky.c
-    ${SOURCE_DIR}/renderergl1/tr_surface.c
-    ${SOURCE_DIR}/renderergl1/tr_world.c
+    ${SOURCE_DIR}/renderergl1/tr_altivec.cpp
+    ${SOURCE_DIR}/renderergl1/tr_animation.cpp
+    ${SOURCE_DIR}/renderergl1/tr_backend.cpp
+    ${SOURCE_DIR}/renderergl1/tr_bsp.cpp
+    ${SOURCE_DIR}/renderergl1/tr_cmds.cpp
+    ${SOURCE_DIR}/renderergl1/tr_curve.cpp
+    ${SOURCE_DIR}/renderergl1/tr_flares.cpp
+    ${SOURCE_DIR}/renderergl1/tr_image.cpp
+    ${SOURCE_DIR}/renderergl1/tr_init.cpp
+    ${SOURCE_DIR}/renderergl1/tr_light.cpp
+    ${SOURCE_DIR}/renderergl1/tr_main.cpp
+    ${SOURCE_DIR}/renderergl1/tr_marks.cpp
+    ${SOURCE_DIR}/renderergl1/tr_mesh.cpp
+    ${SOURCE_DIR}/renderergl1/tr_model.cpp
+    ${SOURCE_DIR}/renderergl1/tr_model_iqm.cpp
+    ${SOURCE_DIR}/renderergl1/tr_scene.cpp
+    ${SOURCE_DIR}/renderergl1/tr_shade.cpp
+    ${SOURCE_DIR}/renderergl1/tr_shade_calc.cpp
+    ${SOURCE_DIR}/renderergl1/tr_shader.cpp
+    ${SOURCE_DIR}/renderergl1/tr_shadows.cpp
+    ${SOURCE_DIR}/renderergl1/tr_sky.cpp
+    ${SOURCE_DIR}/renderergl1/tr_surface.cpp
+    ${SOURCE_DIR}/renderergl1/tr_world.cpp
 )
 
 set(RENDERER_GL1_BASENAME renderer_opengl1)

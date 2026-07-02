@@ -6,36 +6,36 @@ include(utils/set_output_dirs)
 include(renderer_common)
 
 set(RENDERER_GL2_SOURCES
-    ${SOURCE_DIR}/renderergl2/tr_animation.c
-    ${SOURCE_DIR}/renderergl2/tr_backend.c
-    ${SOURCE_DIR}/renderergl2/tr_bsp.c
-    ${SOURCE_DIR}/renderergl2/tr_cmds.c
-    ${SOURCE_DIR}/renderergl2/tr_curve.c
-    ${SOURCE_DIR}/renderergl2/tr_dsa.c
-    ${SOURCE_DIR}/renderergl2/tr_extramath.c
-    ${SOURCE_DIR}/renderergl2/tr_extensions.c
-    ${SOURCE_DIR}/renderergl2/tr_fbo.c
-    ${SOURCE_DIR}/renderergl2/tr_flares.c
-    ${SOURCE_DIR}/renderergl2/tr_glsl.c
-    ${SOURCE_DIR}/renderergl2/tr_image.c
-    ${SOURCE_DIR}/renderergl2/tr_image_dds.c
-    ${SOURCE_DIR}/renderergl2/tr_init.c
-    ${SOURCE_DIR}/renderergl2/tr_light.c
-    ${SOURCE_DIR}/renderergl2/tr_main.c
-    ${SOURCE_DIR}/renderergl2/tr_marks.c
-    ${SOURCE_DIR}/renderergl2/tr_mesh.c
-    ${SOURCE_DIR}/renderergl2/tr_model.c
-    ${SOURCE_DIR}/renderergl2/tr_model_iqm.c
-    ${SOURCE_DIR}/renderergl2/tr_postprocess.c
-    ${SOURCE_DIR}/renderergl2/tr_scene.c
-    ${SOURCE_DIR}/renderergl2/tr_shade.c
-    ${SOURCE_DIR}/renderergl2/tr_shade_calc.c
-    ${SOURCE_DIR}/renderergl2/tr_shader.c
-    ${SOURCE_DIR}/renderergl2/tr_shadows.c
-    ${SOURCE_DIR}/renderergl2/tr_sky.c
-    ${SOURCE_DIR}/renderergl2/tr_surface.c
-    ${SOURCE_DIR}/renderergl2/tr_vbo.c
-    ${SOURCE_DIR}/renderergl2/tr_world.c
+    ${SOURCE_DIR}/renderergl2/tr_animation.cpp
+    ${SOURCE_DIR}/renderergl2/tr_backend.cpp
+    ${SOURCE_DIR}/renderergl2/tr_bsp.cpp
+    ${SOURCE_DIR}/renderergl2/tr_cmds.cpp
+    ${SOURCE_DIR}/renderergl2/tr_curve.cpp
+    ${SOURCE_DIR}/renderergl2/tr_dsa.cpp
+    ${SOURCE_DIR}/renderergl2/tr_extramath.cpp
+    ${SOURCE_DIR}/renderergl2/tr_extensions.cpp
+    ${SOURCE_DIR}/renderergl2/tr_fbo.cpp
+    ${SOURCE_DIR}/renderergl2/tr_flares.cpp
+    ${SOURCE_DIR}/renderergl2/tr_glsl.cpp
+    ${SOURCE_DIR}/renderergl2/tr_image.cpp
+    ${SOURCE_DIR}/renderergl2/tr_image_dds.cpp
+    ${SOURCE_DIR}/renderergl2/tr_init.cpp
+    ${SOURCE_DIR}/renderergl2/tr_light.cpp
+    ${SOURCE_DIR}/renderergl2/tr_main.cpp
+    ${SOURCE_DIR}/renderergl2/tr_marks.cpp
+    ${SOURCE_DIR}/renderergl2/tr_mesh.cpp
+    ${SOURCE_DIR}/renderergl2/tr_model.cpp
+    ${SOURCE_DIR}/renderergl2/tr_model_iqm.cpp
+    ${SOURCE_DIR}/renderergl2/tr_postprocess.cpp
+    ${SOURCE_DIR}/renderergl2/tr_scene.cpp
+    ${SOURCE_DIR}/renderergl2/tr_shade.cpp
+    ${SOURCE_DIR}/renderergl2/tr_shade_calc.cpp
+    ${SOURCE_DIR}/renderergl2/tr_shader.cpp
+    ${SOURCE_DIR}/renderergl2/tr_shadows.cpp
+    ${SOURCE_DIR}/renderergl2/tr_sky.cpp
+    ${SOURCE_DIR}/renderergl2/tr_surface.cpp
+    ${SOURCE_DIR}/renderergl2/tr_vbo.cpp
+    ${SOURCE_DIR}/renderergl2/tr_world.cpp
 )
 
 file(GLOB RENDERER_GL2_SHADER_SOURCES ${SOURCE_DIR}/renderergl2/glsl/*.glsl)
