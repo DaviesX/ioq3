@@ -29,8 +29,16 @@ endif()
 
 list(APPEND CLIENT_DEFINITIONS USE_ICON)
 
+# llvm-rc (used by clang/MinGW-clang toolchains) fails to parse an icon path
+# that contains a Windows drive-letter colon (e.g. C:/...). Pass only the icon
+# file name as the define and expose its directory as an RC include path so the
+# resource compiler resolves it without an absolute, colon-bearing path.
+get_filename_component(WINDOWS_ICON_DIR ${WINDOWS_ICON_PATH} DIRECTORY)
+get_filename_component(WINDOWS_ICON_NAME ${WINDOWS_ICON_PATH} NAME)
 set_source_files_properties(${SOURCE_DIR}/sys/win_resource.rc
-    PROPERTIES COMPILE_DEFINITIONS WINDOWS_ICON_PATH="${WINDOWS_ICON_PATH}")
+    PROPERTIES
+        COMPILE_DEFINITIONS WINDOWS_ICON_PATH="${WINDOWS_ICON_NAME}"
+        INCLUDE_DIRECTORIES "${WINDOWS_ICON_DIR}")
 
 if(MSVC)
     # We have our own manifest, disable auto creation
