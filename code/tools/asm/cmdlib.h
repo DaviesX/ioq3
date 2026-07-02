@@ -36,6 +36,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #endif
 
+#include "qcommon/q_shared.h"
+
 #include <ctype.h>
 #include <errno.h>
 #include <stdarg.h>
@@ -48,12 +50,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #pragma intrinsic(memset, memcpy)
 
-#endif
-
-#ifndef __BYTEBOOL__
-#define __BYTEBOOL__
-typedef enum { qfalse, qtrue } qboolean;
-typedef unsigned char byte;
 #endif
 
 #define MAX_OS_PATH 1024
@@ -113,7 +109,7 @@ void ExtractFileExtension(const char *path, char *dest);
 
 int ParseNum(const char *str);
 
-char *COM_Parse(char *data);
+char *ASM_COM_Parse(char *data);
 
 extern char com_token[1024];
 extern qboolean com_eof;

@@ -20,13 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
-// cmdlib.h/mathlib.h provide this tool's byte/vec_t types and must precede
-// qfiles.h; keep them in a separate, earlier include block.
-#include "tools/asm/cmdlib.h"
-#include "tools/asm/mathlib.h"
-
 #include "qcommon/q_platform.h"
 #include "qcommon/qfiles.h"
+#include "tools/asm/cmdlib.h"
 
 /* 19079 total symbols in FI, 2002 Jan 23 */
 #define DEFAULT_HASHTABLE_SIZE 2048
@@ -1458,10 +1454,10 @@ static void ParseOptionFile(const char *filename) {
 
   text_p = text;
 
-  while ((text_p = COM_Parse(text_p)) != 0) {
+  while ((text_p = ASM_COM_Parse(text_p)) != 0) {
     if (!strcmp(com_token, "-o")) {
       // allow output override in option file
-      text_p = COM_Parse(text_p);
+      text_p = ASM_COM_Parse(text_p);
       if (text_p) {
         strcpy(outputFilename, com_token);
       }

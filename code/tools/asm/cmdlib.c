@@ -408,12 +408,12 @@ int FileTime(const char *path) {
 
 /*
 ==============
-COM_Parse
+ASM_COM_Parse
 
 Parse a token out of a string
 ==============
 */
-char *COM_Parse(char *data) {
+char *ASM_COM_Parse(char *data) {
   int c;
   int len;
 
