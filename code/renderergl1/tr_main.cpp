@@ -26,10 +26,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <assert.h>
 #include <math.h>
 #include <string.h> // memcpy
+#include <vector>
 
 trGlobals_t tr;
 
-static float s_flipMatrix[16] = {
+const float kFlipMatrix[16] = {
     // convert from our coordinate system (looking down X)
     // to OpenGL's coordinate system (looking down -Z)
     0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1};
@@ -367,7 +368,7 @@ void R_RotateForViewer(void) {
 
   // convert from our coordinate system (looking down X)
   // to OpenGL's coordinate system (looking down -Z)
-  myGlMultMatrix(viewerMatrix, s_flipMatrix, tr.ori.modelMatrix);
+  myGlMultMatrix(viewerMatrix, kFlipMatrix, tr.ori.modelMatrix);
 
   tr.viewParms.world = tr.ori;
 }
@@ -1052,17 +1053,20 @@ Radix sort with 4 byte size buckets
 ===============
 */
 static void R_RadixSort(drawSurf_t *source, int size) {
-  static drawSurf_t scratch[MAX_DRAWSURFS];
+  static std::vector<drawSurf_t> scratch;
+  if (static_cast<size_t>(size) > scratch.size()) {
+    scratch.resize(size);
+  }
 #ifdef Q3_LITTLE_ENDIAN
-  R_Radix(0, size, source, scratch);
-  R_Radix(1, size, scratch, source);
-  R_Radix(2, size, source, scratch);
-  R_Radix(3, size, scratch, source);
+  R_Radix(0, size, source, scratch.data());
+  R_Radix(1, size, scratch.data(), source);
+  R_Radix(2, size, source, scratch.data());
+  R_Radix(3, size, scratch.data(), source);
 #else
-  R_Radix(3, size, source, scratch);
-  R_Radix(2, size, scratch, source);
-  R_Radix(1, size, source, scratch);
-  R_Radix(0, size, scratch, source);
+  R_Radix(3, size, source, scratch.data());
+  R_Radix(2, size, scratch.data(), source);
+  R_Radix(1, size, source, scratch.data());
+  R_Radix(0, size, scratch.data(), source);
 #endif // Q3_LITTLE_ENDIAN
 }
 

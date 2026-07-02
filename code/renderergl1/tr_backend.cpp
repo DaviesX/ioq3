@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 backEndData_t *backEndData;
 backEndState_t backEnd;
 
-static float s_flipMatrix[16] = {
+const float kFlipMatrix[16] = {
     // convert from our coordinate system (looking down X)
     // to OpenGL's coordinate system (looking down -Z)
     0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1};
@@ -436,7 +436,7 @@ void RB_BeginDrawingView(void) {
     plane2[2] = DotProduct(backEnd.viewParms.ori.axis[2], plane);
     plane2[3] = DotProduct(plane, backEnd.viewParms.ori.origin) - plane[3];
 
-    qglLoadMatrixf(s_flipMatrix);
+    qglLoadMatrixf(kFlipMatrix);
     qglClipPlane(GL_CLIP_PLANE0, plane2);
     qglEnable(GL_CLIP_PLANE0);
   } else {

@@ -864,12 +864,12 @@ typedef struct {
 
 // Note that the ordering indicates the order of preference used
 // when there are multiple images of different formats available
-static imageExtToLoaderMap_t imageLoaders[] = {
+const imageExtToLoaderMap_t kImageLoaders[] = {
     {"tga", R_LoadTGA}, {"jpg", R_LoadJPG}, {"jpeg", R_LoadJPG},
     {"png", R_LoadPNG}, {"pcx", R_LoadPCX}, {"bmp", R_LoadBMP},
     {"pvr", R_LoadPVR}};
 
-static int numImageLoaders = ARRAY_LEN(imageLoaders);
+const int kNumImageLoaders = ARRAY_LEN(kImageLoaders);
 
 /*
 =================
@@ -897,16 +897,16 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height) {
 
   if (*ext) {
     // Look for the correct loader and use it
-    for (i = 0; i < numImageLoaders; i++) {
-      if (!Q_stricmp(ext, imageLoaders[i].ext)) {
+    for (i = 0; i < kNumImageLoaders; i++) {
+      if (!Q_stricmp(ext, kImageLoaders[i].ext)) {
         // Load
-        imageLoaders[i].ImageLoader(localName, pic, width, height);
+        kImageLoaders[i].ImageLoader(localName, pic, width, height);
         break;
       }
     }
 
     // A loader was found
-    if (i < numImageLoaders) {
+    if (i < kNumImageLoaders) {
       if (*pic == NULL) {
         // Loader failed, most likely because the file isn't there;
         // try again without the extension
@@ -922,14 +922,14 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height) {
 
   // Try and find a suitable match using all
   // the image formats supported
-  for (i = 0; i < numImageLoaders; i++) {
+  for (i = 0; i < kNumImageLoaders; i++) {
     if (i == orgLoader)
       continue;
 
-    altName = va("%s.%s", localName, imageLoaders[i].ext);
+    altName = va("%s.%s", localName, kImageLoaders[i].ext);
 
     // Load
-    imageLoaders[i].ImageLoader(altName, pic, width, height);
+    kImageLoaders[i].ImageLoader(altName, pic, width, height);
 
     if (*pic) {
       if (orgNameFailed) {

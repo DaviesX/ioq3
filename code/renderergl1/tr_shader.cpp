@@ -1684,7 +1684,7 @@ typedef struct {
   int multitextureBlend;
 } collapse_t;
 
-static collapse_t collapse[] = {
+const collapse_t kCollapse[] = {
     {0, GLS_DSTBLEND_SRC_COLOR | GLS_SRCBLEND_ZERO, GL_MODULATE, 0},
 
     {0, GLS_DSTBLEND_ZERO | GLS_SRCBLEND_DST_COLOR, GL_MODULATE, 0},
@@ -1758,19 +1758,19 @@ static qboolean CollapseMultitexture(void) {
   bbits &= (GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS);
 
   // search for a valid multitexture blend function
-  for (i = 0; collapse[i].blendA != -1; i++) {
-    if (abits == collapse[i].blendA && bbits == collapse[i].blendB) {
+  for (i = 0; kCollapse[i].blendA != -1; i++) {
+    if (abits == kCollapse[i].blendA && bbits == kCollapse[i].blendB) {
       break;
     }
   }
 
   // nothing found
-  if (collapse[i].blendA == -1) {
+  if (kCollapse[i].blendA == -1) {
     return qfalse;
   }
 
   // GL_ADD is a separate extension
-  if (collapse[i].multitextureEnv == GL_ADD &&
+  if (kCollapse[i].multitextureEnv == GL_ADD &&
       !glConfig.textureEnvAddAvailable) {
     return qfalse;
   }
@@ -1781,8 +1781,8 @@ static qboolean CollapseMultitexture(void) {
     return qfalse;
   }
 
-  // an add collapse can only have identity colors
-  if (collapse[i].multitextureEnv == GL_ADD &&
+  // an add kCollapse can only have identity colors
+  if (kCollapse[i].multitextureEnv == GL_ADD &&
       stages[0].rgbGen != CGEN_IDENTITY) {
     return qfalse;
   }
@@ -1810,9 +1810,9 @@ static qboolean CollapseMultitexture(void) {
   }
 
   // set the new blend state bits
-  shader.multitextureEnv = collapse[i].multitextureEnv;
+  shader.multitextureEnv = kCollapse[i].multitextureEnv;
   stages[0].stateBits &= ~(GLS_DSTBLEND_BITS | GLS_SRCBLEND_BITS);
-  stages[0].stateBits |= collapse[i].multitextureBlend;
+  stages[0].stateBits |= kCollapse[i].multitextureBlend;
 
   //
   // move down subsequent shaders

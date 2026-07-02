@@ -39,8 +39,8 @@ POLYGON TO BOX SIDE PROJECTION
 ===================================================================================
 */
 
-static vec3_t sky_clip[6] = {{1, 1, 0}, {1, -1, 0}, {0, -1, 1},
-                             {0, 1, 1}, {1, 0, 1},  {-1, 0, 1}};
+const vec3_t kSkyClip[6] = {{1, 1, 0}, {1, -1, 0}, {0, -1, 1},
+                            {0, 1, 1}, {1, 0, 1},  {-1, 0, 1}};
 
 static float sky_mins[2][6], sky_maxs[2][6];
 static float sky_min, sky_max;
@@ -143,7 +143,7 @@ ClipSkyPolygon
 ================
 */
 static void ClipSkyPolygon(int nump, vec3_t vecs, int stage) {
-  float *norm;
+  const float *norm;
   float *v;
   qboolean front, back;
   float d, e;
@@ -161,7 +161,7 @@ static void ClipSkyPolygon(int nump, vec3_t vecs, int stage) {
   }
 
   front = back = qfalse;
-  norm = sky_clip[stage];
+  norm = kSkyClip[stage];
   for (i = 0, v = vecs; i < nump; i++, v += 3) {
     d = DotProduct(v, norm);
     if (d > ON_EPSILON) {
@@ -327,7 +327,7 @@ static void MakeSkyVec(float s, float t, int axis, float outSt[2],
   }
 }
 
-static int sky_texorder[6] = {0, 2, 1, 3, 4, 5};
+const int kSkyTexOrder[6] = {0, 2, 1, 3, 4, 5};
 static vec3_t s_skyPoints[SKY_SUBDIVISIONS + 1][SKY_SUBDIVISIONS + 1];
 static float s_skyTexCoords[SKY_SUBDIVISIONS + 1][SKY_SUBDIVISIONS + 1][2];
 
@@ -409,8 +409,8 @@ static void DrawSkyBox(shader_t *shader) {
       sky_maxs_subd[1] = HALF_SKY_SUBDIVISIONS;
 
     if (!haveClampToEdge) {
-      w_offset = 0.5f / shader->sky.outerbox[sky_texorder[i]]->width;
-      h_offset = 0.5f / shader->sky.outerbox[sky_texorder[i]]->height;
+      w_offset = 0.5f / shader->sky.outerbox[kSkyTexOrder[i]]->width;
+      h_offset = 0.5f / shader->sky.outerbox[kSkyTexOrder[i]]->height;
 
       w_scale = 1.0f - w_offset * 2;
       h_scale = 1.0f - h_offset * 2;
@@ -435,7 +435,7 @@ static void DrawSkyBox(shader_t *shader) {
       }
     }
 
-    DrawSkySide(shader->sky.outerbox[sky_texorder[i]], sky_mins_subd,
+    DrawSkySide(shader->sky.outerbox[kSkyTexOrder[i]], sky_mins_subd,
                 sky_maxs_subd);
   }
 }
