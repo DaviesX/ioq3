@@ -374,7 +374,7 @@ vidmode_t r_vidModes[] = {{"Mode  0: 320x240", 320, 240, 1},
                           {"Mode  9: 1600x1200", 1600, 1200, 1},
                           {"Mode 10: 2048x1536", 2048, 1536, 1},
                           {"Mode 11: 856x480 (wide)", 856, 480, 1}};
-static int s_numVidModes = ARRAY_LEN(r_vidModes);
+const int kNumVidModes = ARRAY_LEN(r_vidModes);
 
 qboolean R_GetModeInfo(int *width, int *height, float *windowAspect, int mode) {
   vidmode_t *vm;
@@ -383,7 +383,7 @@ qboolean R_GetModeInfo(int *width, int *height, float *windowAspect, int mode) {
   if (mode < -1) {
     return qfalse;
   }
-  if (mode >= s_numVidModes) {
+  if (mode >= kNumVidModes) {
     return qfalse;
   }
 
@@ -411,7 +411,7 @@ static void R_ModeList_f(void) {
   int i;
 
   ri.Printf(PRINT_ALL, "\n");
-  for (i = 0; i < s_numVidModes; i++) {
+  for (i = 0; i < kNumVidModes; i++) {
     ri.Printf(PRINT_ALL, "%s\n", r_vidModes[i].description);
   }
   ri.Printf(PRINT_ALL, "\n");

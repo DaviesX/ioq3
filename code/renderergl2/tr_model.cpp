@@ -182,10 +182,10 @@ typedef struct {
 
 // Note that the ordering indicates the order of preference used
 // when there are multiple models of different formats available
-static modelExtToLoaderMap_t modelLoaders[] = {
+const modelExtToLoaderMap_t kModelLoaders[] = {
     {"iqm", R_RegisterIQM}, {"mdr", R_RegisterMDR}, {"md3", R_RegisterMD3}};
 
-static int numModelLoaders = ARRAY_LEN(modelLoaders);
+const int kNumModelLoaders = ARRAY_LEN(kModelLoaders);
 
 //===============================================================================
 
@@ -295,16 +295,16 @@ qhandle_t RE_RegisterModel(const char *name) {
 
   if (*ext) {
     // Look for the correct loader and use it
-    for (i = 0; i < numModelLoaders; i++) {
-      if (!Q_stricmp(ext, modelLoaders[i].ext)) {
+    for (i = 0; i < kNumModelLoaders; i++) {
+      if (!Q_stricmp(ext, kModelLoaders[i].ext)) {
         // Load
-        hModel = modelLoaders[i].ModelLoader(localName, mod);
+        hModel = kModelLoaders[i].ModelLoader(localName, mod);
         break;
       }
     }
 
     // A loader was found
-    if (i < numModelLoaders) {
+    if (i < kNumModelLoaders) {
       if (!hModel) {
         // Loader failed, most likely because the file isn't there;
         // try again without the extension
@@ -320,15 +320,15 @@ qhandle_t RE_RegisterModel(const char *name) {
 
   // Try and find a suitable match using all
   // the model formats supported
-  for (i = 0; i < numModelLoaders; i++) {
+  for (i = 0; i < kNumModelLoaders; i++) {
     if (i == orgLoader)
       continue;
 
     Com_sprintf(altName, sizeof(altName), "%s.%s", localName,
-                modelLoaders[i].ext);
+                kModelLoaders[i].ext);
 
     // Load
-    hModel = modelLoaders[i].ModelLoader(altName, mod);
+    hModel = kModelLoaders[i].ModelLoader(altName, mod);
 
     if (hModel) {
       if (orgNameFailed) {

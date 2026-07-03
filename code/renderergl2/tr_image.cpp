@@ -2282,12 +2282,12 @@ typedef struct {
 
 // Note that the ordering indicates the order of preference used
 // when there are multiple images of different formats available
-static imageExtToLoaderMap_t imageLoaders[] = {
+const imageExtToLoaderMap_t kImageLoaders[] = {
     {"png", R_LoadPNG},  {"tga", R_LoadTGA}, {"jpg", R_LoadJPG},
     {"jpeg", R_LoadJPG}, {"pcx", R_LoadPCX}, {"bmp", R_LoadBMP},
     {"pvr", R_LoadPVR}};
 
-static int numImageLoaders = ARRAY_LEN(imageLoaders);
+const int kNumImageLoaders = ARRAY_LEN(kImageLoaders);
 
 /*
 =================
@@ -2330,9 +2330,9 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height,
 
     // Then try explicitly requested extension (if not DDS)
     if (ext && *ext && Q_stricmp(ext, "dds")) {
-      for (i = 0; i < numImageLoaders; i++) {
-        if (!Q_stricmp(ext, imageLoaders[i].ext)) {
-          imageLoaders[i].ImageLoader(localName, pic, width, height);
+      for (i = 0; i < kNumImageLoaders; i++) {
+        if (!Q_stricmp(ext, kImageLoaders[i].ext)) {
+          kImageLoaders[i].ImageLoader(localName, pic, width, height);
           if (*pic)
             return;
           orgNameFailed = qtrue;
@@ -2344,11 +2344,11 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height,
     }
 
     // Then probe all supported formats except the failed one
-    for (i = 0; i < numImageLoaders; i++) {
+    for (i = 0; i < kNumImageLoaders; i++) {
       if (i == orgLoader)
         continue;
-      altName = va("%s.%s", localName, imageLoaders[i].ext);
-      imageLoaders[i].ImageLoader(altName, pic, width, height);
+      altName = va("%s.%s", localName, kImageLoaders[i].ext);
+      kImageLoaders[i].ImageLoader(altName, pic, width, height);
       if (*pic) {
         if (orgNameFailed)
           ri.Printf(PRINT_DEVELOPER,
@@ -2363,9 +2363,9 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height,
 
   // Explicit non-dds extension requested, so try its image loader
   if (ext && *ext && Q_stricmp(ext, "dds")) {
-    for (i = 0; i < numImageLoaders; i++) {
-      if (!Q_stricmp(ext, imageLoaders[i].ext)) {
-        imageLoaders[i].ImageLoader(localName, pic, width, height);
+    for (i = 0; i < kNumImageLoaders; i++) {
+      if (!Q_stricmp(ext, kImageLoaders[i].ext)) {
+        kImageLoaders[i].ImageLoader(localName, pic, width, height);
         if (*pic)
           return;
         orgNameFailed = qtrue;
@@ -2377,13 +2377,13 @@ void R_LoadImage(const char *name, byte **pic, int *width, int *height,
   }
 
   // Try all other uncompressed formats
-  for (i = 0; i < numImageLoaders; i++) {
+  for (i = 0; i < kNumImageLoaders; i++) {
     if (i == orgLoader)
       continue;
-    if (!Q_stricmp(imageLoaders[i].ext, "dds"))
+    if (!Q_stricmp(kImageLoaders[i].ext, "dds"))
       continue;
-    altName = va("%s.%s", localName, imageLoaders[i].ext);
-    imageLoaders[i].ImageLoader(altName, pic, width, height);
+    altName = va("%s.%s", localName, kImageLoaders[i].ext);
+    kImageLoaders[i].ImageLoader(altName, pic, width, height);
     if (*pic) {
       if (orgNameFailed)
         ri.Printf(PRINT_DEVELOPER,

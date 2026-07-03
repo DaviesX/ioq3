@@ -1874,7 +1874,7 @@ void GL_CheckErrs(char *file, int line);
 #define GL_CheckErrors(...) GL_CheckErrs(__FILE__, __LINE__)
 void GL_State(unsigned long stateVector);
 void GL_SetProjectionMatrix(mat4_t matrix);
-void GL_SetModelviewMatrix(mat4_t matrix);
+void GL_SetModelviewMatrix(const mat4_t matrix);
 void GL_Cull(int cullType);
 
 #define GLS_SRCBLEND_ZERO 0x00000001

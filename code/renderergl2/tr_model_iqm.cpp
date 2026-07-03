@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LL(x) x = LittleLong(x)
 
 // 3x4 identity matrix
-static float identityMatrix[12] = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0};
+const float kIdentityMatrix[12] = {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0};
 
 static qboolean IQM_CheckRange(iqmHeader_t *header, int offset, int count,
                                int size) {
@@ -1549,18 +1549,18 @@ void RB_IQMSurfaceAnim(surfaceType_t *surface) {
 
       if (blendWeights[0] <= 0.0f) {
         // no blend joint, use identity matrix.
-        vtxMat[0] = identityMatrix[0];
-        vtxMat[1] = identityMatrix[1];
-        vtxMat[2] = identityMatrix[2];
-        vtxMat[3] = identityMatrix[3];
-        vtxMat[4] = identityMatrix[4];
-        vtxMat[5] = identityMatrix[5];
-        vtxMat[6] = identityMatrix[6];
-        vtxMat[7] = identityMatrix[7];
-        vtxMat[8] = identityMatrix[8];
-        vtxMat[9] = identityMatrix[9];
-        vtxMat[10] = identityMatrix[10];
-        vtxMat[11] = identityMatrix[11];
+        vtxMat[0] = kIdentityMatrix[0];
+        vtxMat[1] = kIdentityMatrix[1];
+        vtxMat[2] = kIdentityMatrix[2];
+        vtxMat[3] = kIdentityMatrix[3];
+        vtxMat[4] = kIdentityMatrix[4];
+        vtxMat[5] = kIdentityMatrix[5];
+        vtxMat[6] = kIdentityMatrix[6];
+        vtxMat[7] = kIdentityMatrix[7];
+        vtxMat[8] = kIdentityMatrix[8];
+        vtxMat[9] = kIdentityMatrix[9];
+        vtxMat[10] = kIdentityMatrix[10];
+        vtxMat[11] = kIdentityMatrix[11];
       } else {
         // compute the vertex matrix by blending the up to
         // four blend weights

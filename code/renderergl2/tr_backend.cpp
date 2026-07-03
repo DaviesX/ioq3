@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 backEndData_t *backEndData;
 backEndState_t backEnd;
 
-static float s_flipMatrix[16] = {
+const float kFlipMatrix[16] = {
     // convert from our coordinate system (looking down X)
     // to OpenGL's coordinate system (looking down -Z)
     0, 0, -1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1};
@@ -236,7 +236,7 @@ void GL_SetProjectionMatrix(mat4_t matrix) {
                glState.modelviewProjection);
 }
 
-void GL_SetModelviewMatrix(mat4_t matrix) {
+void GL_SetModelviewMatrix(const mat4_t matrix) {
   Mat4Copy(matrix, glState.modelview);
   Mat4Multiply(glState.projection, glState.modelview,
                glState.modelviewProjection);
@@ -369,7 +369,7 @@ void RB_BeginDrawingView(void) {
 		plane2[2] = DotProduct (backEnd.viewParms.ori.axis[2], plane);
 		plane2[3] = DotProduct (plane, backEnd.viewParms.ori.origin) - plane[3];
 #endif
-    GL_SetModelviewMatrix(s_flipMatrix);
+    GL_SetModelviewMatrix(kFlipMatrix);
   }
 }
 
