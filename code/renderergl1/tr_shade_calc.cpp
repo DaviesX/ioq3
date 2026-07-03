@@ -410,7 +410,8 @@ Autosprite2Deform
 Autosprite2 will pivot a rectangular quad along the center of its long axis
 =====================
 */
-glIndex_t edgeVerts[6][2] = {{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {2, 3}};
+static const glIndex_t kEdgeVerts[6][2] = {{0, 1}, {0, 2}, {0, 3},
+                                           {1, 2}, {1, 3}, {2, 3}};
 
 static void Autosprite2Deform(void) {
   int i, j, k;
@@ -454,8 +455,8 @@ static void Autosprite2Deform(void) {
       float l;
       vec3_t temp;
 
-      v1 = xyz + 4 * edgeVerts[j][0];
-      v2 = xyz + 4 * edgeVerts[j][1];
+      v1 = xyz + 4 * kEdgeVerts[j][0];
+      v2 = xyz + 4 * kEdgeVerts[j][1];
 
       VectorSubtract(v1, v2, temp);
 
@@ -472,8 +473,8 @@ static void Autosprite2Deform(void) {
     }
 
     for (j = 0; j < 2; j++) {
-      v1 = xyz + 4 * edgeVerts[nums[j]][0];
-      v2 = xyz + 4 * edgeVerts[nums[j]][1];
+      v1 = xyz + 4 * kEdgeVerts[nums[j]][0];
+      v2 = xyz + 4 * kEdgeVerts[nums[j]][1];
 
       mid[j][0] = 0.5f * (v1[0] + v2[0]);
       mid[j][1] = 0.5f * (v1[1] + v2[1]);
@@ -491,16 +492,16 @@ static void Autosprite2Deform(void) {
     for (j = 0; j < 2; j++) {
       float l;
 
-      v1 = xyz + 4 * edgeVerts[nums[j]][0];
-      v2 = xyz + 4 * edgeVerts[nums[j]][1];
+      v1 = xyz + 4 * kEdgeVerts[nums[j]][0];
+      v2 = xyz + 4 * kEdgeVerts[nums[j]][1];
 
       l = 0.5 * sqrt(lengths[j]);
 
       // we need to see which direction this edge
       // is used to determine direction of projection
       for (k = 0; k < 5; k++) {
-        if (tess.indexes[indexes + k] == i + edgeVerts[nums[j]][0] &&
-            tess.indexes[indexes + k + 1] == i + edgeVerts[nums[j]][1]) {
+        if (tess.indexes[indexes + k] == i + kEdgeVerts[nums[j]][0] &&
+            tess.indexes[indexes + k + 1] == i + kEdgeVerts[nums[j]][1]) {
           break;
         }
       }
