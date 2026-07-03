@@ -39,7 +39,7 @@ refimport_t ri;
 
 // entities that will have procedurally generated surfaces will just
 // point at this for their sorting surface
-surfaceType_t entitySurface = SF_ENTITY;
+static const surfaceType_t kEntitySurface = SF_ENTITY;
 
 /*
 ================
@@ -1583,8 +1583,8 @@ static void R_AddEntitySurface(int entityNum) {
       return;
     }
     shader = R_GetShaderByHandle(ent->e.customShader);
-    R_AddDrawSurf(&entitySurface, shader, R_SpriteFogNum(ent), 0, 0,
-                  0 /*cubeMap*/);
+    R_AddDrawSurf(const_cast<surfaceType_t *>(&kEntitySurface), shader,
+                  R_SpriteFogNum(ent), 0, 0, 0 /*cubeMap*/);
     break;
 
   case RT_MODEL:
@@ -1593,7 +1593,8 @@ static void R_AddEntitySurface(int entityNum) {
 
     tr.currentModel = R_GetModelByHandle(ent->e.hModel);
     if (!tr.currentModel) {
-      R_AddDrawSurf(&entitySurface, tr.defaultShader, 0, 0, 0, 0 /*cubeMap*/);
+      R_AddDrawSurf(const_cast<surfaceType_t *>(&kEntitySurface),
+                    tr.defaultShader, 0, 0, 0, 0 /*cubeMap*/);
     } else {
       switch (tr.currentModel->type) {
       case MOD_MESH:
@@ -1612,7 +1613,8 @@ static void R_AddEntitySurface(int entityNum) {
         if ((ent->e.renderfx & RF_THIRD_PERSON) && !tr.viewParms.isPortal) {
           break;
         }
-        R_AddDrawSurf(&entitySurface, tr.defaultShader, 0, 0, 0, 0);
+        R_AddDrawSurf(const_cast<surfaceType_t *>(&kEntitySurface),
+                      tr.defaultShader, 0, 0, 0, 0);
         break;
       default:
         ri.Error(ERR_DROP, "R_AddEntitySurfaces: Bad modeltype");

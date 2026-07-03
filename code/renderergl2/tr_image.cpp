@@ -1385,7 +1385,8 @@ R_BlendOverTexture
 Apply a color blend over a set of pixels
 ==================
 */
-static void R_BlendOverTexture(byte *data, int pixelCount, byte blend[4]) {
+static void R_BlendOverTexture(byte *data, int pixelCount,
+                               const byte blend[4]) {
   int i;
   int inverseAlpha;
   int premult[3];
@@ -1402,7 +1403,7 @@ static void R_BlendOverTexture(byte *data, int pixelCount, byte blend[4]) {
   }
 }
 
-byte mipBlendColors[16][4] = {
+static const byte kMipBlendColors[16][4] = {
     {0, 0, 0, 0},     {255, 0, 0, 128}, {0, 255, 0, 128}, {0, 0, 255, 128},
     {255, 0, 0, 128}, {0, 255, 0, 128}, {0, 0, 255, 128}, {255, 0, 0, 128},
     {0, 255, 0, 128}, {0, 0, 255, 128}, {255, 0, 0, 128}, {0, 255, 0, 128},
@@ -1932,7 +1933,7 @@ static void RawImage_UploadTexture(GLuint texture, byte *data, int x, int y,
     } else {
       if (rgba8 && miplevel != 0 && r_colorMipLevels->integer)
         R_BlendOverTexture((byte *)data, width * height,
-                           mipBlendColors[miplevel]);
+                           kMipBlendColors[miplevel]);
 
       if (rgba8 && rgtc)
         RawImage_UploadToRgtc2Texture(texture, miplevel, x, y, width, height,

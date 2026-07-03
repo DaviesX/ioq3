@@ -782,7 +782,7 @@ static void ParseMesh(dsurface_t *ds, drawVert_t *verts, float *hdrVertColors,
   srfVert_t points[MAX_PATCH_SIZE * MAX_PATCH_SIZE];
   vec3_t bounds[2];
   vec3_t tmpVec;
-  static surfaceType_t skipData = SF_SKIP;
+  static const surfaceType_t kSkipData = SF_SKIP;
   int realLightmapNum;
 
   realLightmapNum = LittleLong(ds->lightmapNum);
@@ -800,7 +800,7 @@ static void ParseMesh(dsurface_t *ds, drawVert_t *verts, float *hdrVertColors,
   // be around for movement clipping
   if (s_worldData.shaders[LittleLong(ds->shaderNum)].surfaceFlags &
       SURF_NODRAW) {
-    surf->data = &skipData;
+    surf->data = const_cast<surfaceType_t *>(&kSkipData);
     return;
   }
 
