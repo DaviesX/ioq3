@@ -1288,8 +1288,6 @@ the bits are allocated as follows:
 #endif
 #define QSORT_PSHADOW_SHIFT 1
 
-extern int gl_filter_min, gl_filter_max;
-
 /*
 ** performanceCounters_t
 */
