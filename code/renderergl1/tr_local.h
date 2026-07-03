@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef TR_LOCAL_H
 #define TR_LOCAL_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "qcommon/q_shared.h"
 #include "qcommon/qcommon.h"
 #include "qcommon/qfiles.h"
@@ -75,7 +79,7 @@ typedef struct {
 typedef struct {
   vec3_t origin;     // in world coordinates
   vec3_t axis[3];    // orientation in world
-  vec3_t viewOrigin; // viewParms->or.origin in local coordinates
+  vec3_t viewOrigin; // viewParms->ori.origin in local coordinates
   float modelMatrix[16];
 } orientationr_t;
 
@@ -437,7 +441,7 @@ typedef struct {
 } fog_t;
 
 typedef struct {
-  orientationr_t or ;
+  orientationr_t ori;
   orientationr_t world;
   vec3_t pvsOrigin;     // may be different than or.origin for portals
   qboolean isPortal;    // true if this view is through a portal
@@ -783,8 +787,6 @@ the bits are allocated as follows:
 #error "Need to update sorting, too many bits."
 #endif
 
-extern int gl_filter_min, gl_filter_max;
-
 /*
 ** performanceCounters_t
 */
@@ -833,7 +835,7 @@ typedef struct {
 typedef struct {
   trRefdef_t refdef;
   viewParms_t viewParms;
-  orientationr_t or ;
+  orientationr_t ori;
   backEndCounters_t pc;
   qboolean isHyperspace;
   trRefEntity_t *currentEntity;
@@ -901,7 +903,7 @@ typedef struct {
   int identityLightByte; // identityLight * 255
   int overbrightBits; // r_overbrightBits->integer, but set to 0 if no hw gamma
 
-  orientationr_t or ; // for current entity
+  orientationr_t ori; // for current entity
 
   trRefdef_t refdef;
 
@@ -1084,7 +1086,7 @@ int R_CullLocalPointAndRadius(vec3_t origin, float radius);
 
 void R_SetupProjection(viewParms_t *dest, float zProj, qboolean computeFrustum);
 void R_RotateForEntity(const trRefEntity_t *ent, const viewParms_t *viewParms,
-                       orientationr_t * or);
+                       orientationr_t *ori);
 
 /*
 ** GL wrapper/helper functions
@@ -1286,7 +1288,7 @@ LIGHTS
 
 void R_DlightBmodel(bmodel_t *bmodel);
 void R_SetupEntityLighting(const trRefdef_t *refdef, trRefEntity_t *ent);
-void R_TransformDlights(int count, dlight_t *dl, orientationr_t * or);
+void R_TransformDlights(int count, dlight_t *dl, orientationr_t *ori);
 int R_LightForPoint(vec3_t point, vec3_t ambientLight, vec3_t directedLight,
                     vec3_t lightDir);
 
@@ -1509,7 +1511,7 @@ typedef struct {
   int y;
   int width;
   int height;
-  char *fileName;
+  char fileName[MAX_OSPATH];
   qboolean jpeg;
 } screenshotCommand_t;
 
@@ -1594,6 +1596,10 @@ void VectorArrayNormalize(vec4_t *normals, unsigned int count);
 void LerpMeshVertexes_altivec(md3Surface_t *surf, float backlerp);
 void ProjectDlightTexture_altivec(void);
 void RB_CalcDiffuseColor_altivec(unsigned char *colors);
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // TR_LOCAL_H

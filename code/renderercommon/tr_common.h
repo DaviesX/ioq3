@@ -22,6 +22,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef TR_COMMON_H
 #define TR_COMMON_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "qcommon/q_shared.h"
 #include "renderercommon/qgl.h"
 #include "renderercommon/tr_public.h"
@@ -170,5 +174,9 @@ void GLimp_Minimize(void);
 
 void GLimp_SetGamma(unsigned char red[256], unsigned char green[256],
                     unsigned char blue[256]);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

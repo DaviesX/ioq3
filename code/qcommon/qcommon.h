@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 // ref modules
 #ifndef _QCOMMON_H_
 #define _QCOMMON_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "qcommon/q_shared.h"
 
 #include "qcommon/cm_public.h"
@@ -1251,5 +1255,9 @@ extern huffman_t clientHuffTables;
 #define DLF_NO_REDIRECT 2
 #define DLF_NO_UDP 4
 #define DLF_NO_DISCONNECT 8
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _QCOMMON_H_
