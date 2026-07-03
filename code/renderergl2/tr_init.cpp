@@ -509,7 +509,8 @@ byte *RB_ReadPixels(int x, int y, int width, int height, size_t *offset,
 RB_TakeScreenshot
 ==================
 */
-void RB_TakeScreenshot(int x, int y, int width, int height, char *fileName) {
+void RB_TakeScreenshot(int x, int y, int width, int height,
+                       const char *fileName) {
   byte *allbuf, *buffer;
   byte *srcptr, *destptr;
   byte *endline, *endmem;
@@ -569,7 +570,7 @@ RB_TakeScreenshotJPEG
 */
 
 void RB_TakeScreenshotJPEG(int x, int y, int width, int height,
-                           char *fileName) {
+                           const char *fileName) {
   byte *buffer;
   size_t offset = 0, memcount;
   int padlen;
@@ -581,7 +582,9 @@ void RB_TakeScreenshotJPEG(int x, int y, int width, int height,
   if (glConfig.deviceSupportsGamma)
     R_GammaCorrect(buffer + offset, memcount);
 
-  RE_SaveJPG(fileName, r_screenshotJpegQuality->integer, width, height,
+  // RE_SaveJPG's filename parameter is non-const legacy API; it does not
+  // modify the string.
+  RE_SaveJPG((char *)fileName, r_screenshotJpegQuality->integer, width, height,
              buffer + offset, padlen);
   ri.Hunk_FreeTempMemory(buffer);
 }
@@ -616,7 +619,6 @@ R_TakeScreenshot
 */
 void R_TakeScreenshot(int x, int y, int width, int height, char *name,
                       qboolean jpeg) {
-  static char fileName[MAX_OSPATH]; // bad things if two screenshots per frame?
   screenshotCommand_t *cmd;
 
   cmd = (screenshotCommand_t *)R_GetCommandBuffer(sizeof(*cmd));
@@ -629,8 +631,9 @@ void R_TakeScreenshot(int x, int y, int width, int height, char *name,
   cmd->y = y;
   cmd->width = width;
   cmd->height = height;
-  Q_strncpyz(fileName, name, sizeof(fileName));
-  cmd->fileName = fileName;
+  // Copy the name into the command itself; the command is consumed later on
+  // the backend, so it must own its filename rather than alias shared storage.
+  Q_strncpyz(cmd->fileName, name, sizeof(cmd->fileName));
   cmd->jpeg = jpeg;
 }
 
@@ -639,49 +642,6 @@ void R_TakeScreenshot(int x, int y, int width, int height, char *name,
 R_ScreenshotFilename
 ==================
 */
-void R_ScreenshotFilename(int lastNumber, char *fileName) {
-  int a, b, c, d;
-
-  if (lastNumber < 0 || lastNumber > 9999) {
-    Com_sprintf(fileName, MAX_OSPATH, "screenshots/shot9999.tga");
-    return;
-  }
-
-  a = lastNumber / 1000;
-  lastNumber -= a * 1000;
-  b = lastNumber / 100;
-  lastNumber -= b * 100;
-  c = lastNumber / 10;
-  lastNumber -= c * 10;
-  d = lastNumber;
-
-  Com_sprintf(fileName, MAX_OSPATH, "screenshots/shot%i%i%i%i.tga", a, b, c, d);
-}
-
-/*
-==================
-R_ScreenshotFilename
-==================
-*/
-void R_ScreenshotFilenameJPEG(int lastNumber, char *fileName) {
-  int a, b, c, d;
-
-  if (lastNumber < 0 || lastNumber > 9999) {
-    Com_sprintf(fileName, MAX_OSPATH, "screenshots/shot9999.jpg");
-    return;
-  }
-
-  a = lastNumber / 1000;
-  lastNumber -= a * 1000;
-  b = lastNumber / 100;
-  lastNumber -= b * 100;
-  c = lastNumber / 10;
-  lastNumber -= c * 10;
-  d = lastNumber;
-
-  Com_sprintf(fileName, MAX_OSPATH, "screenshots/shot%i%i%i%i.jpg", a, b, c, d);
-}
-
 /*
 ====================
 R_LevelShot
@@ -765,8 +725,11 @@ screenshot [filename]
 Doesn't print the pacifier message if there is a second arg
 ==================
 */
-void R_ScreenShot_f(void) {
+static void R_ScreenShot(qboolean jpeg, const char *ext) {
   char checkname[MAX_OSPATH];
+  // Cache the last free index across calls: recording demo avis can involve
+  // thousands of shots, and rescanning from 0 each time would be quadratic.
+  // Shared by both formats so .tga and .jpg never reuse a number.
   static int lastNumber = -1;
   qboolean silent;
 
@@ -783,7 +746,8 @@ void R_ScreenShot_f(void) {
 
   if (ri.Cmd_Argc() == 2 && !silent) {
     // explicit filename
-    Com_sprintf(checkname, MAX_OSPATH, "screenshots/%s.tga", ri.Cmd_Argv(1));
+    Com_sprintf(checkname, MAX_OSPATH, "screenshots/%s.%s", ri.Cmd_Argv(1),
+                ext);
   } else {
     // scan for a free filename
 
@@ -795,14 +759,15 @@ void R_ScreenShot_f(void) {
     }
     // scan for a free number
     for (; lastNumber <= 9999; lastNumber++) {
-      R_ScreenshotFilename(lastNumber, checkname);
+      Com_sprintf(checkname, MAX_OSPATH, "screenshots/shot%04d.%s", lastNumber,
+                  ext);
 
       if (!ri.FS_FileExists(checkname)) {
         break; // file doesn't exist
       }
     }
 
-    if (lastNumber >= 9999) {
+    if (lastNumber > 9999) {
       ri.Printf(PRINT_ALL, "ScreenShot: Couldn't create a file\n");
       return;
     }
@@ -811,65 +776,16 @@ void R_ScreenShot_f(void) {
   }
 
   R_TakeScreenshot(0, 0, glConfig.vidWidth, glConfig.vidHeight, checkname,
-                   qfalse);
+                   jpeg);
 
   if (!silent) {
     ri.Printf(PRINT_ALL, "Wrote %s\n", checkname);
   }
 }
 
-void R_ScreenShotJPEG_f(void) {
-  char checkname[MAX_OSPATH];
-  static int lastNumber = -1;
-  qboolean silent;
+void R_ScreenShot_f(void) { R_ScreenShot(qfalse, "tga"); }
 
-  if (!strcmp(ri.Cmd_Argv(1), "levelshot")) {
-    R_LevelShot();
-    return;
-  }
-
-  if (!strcmp(ri.Cmd_Argv(1), "silent")) {
-    silent = qtrue;
-  } else {
-    silent = qfalse;
-  }
-
-  if (ri.Cmd_Argc() == 2 && !silent) {
-    // explicit filename
-    Com_sprintf(checkname, MAX_OSPATH, "screenshots/%s.jpg", ri.Cmd_Argv(1));
-  } else {
-    // scan for a free filename
-
-    // if we have saved a previous screenshot, don't scan
-    // again, because recording demo avis can involve
-    // thousands of shots
-    if (lastNumber == -1) {
-      lastNumber = 0;
-    }
-    // scan for a free number
-    for (; lastNumber <= 9999; lastNumber++) {
-      R_ScreenshotFilenameJPEG(lastNumber, checkname);
-
-      if (!ri.FS_FileExists(checkname)) {
-        break; // file doesn't exist
-      }
-    }
-
-    if (lastNumber == 10000) {
-      ri.Printf(PRINT_ALL, "ScreenShot: Couldn't create a file\n");
-      return;
-    }
-
-    lastNumber++;
-  }
-
-  R_TakeScreenshot(0, 0, glConfig.vidWidth, glConfig.vidHeight, checkname,
-                   qtrue);
-
-  if (!silent) {
-    ri.Printf(PRINT_ALL, "Wrote %s\n", checkname);
-  }
-}
+void R_ScreenShotJPEG_f(void) { R_ScreenShot(qtrue, "jpg"); }
 
 //============================================================================
 

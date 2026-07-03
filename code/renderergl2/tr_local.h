@@ -2392,7 +2392,7 @@ typedef struct {
   int y;
   int width;
   int height;
-  char *fileName;
+  char fileName[MAX_OSPATH];
   qboolean jpeg;
 } screenshotCommand_t;
 
