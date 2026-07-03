@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 static byte s_intensitytable[256];
 static unsigned char s_gammatable[256];
 
-int gl_filter_min = GL_LINEAR_MIPMAP_NEAREST;
-int gl_filter_max = GL_LINEAR;
+static int gl_filter_min = GL_LINEAR_MIPMAP_NEAREST;
+static int gl_filter_max = GL_LINEAR;
 
 #define FILE_HASH_SIZE 1024
 static image_t *hashTable[FILE_HASH_SIZE];
