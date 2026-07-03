@@ -1426,10 +1426,7 @@ Radix sort with 4 byte size buckets
 ===============
 */
 static void R_RadixSort(drawSurf_t *source, int size) {
-  static std::vector<drawSurf_t> scratch;
-  if (static_cast<size_t>(size) > scratch.size()) {
-    scratch.resize(size);
-  }
+  static std::vector<drawSurf_t> scratch(MAX_DRAWSURFS);
 #ifdef Q3_LITTLE_ENDIAN
   R_Radix(0, size, source, scratch.data());
   R_Radix(1, size, scratch.data(), source);
