@@ -21,28 +21,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 // tr_subs.c - common function replacements for modular renderer
 
-#include "tr_common.h"
+#include "renderercommon/tr_common.h"
+#include <stdarg.h>
 
-void QDECL Com_Printf( const char *msg, ... )
-{
-	va_list         argptr;
-	char            text[1024];
+void QDECL Com_Printf(const char *msg, ...) {
+  va_list argptr;
+  char text[1024];
 
-	va_start(argptr, msg);
-	Q_vsnprintf(text, sizeof(text), msg, argptr);
-	va_end(argptr);
+  va_start(argptr, msg);
+  Q_vsnprintf(text, sizeof(text), msg, argptr);
+  va_end(argptr);
 
-	ri.Printf(PRINT_ALL, "%s", text);
+  ri.Printf(PRINT_ALL, "%s", text);
 }
 
-void QDECL Com_Error( int level, const char *error, ... )
-{
-	va_list         argptr;
-	char            text[1024];
+void QDECL Com_Error(int level, const char *error, ...) {
+  va_list argptr;
+  char text[1024];
 
-	va_start(argptr, error);
-	Q_vsnprintf(text, sizeof(text), error, argptr);
-	va_end(argptr);
+  va_start(argptr, error);
+  Q_vsnprintf(text, sizeof(text), error, argptr);
+  va_end(argptr);
 
-	ri.Error(level, "%s", text);
+  ri.Error(level, "%s", text);
 }

@@ -30,10 +30,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
+#ifndef GAME_AI_TEAM_H_INCLUDED
+#define GAME_AI_TEAM_H_INCLUDED
+#include "game/ai_main.h"
+
 void BotTeamAI(bot_state_t *bs);
 int BotGetTeamMateTaskPreference(bot_state_t *bs, int teammate);
-void BotSetTeamMateTaskPreference(bot_state_t *bs, int teammate, int preference);
+void BotSetTeamMateTaskPreference(bot_state_t *bs, int teammate,
+                                  int preference);
 void BotVoiceChat(bot_state_t *bs, int toclient, char *voicechat);
 void BotVoiceChatOnly(bot_state_t *bs, int toclient, char *voicechat);
 
-
+#endif // GAME_AI_TEAM_H_INCLUDED

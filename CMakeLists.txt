@@ -92,6 +92,10 @@ endif()
 
 set(SOURCE_DIR ${CMAKE_SOURCE_DIR}/code)
 
+# Includes are written relative to the code/ root (e.g. "qcommon/q_shared.h"),
+# so expose it as an include directory for every target.
+include_directories(${SOURCE_DIR})
+
 include(compilers/all)
 include(platforms/all)
 include(libraries/all)

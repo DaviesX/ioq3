@@ -50,7 +50,9 @@ function(add_qvm MODULE_NAME)
     set(QVM_ASM_DIR ${CMAKE_BINARY_DIR}/qvm.dir/${MODULE_NAME})
     file(MAKE_DIRECTORY ${QVM_ASM_DIR})
 
-    set(LCC_FLAGS "")
+    # Includes are written relative to the code/ root, so add it to the
+    # QVM compiler's include search path.
+    set(LCC_FLAGS "-I${SOURCE_DIR}")
     foreach(DEFINITION IN LISTS ARG_DEFINITIONS)
         list(APPEND LCC_FLAGS "-D${DEFINITION}")
     endforeach()

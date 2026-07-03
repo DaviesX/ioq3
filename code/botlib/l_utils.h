@@ -29,6 +29,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
 
-#define Vector2Angles(v,a)		vectoangles(v,a)
-#define Maximum(x,y)			(x > y ? x : y)
-#define Minimum(x,y)			(x < y ? x : y)
+#ifndef BOTLIB_L_UTILS_H_INCLUDED
+#define BOTLIB_L_UTILS_H_INCLUDED
+
+#define Vector2Angles(v, a) vectoangles(v, a)
+#define Maximum(x, y) (x > y ? x : y)
+#define Minimum(x, y) (x < y ? x : y)
+
+#endif // BOTLIB_L_UTILS_H_INCLUDED

@@ -31,6 +31,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
 //
+#ifndef GAME_AI_CHAT_H_INCLUDED
+#define GAME_AI_CHAT_H_INCLUDED
+#include "game/ai_main.h"
+
 int BotChat_EnterGame(bot_state_t *bs);
 //
 int BotChat_ExitGame(bot_state_t *bs);
@@ -59,3 +63,4 @@ int BotValidChatPosition(bot_state_t *bs);
 // test the initial bot chats
 void BotChatTest(bot_state_t *bs);
 
+#endif // GAME_AI_CHAT_H_INCLUDED

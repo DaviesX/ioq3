@@ -1,0 +1,41 @@
+# Normalize all text files to LF in the repository and on checkout.
+# This prevents the CRLF drift that can appear when the tree is touched by
+# a Windows editor or a file-sync/copy tool.
+* text=auto eol=lf
+
+# Source and build files are text (redundant with the default above, but
+# explicit so intent is clear for the engine's file zoo).
+*.c    text
+*.h    text
+*.m    text
+*.y    text
+*.asm  text
+*.rc   text
+*.glsl text
+*.cmake text
+*.sh   text eol=lf
+*.md   text
+*.txt  text
+*.json text
+*.xml  text
+*.svg  text
+*.yml  text
+*.in   text
+*.plist text
+*.service text
+*.1    text
+
+# Binary assets — never normalize or diff as text.
+*.png    binary
+*.ico    binary
+*.icns   binary
+*.xcf    binary
+*.pdf    binary
+*.a      binary
+*.lib    binary
+*.dll    binary
+*.dylib  binary
+*.wav    binary
+*.pk3    binary
+*.bsp    binary
+*.md3    binary
